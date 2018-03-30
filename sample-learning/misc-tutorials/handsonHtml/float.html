@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.14. Decimals, Floats, and Floating Point Arithmetic &mdash; Hands-on Python Tutorial for Python 3.1</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="Hands-on Python Tutorial for Python 3.1" href="index.html" />
+    <link rel="up" title="1. Beginning With Python" href="ch1.html" />
+    <link rel="next" title="1.15. Summary" href="introsummary.html" />
+    <link rel="prev" title="1.13. Loops and Sequences" href="loops.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="introsummary.html" title="1.15. Summary"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="loops.html" title="1.13. Loops and Sequences"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch1.html" accesskey="U">1. Beginning With Python</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="decimals-floats-and-floating-point-arithmetic">
+<span id="floats"></span><span id="index-0"></span><h1>1.14. Decimals, Floats, and Floating Point Arithmetic<a class="headerlink" href="#decimals-floats-and-floating-point-arithmetic" title="Permalink to this headline">¶</a></h1>
+<p>Floating point numbers like 12.345 are a basic type, but there are
+some complications due to their inexactness. This section may be
+deferred until you actually need numbers other than integers.</p>
+<div class="section" id="floats-division-mixed-types">
+<span id="floats-division-mixed"></span><span id="index-1"></span><h2>1.14.1. Floats, Division, Mixed Types<a class="headerlink" href="#floats-division-mixed-types" title="Permalink to this headline">¶</a></h2>
+<p>As you moved on in school from your first integer division to
+fractions and decimals, you probably thought of 6/8 as a
+fraction and could convert to a decimal .75. Python can do decimal
+calculations, too, <em>approximately</em>.</p>
+<p><em>Try all set-off lines in this section in the</em> <em>Shell</em>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="mi">6</span><span class="o">/</span><span class="mi">8</span>
+<span class="mi">6</span><span class="o">/</span><span class="mi">3</span>
+<span class="mf">2.3</span><span class="o">/</span><span class="mf">25.7</span>
+</pre></div>
+</div>
+<p>There is more going on here than meets the eye. As you should know,
+decimal representations of values can be a pain. They may not be
+able to be expressed with a finite number of characters. Try</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="mi">2</span><span class="o">/</span><span class="mi">3</span>
+</pre></div>
+</div>
+<p>Also, as you may have had emphasized in science class, real number
+measurements are often not exact, and so the results of
+calculations with them are not exact. In fact there are an infinite
+number of real number just between 0 and 1, and a computer is
+finite. It cannot store all those numbers exactly! On the other
+hand, Python does store <em>integers</em> exactly (well at least far past
+the number of atoms in the universe - eventually even integers
+could get too big to store in a computer). The difference in the
+way integers and decimals are stored and processed leads to
+decimals and integers being different <em>type</em>s in Python. Try</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">type</span><span class="p">(</span><span class="mf">3.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that 3.5 is of type &#8216;float&#8217;, not &#8216;decimal&#8217;. There are several
+reasons for that name having to do with the actual way the type is
+stored internally. &#8220;Decimal&#8221; implies base ten, our normal way for
+writing numbers with ten digits 0,1,2,3,4,5,6,7,8,9. Computers
+actually use base two, with only two symbols 0,1. (Did you note
+what symbols were in the machine language in <a class="reference internal" href="context.html#context"><span>Context</span></a>?)
+Also floats use an encoding something like scientific notation from
+science class, with exponents that allow the decimal point to move
+or &#8220;float&#8221;, as in the decimal case: 2345.6 = (2.3456)10<sup>3</sup></p>
+<p>Try</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">type</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Even a number that is actually an integer can be represented in the
+float type if a decimal point is included.</p>
+<p>Always be sure to remember that floats may not be exact. The use of
+base two makes this true even in cases where decimal numbers <em>can</em>
+be expressed exactly! More on that in <a class="reference internal" href="#precision-formats"><span>String Formats for Float Precision</span></a>.</p>
+<p>It is sometimes important to know the numeric type of the
+result of a binary operation.
+Any combination of +, -, and * with operands of type int
+produces an int. If there is an operation /, or if either operand is
+of type float, the result is float. Try each in the <em>Shell</em> (and
+guess the resulting type): <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="mf">3.3</span> <span class="o">-</span> <span class="mf">1.1</span>
+<span class="mf">2.0</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="mi">2</span><span class="o">*</span><span class="mf">2.5</span>
+</pre></div>
+</div>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><p class="first">Python 3.1 does what you would expect mathematically with an
+expression like <code class="docutils literal"><span class="pre">(1/2)*6.5</span></code></p>
+<p class="last"><em>Caution:</em>  This is not the case in other common languages like Java
+and C++ (or with versions of Python before 3.0). They treat the /
+operation with integers like the current Python //, so the result
+of the expression above is 0, since <code class="docutils literal"><span class="pre">1//2</span></code> is 0.</p>
+</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exponentiation-square-roots">
+<span id="exponentiation"></span><span id="index-2"></span><h2>1.14.2. Exponentiation, Square Roots<a class="headerlink" href="#exponentiation-square-roots" title="Permalink to this headline">¶</a></h2>
+<p>Exponentiation is finding powers. In mathematical notation,
+(3)(3)(3)(3)=3<sup>4</sup>. In Python there is no fancy
+typography with raised exponent symbols like the 4, so Python uses
+** before a power: Try in the <em>Shell</em>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="mi">3</span><span class="o">**</span><span class="mi">4</span>
+<span class="mi">5</span><span class="o">*</span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span>
+</pre></div>
+</div>
+<p>If you expected 1000 for the second expression, remember exponentiation
+has even higher precedence than multiplication and division:
+2**3 is 2*2*2 or 8, and 5*8 is 40.</p>
+<p id="index-3">Exponents do not need to be integers. A useful example is the 0.5
+power: it produces a square root. Try in the <em>Shell</em>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="mi">9</span><span class="o">**.</span><span class="mi">5</span>
+<span class="mi">2</span><span class="o">**.</span><span class="mi">5</span>
+</pre></div>
+</div>
+<p>The result of a power operation is of int type only if both
+parameters are integers and the correct result is an integer.</p>
+</div>
+<div class="section" id="string-formats-for-float-precision">
+<span id="precision-formats"></span><span id="index-4"></span><h2>1.14.3. String Formats for Float Precision<a class="headerlink" href="#string-formats-for-float-precision" title="Permalink to this headline">¶</a></h2>
+<p>You generally do not want to display a floating point result of a
+calculation in its raw form, often with an enormous number of
+digits after the decimal point, like 23.457413902458498. You are
+likely to prefer rounding it to something like 23.46. There are two
+approaches.</p>
+<p>First there is a format <em>function</em> (not method) with a second
+parameter allowed to specialize the formatting of objects as
+strings. <em>Read</em> the following example interpreter sequence showing
+possibilities when a float is being formatted:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">23.457413902458498</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="nb">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;.5f&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">&#39;23.45741&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;.2f&#39;</span><span class="p">)</span>
+<span class="go">&#39;23.46&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">23.457413902458498</span>
+</pre></div>
+</div>
+<p>Note that the results are rounded not <em>truncated</em>: the result to
+two places is 23.46, not 23.45. The formatting string <code class="docutils literal"><span class="pre">'.5f'</span></code>
+means round to 5 places after the decimal point. Similarly
+<code class="docutils literal"><span class="pre">'.2f'</span></code> means round to two decimal places.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This <code class="docutils literal"><span class="pre">format</span></code> function <em>returns</em> the formatted string.
+It does not change the parameters.  As a  <em>complete</em> statement
+in a <em>program</em> <code class="docutils literal"><span class="pre">format(x,</span> <span class="pre">'.2f')</span></code>, is useless:  The
+<code class="docutils literal"><span class="pre">'23.46'</span></code> gets returned and <em>thrown away</em>, with no effect on <code class="docutils literal"><span class="pre">x</span></code>.</p>
+</div>
+<p>The first version, saving the formatted value to <code class="docutils literal"><span class="pre">s</span></code>, will allow the
+formatted string to be used again (as <code class="docutils literal"><span class="pre">s</span></code>).</p>
+<p>This rounding notation can also be placed after a colon inside the
+braces of format strings, for use with the string format <em>method</em>.
+Recall there are many ways to indicate what values to substitute
+into a format string.  One way is just to omit any reference to the variables
+and substitute parameters in order.  Separate from the value to substitute,
+and following any notation for it, you can put a colon <code class="docutils literal"><span class="pre">:</span></code> and the
+formatting information we used in the simple format method above (like <code class="docutils literal"><span class="pre">.5f</span></code>.
+but with NO quotes):</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">2.876543</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;longer: {:.5f}, shorter: {:.3f}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="go">&#39;longer: 2.87654, shorter: 2.877.&#39;</span>
+</pre></div>
+</div>
+<p>The instructions for the data to insert
+can also be given by position index:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">2.876543</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;longer: {0:.5f}, shorter: {0:.3f}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">&#39;longer: 2.87654, shorter: 2.877.&#39;</span>
+</pre></div>
+</div>
+<p>or using dictionary keys:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">2.876543</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;longer: {x:.5f}, shorter: {x:.3f}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">())</span>
+<span class="go">&#39;longer: 2.87654, shorter: 2.877.&#39;</span>
+</pre></div>
+</div>
+<p>In each of these approaches, the colon and formatting specification
+come at the end of the expression inside the braces,
+just before the closing <code class="docutils literal"><span class="pre">}</span></code>.  This follows the <code class="docutils literal"><span class="pre">{</span></code> and symbols (if any)
+identifying what value to use for the substitution.</p>
+<p>There are many more fancy formatting options for the string
+<code class="docutils literal"><span class="pre">format</span></code> method that we will not discuss.</p>
+<p id="index-5">Going to the opposite extreme, and using formatting with many
+digits, you can check that Python does not necessarily remember
+simple decimal numbers exactly:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">format</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;.20f&#39;</span><span class="p">)</span>
+<span class="go">0.10000000000000000555</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">format</span><span class="p">(</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;.20f&#39;</span><span class="p">)</span>
+<span class="go">&#39;0.20000000000000001110&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">format</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;.20f&#39;</span><span class="p">)</span>
+<span class="go">&#39;0.30000000000000004441&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">format</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="s">&#39;.20f&#39;</span><span class="p">)</span>
+<span class="go">&#39;0.29999999999999998890&#39;</span>
+</pre></div>
+</div>
+<p>Python stores the numbers correctly to about 16 or 17 digits. You
+may not care about such slight errors, but you will be able to
+check in Chapter 3 that if Python tests the expressions .1 + .2 and
+.3 for equality, it decides that they are not equal! In fact, as
+you can see above, the approximations that Python stores for the
+two expressions are <em>not</em> exactly equal.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Do not depend on the
+exactness of floating point arithmetic, even for apparently simple
+expressions!</p>
+</div>
+<p>The floating point formatting code in this section is also in
+example program <code class="docutils literal"><span class="pre">floatFormat.py</span></code>.</p>
+<div class="section" id="floating-point-exercise">
+<h3>1.14.3.1. Floating Point Exercise<a class="headerlink" href="#floating-point-exercise" title="Permalink to this headline">¶</a></h3>
+<p>Write a program, <code class="docutils literal"><span class="pre">discount.py</span></code>, that prompts the user for an
+original price and for a discount percentage and prints out the new
+price to the nearest cent. For example if the user enters 2.89 for
+the price and 20 for the discount percentage, the value would be</p>
+<blockquote>
+<div>(1 - 20/100) * 2.89</div></blockquote>
+<p>rounded to two decimal places, 2.31. For price
+.65 with a 25 percent discount, the value would be</p>
+<blockquote>
+<div>(1 - 25/100) * .65</div></blockquote>
+<p>rounded to two decimal places, .49. <a class="footnote-reference" href="#id4" id="id3">[2]</a></p>
+<p>Write the general calculation code following the pattern of
+the calculations illustrated in the two concrete examples.</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>In Python 3.0+, the previous expressions make sense, but in earlier
+versions of Python and in other languages like C++ and Java, where
+there are not separate division operators // and /, these
+expressions would be wrong because of the multiple meanings of the
+operator / with different types. The expressions would work in
+these other languages if, for example, 100 were replaced by 100.0.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1.14. Decimals, Floats, and Floating Point Arithmetic</a><ul>
+<li><a class="reference internal" href="#floats-division-mixed-types">1.14.1. Floats, Division, Mixed Types</a></li>
+<li><a class="reference internal" href="#exponentiation-square-roots">1.14.2. Exponentiation, Square Roots</a></li>
+<li><a class="reference internal" href="#string-formats-for-float-precision">1.14.3. String Formats for Float Precision</a><ul>
+<li><a class="reference internal" href="#floating-point-exercise">1.14.3.1. Floating Point Exercise</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="loops.html"
+                        title="previous chapter">1.13. Loops and Sequences</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="introsummary.html"
+                        title="next chapter">1.15. Summary</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/float.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="introsummary.html" title="1.15. Summary"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="loops.html" title="1.13. Loops and Sequences"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch1.html" >1. Beginning With Python</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2012, Dr. Andrew N. Harrington.
+      Last updated on May 22, 2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1+.
+    </div>
+  </body>
+</html>

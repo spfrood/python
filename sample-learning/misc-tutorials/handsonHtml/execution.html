@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.9. The Idle Editor and Execution &mdash; Hands-on Python Tutorial for Python 3.1</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="Hands-on Python Tutorial for Python 3.1" href="index.html" />
+    <link rel="up" title="1. Beginning With Python" href="ch1.html" />
+    <link rel="next" title="1.10. Input and Output" href="io.html" />
+    <link rel="prev" title="1.8. Strings Part II" href="strings2.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="io.html" title="1.10. Input and Output"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="strings2.html" title="1.8. Strings Part II"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch1.html" accesskey="U">1. Beginning With Python</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-idle-editor-and-execution">
+<span id="the-idle-editor"></span><span id="index-0"></span><h1>1.9. The Idle Editor and Execution<a class="headerlink" href="#the-idle-editor-and-execution" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="loading-a-program-in-the-idle-editor-and-running-it">
+<span id="loading-a-program"></span><span id="index-1"></span><h2>1.9.1. Loading a Program in the Idle Editor, and Running It<a class="headerlink" href="#loading-a-program-in-the-idle-editor-and-running-it" title="Permalink to this headline">¶</a></h2>
+<p>It is time to put longer collections of instructions together. That
+is most easily done by creating a text file and running the Python
+interpreter on the file. Idle simplifies that process.</p>
+<p>First you can put an existing file into an Idle Edit Window. Click
+on the Idle <span class="guilabel">File</span> menu and select <span class="guilabel">Open</span>.
+(Or as you see, you can use
+the shortcut <code class="kbd docutils literal"><span class="pre">Ctrl-O</span></code>. That means holding down the <code class="kbd docutils literal"><span class="pre">Ctrl</span></code>
+key, and
+pressing the letter <code class="kbd docutils literal"><span class="pre">O</span></code> for Open.) You should get a file selection
+dialog. You should have the sample program madlib.py displayed in
+the list. Select it and open it. (If you do not see the program,
+then you either failed to download the example programs in
+<a class="reference internal" href="idle.html#your-python-folder"><span>Your Python Folder and Python Examples</span></a>, or you did not start Idle in the
+proper folder in <a class="reference internal" href="idle.html#starting-idle"><span>Starting Idle</span></a>.)</p>
+<dl class="docutils" id="index-2">
+<dt>Mac</dt>
+<dd>In Windows it does not matter whether you go to the filemenu of
+the Shell Window or an edit window, but it does make a difference
+on a Mac:
+If you use the Idle File menu when the Shell window is active,
+your search will start in your Documents folder,
+but if some file editing window is active instead,
+your search will start in its folder (generally the desired behavior).</dd>
+</dl>
+<p id="index-3">You will see the source code again. Now run this program from
+inside of Idle: Go to the <span class="guilabel">Run</span> menu of that Edit window, and select
+<span class="guilabel">Run Module</span>. Notice the shortcut (F5).</p>
+<p>If the Shell window does not automatically come to the foreground,
+select it. You should see a line saying <code class="docutils literal"><span class="pre">RESTART</span></code> and then the
+start of the execution of the Mad Lib program with the cursor
+waiting for your entry after the first prompt. Finish executing the
+program. Be sure to type the final requested Enter, so you get back
+to the interpreter prompt: <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code></p>
+<p>Look at the editor window again. You should see that different
+parts of the code have different colors. String literals are likely
+green. The reserved words <code class="docutils literal"><span class="pre">def</span></code> are likely orange. Look at the
+last two lines, where the identifier <code class="docutils literal"><span class="pre">tellStory</span></code> is black, and
+the identifier <code class="docutils literal"><span class="pre">input</span></code> is likely purple. Only identifiers that
+are not predefined by Python are black. If <em>you</em> create an
+identifier name, make sure Idle shows it in <em>black</em>.</p>
+</div>
+<div class="section" id="a-pre-python-3-3-idle-bug">
+<span id="a-bug-possible"></span><span id="index-4"></span><h2>1.9.2. A Pre Python 3.3 Idle Bug<a class="headerlink" href="#a-pre-python-3-3-idle-bug" title="Permalink to this headline">¶</a></h2>
+<p><em>Luckily this bug was fixed for Python 3.3</em>, but if for some reason you are using
+an older version and cannot update to the current version, read on:</p>
+<p>When you execute a program from the Idle Editor, the interpreter
+gives a banner saying <code class="docutils literal"><span class="pre">RESTART</span></code>, meaning that all the things you
+defined in any shell session so far are wiped clean and the program
+you are running starts fresh. There is one egregious exception to
+that, that was still present at least in the version of Idle for
+Python 3.1 in Windows. We will try to demonstrate the bug. (A <em>bug</em>
+is an error in a program.)</p>
+<p>Start running the Mad Lib program again by going to the Editor
+Window containing madlib.py, and start running the program again,
+but do not continue....</p>
+<p>You should see a prompt for user input generated by the program.
+Ignore this prompt and go back to the Edit Window and start the Mad
+Lib program again.</p>
+<p>If this bug is still present, you should see a difference in this
+restart: This time after the RESTART banner and the interpreter
+prompt: <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code>, which looks innocent enough, but this program
+<em>should</em> show the <em>program&#8217;s</em> prompt string for input, and with
+the bug, Idle does not show the program&#8217;s prompt.</p>
+<p>The problem only comes up because you interrupted the last
+execution <em>when user input was being waited for</em>. The restart was not
+complete here: The system is still looking for the pending user
+input from the last execution.</p>
+<p>The fix is simple: Make sure the Interpreter Window is the
+currently selected window, and press return to terminate the lost
+user input. In some circumstances, you may need to press return a
+second time.</p>
+<p>After that the program should start up normally with its prompt.</p>
+<p>Watch out for this behavior, and remember the fix.</p>
+</div>
+<div class="section" id="the-classic-first-program">
+<span id="the-classic-first"></span><span id="index-5"></span><h2>1.9.3. The Classic First Program<a class="headerlink" href="#the-classic-first-program" title="Permalink to this headline">¶</a></h2>
+<p>Make sure you have Idle started in your Python directory (in
+Windows with the provided Idle shortcut link), where you will store
+program files.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Do <em>not</em> start Idle from the Windows Start Menu!</p>
+</div>
+<p>If you just started Idle now, you may already have a blank Edit
+Window in front of you. If not, open a new window by going to the
+File menu and selecting New Window. This gives you a rather
+conventional text editing window with the mouse available, ability
+to cut and paste, plus a few special options for Python.</p>
+<p>Type (or paste) the following into the <em>editor</em> window:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">print</span><span class="p">(</span><span class="s">&#39;Hello world!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Save the file with the menu sequence <span class="menuselection">File ‣ Save</span>,
+and then enter the file
+name <code class="docutils literal"><span class="pre">hello.py</span></code>. Python program files should always be given a
+name ending in &#8221;.py&#8221;, and you must enter the .py extension
+explicitly .</p>
+<dl class="docutils" id="index-6">
+<dt>Mac</dt>
+<dd>Save updates a file using its current name.
+If you want to save a copy to a different name, you must be careful:
+use <span class="menuselection">File ‣ Save Copy As</span>, <em>NOT</em>
+<span class="menuselection">File ‣ Save As</span>.
+The latter saves a copy of the Shell history,
+not the program you are editing!
+Sometimes you might want a record of the Shell history,
+but this is not usually what you want.</dd>
+</dl>
+<p>If you look in the editor, you should see that your text is color
+coded. The editor will color different parts of Python syntax in
+special colors.</p>
+<p>Now that you have a complete, saved program, choose
+<span class="menuselection">Run ‣ Run Module</span>.
+You should see the program run in the Python Shell window.</p>
+<p>You just wrote and executed a program. Unlike when you use the
+shell, this code is saved to a file in your Python folder. You can
+open and execute the file any time you want. (In Idle, use
+<span class="menuselection">File ‣ Open</span>.)</p>
+<p id="index-7">To the interpreter, a program source file is a Python
+<em>module</em>. We will tend to use the more general term: a program file
+is a module. Note the term from the menu when running the program.</p>
+<p id="index-8"><em>Distinguish program code from Shell text</em>: It is easy to confuse
+the Shell and the Edit windows. Make sure you keep them straight.
+The hello.py program is just the line</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">print</span><span class="p">(</span><span class="s">&#39;Hello world!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>that you typed into the edit window and saved. When you ran the
+program in Idle, you saw results in the Shell. First came the
+Restart notice, the one-line output from the program saying hello,
+and a further Shell prompt:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">================================</span> <span class="n">RESTART</span> <span class="o">========</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">Hello world!</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>You could also have typed this single printing line directly in the
+Shell in response to a Shell prompt. When you see
+<code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code>, you could enter the
+print function and get the exchange between you and the Shell:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s">&#39;Hello world&#39;</span><span class="p">)</span>
+<span class="go">Hello world!</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>The three lines above are <em>not</em> a program you could save in a file
+and run. This is just an exchange in the <em>Shell</em>, with its
+<code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> prompts, individual
+line to execute and the response.</p>
+<p>Again, just the single line, with
+no <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code>,</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">print</span><span class="p">(</span><span class="s">&#39;Hello world!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">entered into the <em>Edit</em> window forms a program you can save and
+run.</p>
+</div>
+<p>We will shortly get to more interesting many-statement
+programs, where it is much more convenient to use the Edit window
+than the Shell!</p>
+<p><em>The general assumption in this Tutorial will be that programs are</em>
+<em>run in Idle and the Idle Shell is the Shell referred to.</em>
+It will be explicitly stated when you should run a program directly
+from the operating system.</p>
+<p>In general it is fine to run our programs
+from a cmd console (Windows) or terminal (Mac).</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Running the text based example programs in Windows, like birthday2.py,
+by selecting them to run from a file folder, will <em>not</em> work well:
+The program ends and the window automatically closes before you can
+see the final output.</p>
+</div>
+<p>On a Mac you get to explicitly close the terminal window created when you run a Python
+program from the Finder.</p>
+</div>
+<div class="section" id="program-documentation-string">
+<span id="index-9"></span><span id="id1"></span><h2>1.9.4. Program Documentation String<a class="headerlink" href="#program-documentation-string" title="Permalink to this headline">¶</a></h2>
+<p>The program above is self evident, and shows how short and direct a
+program can be (unlike other languages such as Java). Still, right
+away, get used to documenting a program. Python has a special
+feature: If the beginning of a program is just a quoted string,
+that string is taken to be the program&#8217;s <em>documentation string</em>.
+Open the example file <code class="docutils literal"><span class="pre">hello2.py</span></code> in the Edit window:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39;A very simple program,</span>
+<span class="sd">showing how short a Python program can be!</span>
+<span class="sd">Authors: ___, ___</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s">&#39;Hello world!&#39;</span><span class="p">)</span>  <span class="c">#This is a stupid comment after the # mark</span>
+</pre></div>
+</div>
+<p>Most commonly, the initial documentation goes on for several lines,
+so a multi-line string delimiter is used (the triple quotes). Just
+for completeness of illustration in this program, another form of
+comment is also shown, a comment that starts with the symbol <code class="docutils literal"><span class="pre">#</span></code> and
+extends to the end of the line. The Python interpreter completely
+ignores this form of comment. Such a comment should only be
+included for better human understanding. Avoid making comments that
+do not really aid human understanding. (Do what I say, not what I
+did above.) Good introductory comment strings and appropriate names
+for the parts of your programs make fewer <code class="docutils literal"><span class="pre">#</span></code> symbol comments
+needed.</p>
+<p>Run the program and see the documentation and comment make no
+difference in the result.</p>
+</div>
+<div class="section" id="screen-layout">
+<span id="index-10"></span><h2>1.9.5. Screen Layout<a class="headerlink" href="#screen-layout" title="Permalink to this headline">¶</a></h2>
+<p>Of course you can arrange the windows on your computer screen any
+way that you like. A suggestion as you start to use the combination
+of the editor to write, the shell to run, and the tutorial to
+follow along: Make all three mostly visible your computer screen at
+once. Drag the editor window to the upper left. Place the Shell
+window to the lower left, and perhaps reduce its height a bit so
+there is not much overlap. If you are looking at the web version of
+the tutorial on the screen, make it go top to bottom on the right,
+but not overlap the Idle windows too much. The web page rendering
+should generally adapt to the width pretty well. You can always
+temporarily maximize the window. Before resizing the browser
+window, it is good to look for an unusual phrase on your page, and
+search for it after resizing, since resizing can totally mess up
+your location in the web page.</p>
+<p>There is an alternative to maximization for the Idle editor window:
+It you want it to go top to bottom of the screen but not widen, you
+can toggle that state with <code class="kbd docutils literal"><span class="pre">Alt-2</span></code>. Play with all this.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1.9. The Idle Editor and Execution</a><ul>
+<li><a class="reference internal" href="#loading-a-program-in-the-idle-editor-and-running-it">1.9.1. Loading a Program in the Idle Editor, and Running It</a></li>
+<li><a class="reference internal" href="#a-pre-python-3-3-idle-bug">1.9.2. A Pre Python 3.3 Idle Bug</a></li>
+<li><a class="reference internal" href="#the-classic-first-program">1.9.3. The Classic First Program</a></li>
+<li><a class="reference internal" href="#program-documentation-string">1.9.4. Program Documentation String</a></li>
+<li><a class="reference internal" href="#screen-layout">1.9.5. Screen Layout</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="strings2.html"
+                        title="previous chapter">1.8. Strings Part II</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="io.html"
+                        title="next chapter">1.10. Input and Output</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/execution.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="io.html" title="1.10. Input and Output"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="strings2.html" title="1.8. Strings Part II"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch1.html" >1. Beginning With Python</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2012, Dr. Andrew N. Harrington.
+      Last updated on May 22, 2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1+.
+    </div>
+  </body>
+</html>

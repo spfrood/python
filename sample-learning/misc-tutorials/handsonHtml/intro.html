@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.3. Whirlwind Introduction To Types and Functions &mdash; Hands-on Python Tutorial for Python 3.1</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="Hands-on Python Tutorial for Python 3.1" href="index.html" />
+    <link rel="up" title="1. Beginning With Python" href="ch1.html" />
+    <link rel="next" title="1.4. Integer Arithmetic" href="integer.html" />
+    <link rel="prev" title="1.2. The Python Interpreter and Idle, Part I" href="idle.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="integer.html" title="1.4. Integer Arithmetic"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="idle.html" title="1.2. The Python Interpreter and Idle, Part I"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch1.html" accesskey="U">1. Beginning With Python</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="whirlwind-introduction-to-types-and-functions">
+<span id="whirlwind-introduction-to"></span><span id="index-0"></span><h1>1.3. Whirlwind Introduction To Types and Functions<a class="headerlink" href="#whirlwind-introduction-to-types-and-functions" title="Permalink to this headline">¶</a></h1>
+<p id="index-1">Python directly recognizes a variety of types of data. Here are a
+few:</p>
+<blockquote>
+<div><p>Numbers: <code class="docutils literal"><span class="pre">3</span></code>, <code class="docutils literal"><span class="pre">6</span></code>, <code class="docutils literal"><span class="pre">-7</span></code>, <code class="docutils literal"><span class="pre">1.25</span></code></p>
+<p>Character strings: <code class="docutils literal"><span class="pre">'hello'</span></code>, <code class="docutils literal"><span class="pre">'The</span> <span class="pre">answer</span> <span class="pre">is:</span> <span class="pre">'</span></code></p>
+<p>Lists of objects of any type: <code class="docutils literal"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4]</span></code>,
+<code class="docutils literal"><span class="pre">['yes',</span> <span class="pre">'no',</span> <span class="pre">'maybe']</span></code></p>
+<p>A special datum meaning nothing: <code class="docutils literal"><span class="pre">None</span></code></p>
+</div></blockquote>
+<p>Python has large collection of built-in functions that operate on
+different kinds of data to produce all kinds of results. To make a
+function do its action, parentheses are required. These parentheses
+surround the parameter or parameters, as in a function in algebra
+class.</p>
+<p>The general syntax to execute a function is</p>
+<blockquote>
+<div><em>functionName</em> <code class="docutils literal"><span class="pre">(</span></code> <em>parameters</em> <code class="docutils literal"><span class="pre">)</span></code></div></blockquote>
+<p>One function is called <code class="docutils literal"><span class="pre">type</span></code>, and it returns the type of any
+object. The Python Shell will evaluate functions. In the Shell the
+last line should look like</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p id="index-2">Continuing on the same line enter</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">type</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Always remember to end with the Enter key. After the Shell
+responds, you should see something like</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="go">&lt;class &#39;int&#39;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>In the result, <code class="docutils literal"><span class="pre">int</span></code> is short for integer. The word <em>class</em> is
+basically a synonym for type in Python.</p>
+<p>Note that
+the line with the value <em>produced</em> by the shell does not start with
+<code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> and appears at the left margin. Hence you can distinguish
+what you type (after the <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> prompt) from what the computer
+responds.</p>
+<p>At the end you see a
+further prompt where you can enter your next line....</p>
+<p id="index-3"><em>For the rest of this section</em>, at the
+<code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> prompt in the Python
+<em>Shell</em>, individually enter each line below that is set off in
+<code class="docutils literal"><span class="pre">typewriter</span></code> font. So next enter</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">type</span><span class="p">(</span><span class="mf">1.25</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note the name in the last result is <code class="docutils literal"><span class="pre">float</span></code>, not real or decimal,
+coming from the term &#8220;floating point&#8221;, for reasons that will be
+explained later, in <a class="reference internal" href="float.html#floats-division-mixed"><span>Floats, Division, Mixed Types</span></a>.</p>
+<p id="index-4">Enter</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">type</span><span class="p">(</span><span class="s">&#39;hello&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In your last result you see another abbreviation: <code class="docutils literal"><span class="pre">str</span></code> rather
+than string. Enter</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">type</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Strings and lists are both sequences of parts (characters or
+elements). We can find the length of that sequence with another
+function with the abbreviated name <code class="docutils literal"><span class="pre">len</span></code>. Try both of the
+following, separately, in the <em>Shell</em>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">len</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="nb">len</span><span class="p">(</span><span class="s">&#39;abcd&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Some functions have no parameters, so nothing goes between the
+parentheses. For example, some types serve as no-parameter
+functions to create a simple value of their type. Try</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">list</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You see the way an empty list is displayed.</p>
+<p>Functions may also take more than one parameter. Try</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">max</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Above, max is short for maximum.</p>
+<p id="index-5">Some of the names of types serve as conversion functions (where
+there is an obvious meaning for the conversion). Try each of the
+following, one at a time, in the <em>Shell</em>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">str</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>
+<span class="nb">int</span><span class="p">(</span><span class="s">&#39;125&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p id="index-6"><em>An often handy Shell feature</em>: an earlier Shell line may to copied
+and edited by clicking anywhere in the previously displayed line
+and then pressing the <code class="kbd docutils literal"><span class="pre">Enter</span></code> key. For instance you should have entered
+several lines starting with <code class="docutils literal"><span class="pre">len</span></code>. click on any one, press
+<code class="kbd docutils literal"><span class="pre">Enter</span></code>, and edit the line for a different test.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="idle.html"
+                        title="previous chapter">1.2. The Python Interpreter and Idle, Part I</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="integer.html"
+                        title="next chapter">1.4. Integer Arithmetic</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/intro.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="integer.html" title="1.4. Integer Arithmetic"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="idle.html" title="1.2. The Python Interpreter and Idle, Part I"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch1.html" >1. Beginning With Python</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2012, Dr. Andrew N. Harrington.
+      Last updated on May 22, 2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1+.
+    </div>
+  </body>
+</html>

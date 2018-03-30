@@ -1,0 +1,557 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.2. The Python Interpreter and Idle, Part I &mdash; Hands-on Python Tutorial for Python 3.1</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="Hands-on Python Tutorial for Python 3.1" href="index.html" />
+    <link rel="up" title="1. Beginning With Python" href="ch1.html" />
+    <link rel="next" title="1.3. Whirlwind Introduction To Types and Functions" href="intro.html" />
+    <link rel="prev" title="1.1. Context" href="context.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="intro.html" title="1.3. Whirlwind Introduction To Types and Functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="context.html" title="1.1. Context"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch1.html" accesskey="U">1. Beginning With Python</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-python-interpreter-and-idle-part-i">
+<h1>1.2. The Python Interpreter and Idle, Part I<a class="headerlink" href="#the-python-interpreter-and-idle-part-i" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="your-python-folder-and-python-examples">
+<span id="your-python-folder"></span><span id="index-0"></span><h2>1.2.1. Your Python Folder and Python Examples<a class="headerlink" href="#your-python-folder-and-python-examples" title="Permalink to this headline">¶</a></h2>
+<p>First you need to set up a location to store your work and the
+example programs from this tutorial. If you are on a Windows
+computer, follow just <em>one</em> of the three choices below to find an
+appropriate place to download the example archive examples.zip, and
+then follow the later instructions to unzip the archive.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Your Own Computer</dt>
+<dd>If you are at your own computer, you can put
+the folder for your Python programs most anywhere you like. For
+Chapter 4, it will be important that <em>none of the directories</em>
+<em>leading down to your Python folder contain any blanks in them.</em> In
+particular in Windows, &#8220;My Documents&#8221; is a bad location. In
+Windows you can create a directory in C: drive, like C:\myPython.
+You should have installed Python to continue.  This also means there is
+a problem putting the folder under your home folder if you put a blank
+in the login ID.</dd>
+<dt>Your Flash Drive</dt>
+<dd>If you do not have your own computer, or you
+want to have your materials easily travel back and forth between
+the lab and home, you will need a flash drive.
+Plug your flash drive into the computer USB port.
+Please Note: Flash drives are easy
+for me to forget and leave in the computer. I have lost a few this
+way. If you are as forgetful as I, you might consider a string from
+the flash drive to something you will not forget to take with you.
+Open <em>My Computer</em> (on the desktop) to see where the flash drive is
+mounted, and open that drive.</dd>
+<dt>Temporary</dt>
+<dd>If you (temporarily) do not have a flash drive and
+you are at a Loyola lab computer: Open <em>My Computer</em> from the
+desktop, and then select create a folder
+with your name or initials to make it easy for you to save and
+remove things. Change to that folder. You should place the examples
+archive here. You will need to save your work somehow before you
+log off of the computer. You may want to email individual files to
+yourself, or rezip the examples folder and send just the one
+archive file to yourself each time until you remember a flash
+drive!</dd>
+</dl>
+</div></blockquote>
+<p>In Windows, after you have chosen a location for the archive,
+examples.zip, download it by <em>right</em> clicking on
+<a class="reference external" href="http://anh.cs.luc.edu/python/hands-on/3.1/examples.zip">http://anh.cs.luc.edu/python/hands-on/3.1/examples.zip</a> and
+selecting &#8220;Save As&#8221; or the equivalent on your browser and then
+navigate to save the archive to the chosen location on your
+computer. Note that the examples, like this version of the tutorial,
+are for Python 3.1 and later. There were major changes to Python in version
+3.0, making it incompatible with earlier versions.</p>
+<p>If you are using Python version 2.7 for some good reason, you should continue
+with the older version of the tutorial. Go to
+<a class="reference external" href="http://anh.cs.luc.edu/python/hands-on">http://anh.cs.luc.edu/python/hands-on</a> and find the links to the
+proper version of the tutorial and examples.</p>
+<p>Once you have the archive, you need to extract the files. Make a file
+browser window set to the directory where you put the zip file. Then:</p>
+<dl class="docutils">
+<dt>Windows</dt>
+<dd>Right click on examples.zip, select Extract All. This
+will create the folder <code class="docutils literal"><span class="pre">examples</span></code>. End up with a file browser
+window showing the contents of the examples folder. This will be
+your <em>Python folder</em> in later discussion.</dd>
+<dt>Mac</dt>
+<dd>Double click on the zip file and the expanded examples folder appears.</dd>
+</dl>
+<div class="admonition warning" id="index-1">
+<p class="first admonition-title">Warning</p>
+<p class="last">On Windows, files in a zip archive can be viewed while
+they are still in the zip archive. Modifying and adding files is
+not so transparent. Be sure that you <em>unzip the archive</em> and
+<em>work from the regular directory</em> that holds the resulting unzipped
+files.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Make sure that all the directories leading down to
+your Python examples directory do not include any <em>spaces</em> in them.
+This will be important in Chapter 4 for the local web server. In
+particular, that means you should <em>not</em> place your folder under
+&#8220;My Documents&#8221;. A directory like C:\hands-on or C:\python would
+be fine.</p>
+</div>
+<p>You also have the option of downloading</p>
+<ul class="simple">
+<li>An archive containing the web version of the tutorial
+<a class="reference external" href="http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml.zip">http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml.zip</a> for local
+viewing, without the Internet. Download it and unzip as with the
+examples. The local file to open in your browser in in the <code class="docutils literal"><span class="pre">handsonHtml</span></code>
+folder you unzipped and the main web page file to open is called
+<code class="docutils literal"><span class="pre">index.html</span></code>.</li>
+<li>The PDF version of the tutorial for printing
+<a class="reference external" href="http://anh.cs.luc.edu/python/hands-on/3.1/Hands-onPythonTutorial.pdf">http://anh.cs.luc.edu/python/hands-on/3.1/Hands-onPythonTutorial.pdf</a>.
+Some people also like the typography of this version on the web, too.
+It is hyperlinked like html version.</li>
+</ul>
+<p>The disadvantage of a local copy is that the tutorial may be
+updated online after you get your download. The change log file
+<a class="reference external" href="http://anh.cs.luc.edu/python/hands-on/3.1/changelog.html">http://anh.cs.luc.edu/python/hands-on/3.1/changelog.html</a> will show
+a summary of any major changes.</p>
+</div>
+<div class="section" id="running-a-sample-program">
+<span id="running-a-sample"></span><span id="index-2"></span><h2>1.2.2. Running A Sample Program<a class="headerlink" href="#running-a-sample-program" title="Permalink to this headline">¶</a></h2>
+<p>This section assumes Python, version at least 3.1, is already on
+your computer. Windows does not come with Python. (To load Python
+see <a class="reference internal" href="context.html#getpython"><span>Obtaining Python for Your Computer</span></a>.)</p>
+<p>Before getting to the individual details of Python, you will run a
+simple text-based sample program. Find <code class="docutils literal"><span class="pre">madlib.py</span></code> in your Python
+folder, set up in <a class="reference internal" href="#your-python-folder"><span>Your Python Folder and Python Examples</span></a>.</p>
+<p>Options for running the program:</p>
+<ul>
+<li><p class="first">If you have trouble with the following options, opening the program
+in Idle is discussed in <a class="reference internal" href="#starting-idle"><span>Starting Idle</span></a>.</p>
+</li>
+<li><p class="first">In Windows, you can display your folder contents, and double
+click on madlib.py to start the program.</p>
+</li>
+<li><p class="first">On a Mac, you can Ctrl-click on madlib.py in the Finder, select Open With,
+and choose the Python Launcher for your Python 3 version.  When you are done with
+the program, close the terminal window.</p>
+</li>
+<li><p class="first">In Linux you may be able to open a terminal window,
+change into your Python examples directory, and enter the command</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">python</span> <span class="n">madlib</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>or
+possibly to distinguish Python 2 and 3:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">python3</span> <span class="n">madlib</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>If neither of these work, get help.</p>
+</li>
+</ul>
+<p>You can also start idle from a Windows command window.  You will want the
+current directory to be where your programs are. You can enter the
+full path to Python, for instance:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">C</span><span class="p">:</span>\<span class="n">python34</span>\<span class="n">python</span> <span class="n">madlib</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>or if python is in your system&#8217;s path, you can skip the part before &#8220;python&#8221;.
+In whatever manner you start the program, run it, responding to the
+prompts on the screen. Be sure to press the enter key at the end of
+each response requested from you.</p>
+<p>Try the program a second time and make different responses.</p>
+</div>
+<div class="section" id="a-sample-program-explained">
+<span id="madlib-explained-i"></span><h2>1.2.3. A Sample Program, Explained<a class="headerlink" href="#a-sample-program-explained" title="Permalink to this headline">¶</a></h2>
+<p>If you want to get right to the detailed explanations of writing
+your own Python, you can <em>skip to the next section</em>
+<a class="reference internal" href="#starting-idle"><span>Starting Idle</span></a>. If you would like an overview of a working
+program, even if all the explanations do not make total sense yet,
+read on.</p>
+<p>Here is the text of the madlib.py program, followed by line-by-line
+brief explanations. Do not worry if you not totally understand the
+explanations! Try to get the gist now and the details later. The
+numbers on the right are not part of the program file. They are
+added for reference in the comments below:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="c">#! /usr/bin/env python3                                  0</span>
+<span class="sd">&#39;&#39;&#39;                                                      1</span>
+<span class="sd">String Substitution for a Mad Lib                        2</span>
+<span class="sd">Adapted from code by Kirby Urner                         3</span>
+<span class="sd">&#39;&#39;&#39;</span>                                                      <span class="mi">4</span>
+                                                         <span class="mi">5</span>
+<span class="n">storyFormat</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;                                        6</span>
+<span class="s">Once upon a time, deep in an ancient jungle,             7</span>
+<span class="s">there lived a {animal}.  This {animal}                   8</span>
+<span class="s">liked to eat {food}, but the jungle had                  9</span>
+<span class="s">very little {food} to offer.  One day, an               10</span>
+<span class="s">explorer found the {animal} and discovered              11</span>
+<span class="s">it liked {food}.  The explorer took the                 12</span>
+<span class="s">{animal} back to {city}, where it could                 13</span>
+<span class="s">eat as much {food} as it wanted.  However,              14</span>
+<span class="s">the {animal} became homesick, so the                    15</span>
+<span class="s">explorer brought it back to the jungle,                 16</span>
+<span class="s">leaving a large supply of {food}.                       17</span>
+<span class="s">                                                        18</span>
+<span class="s">The End                                                 19</span>
+<span class="s">&#39;&#39;&#39;</span>                                                     <span class="mi">20</span>
+                                                        <span class="mi">21</span>
+<span class="k">def</span> <span class="nf">tellStory</span><span class="p">():</span>                                        <span class="mi">22</span>
+    <span class="n">userPicks</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>                                  <span class="mi">23</span>
+    <span class="n">addPick</span><span class="p">(</span><span class="s">&#39;animal&#39;</span><span class="p">,</span> <span class="n">userPicks</span><span class="p">)</span>                        <span class="mi">24</span>
+    <span class="n">addPick</span><span class="p">(</span><span class="s">&#39;food&#39;</span><span class="p">,</span> <span class="n">userPicks</span><span class="p">)</span>                          <span class="mi">25</span>
+    <span class="n">addPick</span><span class="p">(</span><span class="s">&#39;city&#39;</span><span class="p">,</span> <span class="n">userPicks</span><span class="p">)</span>                          <span class="mi">26</span>
+    <span class="n">story</span> <span class="o">=</span> <span class="n">storyFormat</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">userPicks</span><span class="p">)</span>             <span class="mi">27</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">story</span><span class="p">)</span>                                        <span class="mi">28</span>
+                                                        <span class="mi">29</span>
+<span class="k">def</span> <span class="nf">addPick</span><span class="p">(</span><span class="n">cue</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">):</span>                           <span class="mi">30</span>
+    <span class="sd">&#39;&#39;&#39;Prompt for a user response using the cue string, 31</span>
+<span class="sd">    and place the cue-response pair in the dictionary.  32</span>
+<span class="sd">    &#39;&#39;&#39;</span>                                                 <span class="mi">33</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s">&#39;Enter an example for &#39;</span> <span class="o">+</span> <span class="n">cue</span> <span class="o">+</span> <span class="s">&#39;: &#39;</span>       <span class="mi">34</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>                            <span class="mi">35</span>
+    <span class="n">dictionary</span><span class="p">[</span><span class="n">cue</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span>                          <span class="mi">36</span>
+                                                        <span class="mi">37</span>
+<span class="n">tellStory</span><span class="p">()</span>                                             <span class="mi">38</span>
+<span class="nb">input</span><span class="p">(</span><span class="s">&#39;Press Enter to end the program.&#39;</span><span class="p">)</span>                <span class="mi">39</span>
+</pre></div>
+</div>
+<p>Line By Line Explanation</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="c">#! /usr/bin/env python3                                  0</span>
+</pre></div>
+</div>
+<p>This is not technically a part of the program.
+It is there to tell the operating system what version of Python
+to choose, since the older Python 2 is incompatible with the
+newer Python 3.  We will mostly run programs from inside
+the Idle programming environment, where this line is not needed.
+To run just by clicking on the program
+in an operating system window, however,
+the line is important if your computer also has Python 2.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39;                                                      1</span>
+<span class="sd">String Substitution for a Mad Lib                        2</span>
+<span class="sd">Adapted from code by Kirby Urner                         3</span>
+<span class="sd">&#39;&#39;&#39;</span>                                                      <span class="mi">4</span>
+</pre></div>
+</div>
+<p>1-4: There is multi-line text enclosed in triple quotes. Quoted
+text is called a <em>string</em>. A string at the very beginning of a program
+like this is <em>documentation</em> for the file.</p>
+<p>5,21,29,37: Blank lines are included for human readability to
+separate logical parts. The computer ignores the blank lines.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">storyFormat</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;                                        6</span>
+<span class="s">Once upon a time, deep in an ancient jungle,             7</span>
+<span class="s">there lived a {animal}.  This {animal}                   8</span>
+<span class="s">liked to eat {food}, but the jungle had                  9</span>
+<span class="s">very little {food} to offer.  One day, an               10</span>
+<span class="s">explorer found the {animal} and discovered              11</span>
+<span class="s">it liked {food}.  The explorer took the                 12</span>
+<span class="s">{animal} back to {city}, where it could                 13</span>
+<span class="s">eat as much {food} as it wanted.  However,              14</span>
+<span class="s">the {animal} became homesick, so the                    15</span>
+<span class="s">explorer brought it back to the jungle,                 16</span>
+<span class="s">leaving a large supply of {food}.                       17</span>
+<span class="s">                                                        18</span>
+<span class="s">The End                                                 19</span>
+<span class="s">&#39;&#39;&#39;</span>                                                     <span class="mi">20</span>
+</pre></div>
+</div>
+<p>6: The equal sign tells the computer that this is an
+<em>assignment statement</em>. The computer will now associate the value
+of the expression between the triple quotes, a multi-line <em>string</em>,
+with the name on the left, <code class="docutils literal"><span class="pre">storyFormat</span></code>.</p>
+<p>7-20: These lines contain the body of the string and the ending
+triple quotes. This <code class="docutils literal"><span class="pre">storyFormat</span></code> string contains some special
+symbols making it a <em>format string</em>, unlike the string in lines
+1-4. The <code class="docutils literal"><span class="pre">storyFormat</span></code> string will be used later to provide a
+format into which substitutions are made. The parts of the string
+enclosed in braces are places a substitute string will be inserted
+later. The substituted string will come from a custom <em>dictionary</em>
+that will contain the user&#8217;s definitions of these words. The words
+in the braces: <code class="docutils literal"><span class="pre">{animal}</span></code>, <code class="docutils literal"><span class="pre">{food}</span></code>, <code class="docutils literal"><span class="pre">{city}</span></code>, indicate that
+<code class="docutils literal"><span class="pre">animal</span></code>, <code class="docutils literal"><span class="pre">food</span></code>, and <code class="docutils literal"><span class="pre">city</span></code> are words in a dictionary.
+This custom dictionary will be created in the program and contain
+the user&#8217;s definitions of these words. These user&#8217;s definitions
+will be substituted later in the <em>format string</em> where each
+{...} is currently.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="k">def</span> <span class="nf">tellStory</span><span class="p">():</span>                                        <span class="mi">22</span>
+    <span class="n">userPicks</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>                                  <span class="mi">23</span>
+    <span class="n">addPick</span><span class="p">(</span><span class="s">&#39;animal&#39;</span><span class="p">,</span> <span class="n">userPicks</span><span class="p">)</span>                        <span class="mi">24</span>
+    <span class="n">addPick</span><span class="p">(</span><span class="s">&#39;food&#39;</span><span class="p">,</span> <span class="n">userPicks</span><span class="p">)</span>                          <span class="mi">25</span>
+    <span class="n">addPick</span><span class="p">(</span><span class="s">&#39;city&#39;</span><span class="p">,</span> <span class="n">userPicks</span><span class="p">)</span>                          <span class="mi">26</span>
+    <span class="n">story</span> <span class="o">=</span> <span class="n">storyFormat</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">userPicks</span><span class="p">)</span>             <span class="mi">27</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">story</span><span class="p">)</span>                                        <span class="mi">28</span>
+</pre></div>
+</div>
+<p>22: <em>def</em> is short for <strong>def</strong>inition. This line is the heading of
+a <strong>def</strong>inition, which makes the name <code class="docutils literal"><span class="pre">tellStory</span></code> becomes
+<strong>def</strong>ined as a short way to refer to the sequence of statements
+that start indented on line 23, and continue through line 28.</p>
+<p>23: The equal sign tells the computer that this is another
+assignment statement. The computer will now associate the name
+<code class="docutils literal"><span class="pre">userPicks</span></code> with a new empty dictionary created by the
+Python code <code class="docutils literal"><span class="pre">dict()</span></code>.</p>
+<p>24-26: <code class="docutils literal"><span class="pre">addPick</span></code> is the name for a sequence of instructions
+defined on lines 29-31 for adding another definition to a
+dictionary, based on the user&#8217;s input. The result of these three
+lines is to add definitions for each of the three words <code class="docutils literal"><span class="pre">animal</span></code>,
+<code class="docutils literal"><span class="pre">food</span></code>, and <code class="docutils literal"><span class="pre">city</span></code> to the dictionary called <code class="docutils literal"><span class="pre">userPicks</span></code>.</p>
+<p>27: Assign the name <code class="docutils literal"><span class="pre">story</span></code> to a string formed by substituting
+into <code class="docutils literal"><span class="pre">storyFormat</span></code> using definitions from the dictionary
+userPicks, to give the user&#8217;s customized story.</p>
+<p>28: This is where all the work becomes visible: Print the
+<code class="docutils literal"><span class="pre">story</span></code> string to the screen.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="k">def</span> <span class="nf">addPick</span><span class="p">(</span><span class="n">cue</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">):</span>                           <span class="mi">30</span>
+    <span class="sd">&#39;&#39;&#39;Prompt for a user response using the cue string, 31</span>
+<span class="sd">    and place the cue-response pair in the dictionary.  32</span>
+<span class="sd">    &#39;&#39;&#39;</span>                                                 <span class="mi">33</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s">&#39;Enter an example for &#39;</span> <span class="o">+</span> <span class="n">cue</span> <span class="o">+</span> <span class="s">&#39;: &#39;</span>       <span class="mi">34</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>                            <span class="mi">35</span>
+    <span class="n">dictionary</span><span class="p">[</span><span class="n">cue</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span>                          <span class="mi">36</span>
+</pre></div>
+</div>
+<p>30: This line is the heading of a definition, which gives the
+name <code class="docutils literal"><span class="pre">addPick</span></code> as a short way to refer to the sequence of
+statements indented on line 34-36. The name <code class="docutils literal"><span class="pre">addPick</span></code> is
+followed by two words in parenthesis, <code class="docutils literal"><span class="pre">cue</span></code> and
+<code class="docutils literal"><span class="pre">dictionary</span></code>. These two words are associated with an actual
+cue word and dictionary given when this definition is invoked in
+lines 24-26.</p>
+<p>31-33: A documentation comment for the <code class="docutils literal"><span class="pre">addPick</span></code> definition.</p>
+<p>34: The plus sign here is used to concatenate parts of the
+string assigned to the name <code class="docutils literal"><span class="pre">prompt</span></code>. The current value of
+<code class="docutils literal"><span class="pre">cue</span></code> is placed into the string.</p>
+<p>35: The right-hand-side of this equal sign causes an interaction
+with the user, to input text from the keyboard:
+The prompt string is printed to the computer screen,
+and the computer waits for the user to enter a line of text. That
+line of text then becomes a string inside the program. This string
+is assigned to the name <code class="docutils literal"><span class="pre">response</span></code>.</p>
+<p>36: The left-hand-side of the equal sign is a reference to the
+definition of the cue word in the dictionary. The whole line ends
+up making the definition of the current cue word become the
+response typed by the user.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">tellStory</span><span class="p">()</span>                                             <span class="mi">38</span>
+<span class="nb">input</span><span class="p">(</span><span class="s">&#39;Press Enter to end the program.&#39;</span><span class="p">)</span>                <span class="mi">39</span>
+</pre></div>
+</div>
+<p>38: The definition of <code class="docutils literal"><span class="pre">tellStory</span></code> above does not make the
+computer do anything besides <em>remember</em> what the instruction
+<code class="docutils literal"><span class="pre">tellStory</span></code> means. It is only in this line, with the name,
+<code class="docutils literal"><span class="pre">tellStory</span></code>, followed by parentheses, that the whole sequence of
+remembered instructions are actually carried out.</p>
+<p>39: This line is only here to accommodate running the program in
+Windows by double clicking on its file icon. Without this line, the
+story would be displayed and then the program would end, and
+Windows would make it immediately disappear from the screen! This
+line forces the program to continue being displayed until there is
+another response from the user, and meanwhile the user may look at
+the output from <code class="docutils literal"><span class="pre">tellStory</span></code>.</p>
+</div>
+<div class="section" id="starting-idle">
+<span id="index-3"></span><span id="id1"></span><h2>1.2.4. Starting Idle<a class="headerlink" href="#starting-idle" title="Permalink to this headline">¶</a></h2>
+<p>The program that translates Python instructions and then executes
+them is the <em>Python interpreter</em>.</p>
+<p>This interpreter is embedded in a number of larger programs that
+make it particularly easy to develop Python programs. Such a
+programming environment is <em>Idle</em>, and it is a part of the standard
+distribution of Python.</p>
+<p>Read the section that follows for your operating system:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Windows</dt>
+<dd><p class="first">(Assuming you already have Python installed.) Display
+your Python folder. You should see icons for <code class="docutils literal"><span class="pre">Idle34Shortcut</span></code>
+for Python 3.4, <code class="docutils literal"><span class="pre">Idle33Shortcut</span></code>
+for Python 3.3, (and
+maybe a similar icon with a version after 3.4 - <em>ignore</em> any
+that do not correspond to <em>your</em> version of Python). Double
+click on the appropriate shortcut, and an Idle window should
+appear. After this the instructions are the same in any operating
+environment.</p>
+<p><strong>CAUTION</strong>:  <em>Do not move the shortcut to your desktop.</em>  It should to be <em>in</em>
+the folder with the examples.  Instead you might put a shortcut to this examples folder
+on your desktop.</p>
+<p class="last">An alternative for opening an existing Python program in Python 3+
+is to go to an operating system directory window and use the
+context menu that you get by right-clicking,
+and select Open With Idle. This alternative depends on the
+operating system being set up to recognize the Python file type, .py.</p>
+</dd>
+<dt>Mac</dt>
+<dd><p class="first">With OS X a simple approach is to
+open Python files ending in .py into an Edit window
+by selecting them directly in an operating system finder window.
+From there you can create or open other files.</p>
+<p>You should also be able to open Idle from Spotlight.</p>
+<p class="last">There is more special Mac information in
+<a class="reference external" href="http://anh.cs.luc.edu/python/hands-on//3.1/pythonOnMac.html">http://anh.cs.luc.edu/python/hands-on//3.1/pythonOnMac.html</a>.</p>
+</dd>
+<dt>Linux</dt>
+<dd>The approach depends on the installation. In Ubuntu, you
+should find Idle in the Programming section of the Applications
+menu. You are better starting idle from a
+terminal, with the current directory being your Python folder.
+You may need a special name set up to distinguish idle for versions
+2 and 3, for instance idle3 for version 3.X.</dd>
+</dl>
+</div></blockquote>
+<p>The heading data when you open Idle shows the exact version, like 3.4.0.
+You can see if it matches the latest current version of Python.</p>
+</div>
+<div class="section" id="windows-in-idle">
+<span id="index-4"></span><span id="id2"></span><h2>1.2.5. Windows in Idle<a class="headerlink" href="#windows-in-idle" title="Permalink to this headline">¶</a></h2>
+<p>Idle has several parts you may choose to display, each with its own
+window. Depending on the configuration, Idle can start up showing
+either of two windows, an Edit Window or a Python Shell Window. You
+are likely to first see an Edit window, whose top left corner looks
+something like in Windows:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/IdleEditWindow.png"><img alt="image" src="_images/IdleEditWindow.png" style="width: 227.25pt;" /></a>
+</div>
+<p>For more on the Edit Window, see <a class="reference internal" href="execution.html#the-idle-editor"><span>The Idle Editor and Execution</span></a>.</p>
+<p id="index-5">If you see this Edit Window with its Run menu on top, go to the Run
+menu and choose PYTHON SHELL to open a Python Shell Window for now.
+Then you may close the Edit Window.</p>
+<p>Either initially, or after explicitly opening it, you should now
+see the Python Shell window, with a menu like the following, though
+the text may be slightly different:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/IdleShellWindow.png"><img alt="image" src="_images/IdleShellWindow.png" style="width: 211.5pt;" /></a>
+</div>
+<p>Look at the Python Shell. ...</p>
+<p>In the Shell the last line should look like</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> is the <em>prompt</em>,
+telling you Idle is waiting for you to type something. Continuing
+on the same line enter</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="mi">6</span><span class="o">+</span><span class="mi">3</span>
+</pre></div>
+</div>
+<p>Be sure to end with the Enter key. After the Shell responds, you
+should see something like</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">6</span><span class="o">+</span><span class="mi">3</span>
+<span class="go">9</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>The shell evaluates the line you entered, and prints the result.
+You see Python does arithmetic. At the end you see a further prompt
+<code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> where you can enter
+your next line.... The result line, showing <code class="docutils literal"><span class="pre">9</span></code>, that is
+produced by the computer, does not start with <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1.2. The Python Interpreter and Idle, Part I</a><ul>
+<li><a class="reference internal" href="#your-python-folder-and-python-examples">1.2.1. Your Python Folder and Python Examples</a></li>
+<li><a class="reference internal" href="#running-a-sample-program">1.2.2. Running A Sample Program</a></li>
+<li><a class="reference internal" href="#a-sample-program-explained">1.2.3. A Sample Program, Explained</a></li>
+<li><a class="reference internal" href="#starting-idle">1.2.4. Starting Idle</a></li>
+<li><a class="reference internal" href="#windows-in-idle">1.2.5. Windows in Idle</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="context.html"
+                        title="previous chapter">1.1. Context</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="next chapter">1.3. Whirlwind Introduction To Types and Functions</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/idle.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="intro.html" title="1.3. Whirlwind Introduction To Types and Functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="context.html" title="1.1. Context"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch1.html" >1. Beginning With Python</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2012, Dr. Andrew N. Harrington.
+      Last updated on May 22, 2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1+.
+    </div>
+  </body>
+</html>

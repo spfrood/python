@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.4. Integer Arithmetic &mdash; Hands-on Python Tutorial for Python 3.1</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="Hands-on Python Tutorial for Python 3.1" href="index.html" />
+    <link rel="up" title="1. Beginning With Python" href="ch1.html" />
+    <link rel="next" title="1.5. Strings, Part I" href="strings1.html" />
+    <link rel="prev" title="1.3. Whirlwind Introduction To Types and Functions" href="intro.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="strings1.html" title="1.5. Strings, Part I"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="1.3. Whirlwind Introduction To Types and Functions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch1.html" accesskey="U">1. Beginning With Python</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="integer-arithmetic">
+<h1>1.4. Integer Arithmetic<a class="headerlink" href="#integer-arithmetic" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="addition-and-subtraction">
+<span id="index-0"></span><span id="id1"></span><h2>1.4.1. Addition and Subtraction<a class="headerlink" href="#addition-and-subtraction" title="Permalink to this headline">¶</a></h2>
+<p>We start with the integers and integer arithmetic, not because
+arithmetic is exciting, but because the symbolism should be mostly
+familiar. Of course arithmetic is important in many cases, but
+Python is probably more often used to manipulate text and other
+sorts of data, as in the sample program in
+<a class="reference internal" href="idle.html#running-a-sample"><span>Running A Sample Program</span></a>.</p>
+<p>Python understands numbers and standard arithmetic.
+<em>For the whole section on integer arithmetic</em>, where you see a
+set-off line in <code class="docutils literal"><span class="pre">typewriter</span></code> font, type individual lines at the
+<code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> prompt in the Python <em>Shell</em>. Press Enter after each line
+to get Python to respond:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="mi">77</span>
+<span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="mi">5</span> <span class="o">-</span> <span class="mi">7</span>
+</pre></div>
+</div>
+<p>Python should evaluate and print back the value of each expression.
+Of course the first one does not require any calculation. It
+appears that the shell just echoes back what you printed.</p>
+<p>The Python Shell is an interactive interpreter. As you can see,
+after you press Enter, it is evaluating the expression you typed
+in, and then printing the result automatically. This is a very
+handy environment to check out simple Python syntax and get instant
+feedback. For more elaborate programs that you want to save, we
+will switch to an Editor Window later.</p>
+</div>
+<div class="section" id="multiplication-parentheses-and-precedence">
+<span id="multiplication-parentheses"></span><span id="index-1"></span><h2>1.4.2. Multiplication, Parentheses, and Precedence<a class="headerlink" href="#multiplication-parentheses-and-precedence" title="Permalink to this headline">¶</a></h2>
+<p>Try in the <em>Shell</em>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="mi">2</span> <span class="n">x</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>You should get your first <em>syntax</em> error. The <code class="docutils literal"><span class="pre">x</span></code> should have
+become highlighted, indicating the location where the Python
+interpreter discovered that it cannot understand you: Python does
+not use <code class="docutils literal"><span class="pre">x</span></code> for multiplication as you may have done in grade school.
+The <code class="docutils literal"><span class="pre">x</span></code> can be confused with the use of <code class="docutils literal"><span class="pre">x</span></code> as a variable (more on that
+later).</p>
+<p id="index-2">Instead the symbol for multiplication is an asterisk
+<code class="docutils literal"><span class="pre">*</span></code>. Enter each of the following. You may include spaces or not.
+The Python interpreter can figure out what you mean either way. Try
+in the <em>Shell</em>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="mi">2</span><span class="o">*</span><span class="mi">5</span>
+<span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>If you expected the last answer to be 20, think again: Python uses
+the normal <em>precedence</em> of arithmetic operations: Multiplications
+and divisions are done before addition and subtraction, unless
+there are parentheses. Try</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span>
+<span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now try the following in the <em>Shell</em>, exactly as written, followed
+by Enter, with <em>no</em> closing parenthesis:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Look carefully. There is no answer given at the left margin of the
+next line and no prompt <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> to start a <em>new</em> expression. If you
+are using Idle, the cursor has gone to the next line and has only
+<em>indented</em> slightly. Python is waiting for you to finish your
+expression. It is smart enough to know that opening parentheses are
+always followed by the same number of closing parentheses. The
+cursor is on a <em>continuation</em> line. Type just the matching
+close-parenthesis and Enter,</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="p">)</span>
+</pre></div>
+</div>
+<p>and you should finally see the expression evaluated. (In some
+versions of the Python interpreter, the interpreter puts &#8216;...&#8217; at
+the beginning of a continuation line, rather than just indenting.)</p>
+<p>Negation also works. Try in the <em>Shell</em>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="o">-</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="division-and-remainders">
+<span id="index-3"></span><span id="id2"></span><h2>1.4.3. Division and Remainders<a class="headerlink" href="#division-and-remainders" title="Permalink to this headline">¶</a></h2>
+<p>If you think about it, you learned several ways to do division.
+Eventually you learned how to do division resulting in a decimal.
+Try in the <em>Shell</em>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="mi">5</span><span class="o">/</span><span class="mi">2</span>
+<span class="mi">14</span><span class="o">/</span><span class="mi">4</span>
+</pre></div>
+</div>
+<p>As you saw in the previous section, numbers with decimal points in
+them are of type float in Python. They are discussed more in
+<a class="reference internal" href="float.html#floats-division-mixed"><span>Floats, Division, Mixed Types</span></a>.</p>
+<p>In the earliest grades you would say
+&#8220;14 divided by 4 is 3 with a remainder of 2&#8221;. The problem here is
+that the answer is in two parts, the integer quotient 3 and the
+remainder 2, and neither of these results is the same as the
+decimal result. Python has separate operations to generate each
+part. Python uses the doubled division symbol <code class="docutils literal"><span class="pre">//</span></code> for the
+operation that produces just the integer quotient, and introduces
+the symbol <code class="docutils literal"><span class="pre">%</span></code> for the operation of finding the remainder. Try
+each in the <em>Shell</em>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="mi">14</span><span class="o">/</span><span class="mi">4</span>
+<span class="mi">14</span><span class="o">//</span><span class="mi">4</span>
+<span class="mi">14</span><span class="o">%</span><span class="mi">4</span>
+</pre></div>
+</div>
+<p>Now predict and then try each of</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="mi">23</span><span class="o">//</span><span class="mi">5</span>
+<span class="mi">23</span><span class="o">%</span><span class="mi">5</span>
+<span class="mi">20</span><span class="o">%</span><span class="mi">5</span>
+<span class="mi">6</span><span class="o">//</span><span class="mi">8</span>
+<span class="mi">6</span><span class="o">%</span><span class="mi">8</span>
+<span class="mi">6</span><span class="o">/</span><span class="mi">8</span>
+</pre></div>
+</div>
+<p>Finding remainders will prove more useful than you might think in
+the future!</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1.4. Integer Arithmetic</a><ul>
+<li><a class="reference internal" href="#addition-and-subtraction">1.4.1. Addition and Subtraction</a></li>
+<li><a class="reference internal" href="#multiplication-parentheses-and-precedence">1.4.2. Multiplication, Parentheses, and Precedence</a></li>
+<li><a class="reference internal" href="#division-and-remainders">1.4.3. Division and Remainders</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">1.3. Whirlwind Introduction To Types and Functions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="strings1.html"
+                        title="next chapter">1.5. Strings, Part I</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/integer.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="strings1.html" title="1.5. Strings, Part I"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="1.3. Whirlwind Introduction To Types and Functions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch1.html" >1. Beginning With Python</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2012, Dr. Andrew N. Harrington.
+      Last updated on May 22, 2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1+.
+    </div>
+  </body>
+</html>

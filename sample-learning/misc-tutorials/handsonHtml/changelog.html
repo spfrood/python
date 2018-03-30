@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.10: http://docutils.sourceforge.net/" />
+<title>Hands-on Python Tutorial 3.X Major Change Log</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id$
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="hands-on-python-tutorial-3-x-major-change-log">
+<h1 class="title">Hands-on Python Tutorial 3.X Major Change Log</h1>
+
+<div class="section" id="june-5-2014">
+<h1>June 5. 2014</h1>
+<ul class="simple">
+<li>Copied Windows Idle link file in examples to www folder.</li>
+<li>Clarified Play Computer Error Exercise</li>
+</ul>
+</div>
+<div class="section" id="may-28-2014">
+<h1>May 28. 2014</h1>
+<p>Elaborated formatting explanation and issues in
+floating point arithmetic section, 1.14.3.</p>
+</div>
+<div class="section" id="may-26-2014">
+<h1>May 26. 2014</h1>
+<p>Add example polygons.py - regular polygons and stars</p>
+</div>
+<div class="section" id="may-18-2014">
+<h1>May 18. 2014</h1>
+<ul class="simple">
+<li>Update for Python 3.4.</li>
+<li>Add Windows shortcut for Idle 3.4</li>
+</ul>
+</div>
+<div class="section" id="january-18-2014">
+<h1>January 18. 2014</h1>
+<p>Normalized picture sizes, particularly in pdf.</p>
+</div>
+<div class="section" id="may-29-2013">
+<h1>May 29. 2013</h1>
+<ul class="simple">
+<li>Many clarifications and typo fixes in Ch 1</li>
+<li>Additions and clarifications to index</li>
+</ul>
+</div>
+<div class="section" id="may-9-2013">
+<h1>May 9, 2013</h1>
+<ul class="simple">
+<li>Added Section 1.1.6 Learning to Problem-Solve</li>
+<li>Fixed garbled exercise 2.3.3.1</li>
+</ul>
+</div>
+<div class="section" id="june-28-2012">
+<h1>June 28, 2012</h1>
+<ul class="simple">
+<li>Added 3.1.6.4, Unique List Exercise</li>
+</ul>
+</div>
+<div class="section" id="june-5-2012">
+<h1>June 5, 2012</h1>
+<ul class="simple">
+<li>Introduced the optional graphics idea of flushing updates on command.
+Two new example variants.</li>
+<li>Added way to get videos from Dropbox - no ID needed.</li>
+</ul>
+</div>
+<div class="section" id="may-23-2012">
+<h1>May 23, 2012</h1>
+<ul class="simple">
+<li>Fixed link and instructions for video downloads in 1.1.5.
+<a class="reference external" href="pythonOnMac.html">pythonOnMac.html</a></li>
+</ul>
+</div>
+<div class="section" id="may-20-2012">
+<h1>May 20, 2012</h1>
+<p>Many updates for Mac</p>
+<ul class="simple">
+<li>References to updated document <a class="reference external" href="pythonOnMac.html">Python On Mac</a>.</li>
+<li>Added Mac info on using Idle and CGI scripts.</li>
+<li>Fixed the Mac bug for the browseLocal function in Chapter 4,
+generated files do show automatically in the browser on a Mac.</li>
+</ul>
+</div>
+<div class="section" id="january-26-2012">
+<h1>January 26, 2012</h1>
+<ul class="simple">
+<li>html version now lets you click the margin between left sidebar and
+the main text to toggle showing the sidebar.</li>
+</ul>
+</div>
+<div class="section" id="january-14-2012">
+<h1>January 14, 2012</h1>
+<ul class="simple">
+<li>Updated some Mac instructions.</li>
+<li>Changed the Mac/Unix script line for cgi files in examples/www</li>
+<li>Replaced the graphics.py version, so it works on a Mac but it does
+not work from the Idle shell.</li>
+</ul>
+</div>
+<div class="section" id="october-19-2011">
+<h1>October 19, 2011</h1>
+<ul class="simple">
+<li>In 4.4.4 added reminders of the final Python videos that do not
+exactlt follow the tutorial, but completely build examples.</li>
+<li>Use tempname.html in browseLocal consistently in 4.3 and examples,
+rather than confusing special names each time.</li>
+</ul>
+</div>
+<div class="section" id="october-6-2011">
+<h1>October 6, 2011</h1>
+<ul class="simple">
+<li>Added www example CGIfix.py for Unix derived scripting situations
+with cgi files:
+Forces Unix newlines, adds script execution path if necesary, and
+makes the CGI script executable</li>
+</ul>
+</div>
+<div class="section" id="september-19-2011">
+<h1>September 19, 2011</h1>
+<ul class="simple">
+<li>Added Text Triangle Exercise 2.4.12.2</li>
+<li>Moved Graduate Exercise to 3.1.4 where it belongs.</li>
+<li>Modified examples wages.py, wages1.py.</li>
+</ul>
+</div>
+<div class="section" id="september-16-2011">
+<h1>September 16, 2011</h1>
+<ul class="simple">
+<li>Added missing column to table in example playComputerStub.rtf.
+Rewrote Play Computer excercises. Lots of typos fixed.</li>
+</ul>
+</div>
+<div class="section" id="september-9-2011">
+<h1>September 9, 2011</h1>
+<ul class="simple">
+<li>Added examples and exercises in 1.10, 1.11 on the string format
+method and functions returning a string formed with the string format
+method.</li>
+</ul>
+</div>
+<div class="section" id="september-1-2011">
+<h1>September 1, 2011</h1>
+<ul class="simple">
+<li>Elaborated example in 2.4.7.</li>
+</ul>
+</div>
+<div class="section" id="august-25-2011">
+<h1>August 25, 2011</h1>
+<ul class="simple">
+<li>Added a number of exercises in Chapter 3 for if-statements and
+while-statements, with a number of example stub files.</li>
+<li>Added example files for cgi script template</li>
+<li>Added links to videos in Google Docs in 1.1.5, including added videos
+for the end of Chapter 4, showing a full development of a simple web
+application.</li>
+</ul>
+</div>
+<div class="section" id="june-23-2011">
+<h1>June 23, 2011</h1>
+<ul class="simple">
+<li>Added example and information about tracebacks in 1.11.4.</li>
+</ul>
+</div>
+<div class="section" id="june-13-2011">
+<h1>June 13, 2011</h1>
+<ul class="simple">
+<li>Fixed bug! My example file types.py renamed types1.py (so does not
+conflict with system file types.py).</li>
+<li>Added skeletonForWeb.py and skeletonFor.cgi to www examples.</li>
+</ul>
+</div>
+<div class="section" id="june-6-2011">
+<h1>June 6, 2011</h1>
+<ul class="simple">
+<li>Elaborated explanations of dynamic web programming in 4.4, and added
+to the summary of CGI steps.</li>
+</ul>
+</div>
+<div class="section" id="june-3-2011">
+<h1>June 3, 2011</h1>
+<ul class="simple">
+<li>Added simpler loop problems to 1.13.4, with accompanying example
+files.</li>
+<li>Added data flow figure in chapter 4</li>
+</ul>
+</div>
+<div class="section" id="may-25-2011">
+<h1>May 25, 2011</h1>
+<ul class="simple">
+<li>Lots of typo fixes while making videos in Chapter 3</li>
+<li>Added example file matching 3.3.3 text: readLines0.py</li>
+</ul>
+</div>
+<div class="section" id="may-20-2011">
+<h1>May 20, 2011</h1>
+<p>Brought explanation of backAndForth0.py animation up to date.</p>
+</div>
+<div class="section" id="may-16-2011">
+<h1>May 16, 2011</h1>
+<ul class="simple">
+<li>Added documentation for additions to Zelle's graphics</li>
+<li>Fixed source zip file and reference to it</li>
+<li>Added link for iTunes U videos, now done for about half way through
+the tutorial.</li>
+</ul>
+</div>
+<div class="section" id="may-10-2011">
+<h1>May 10, 2011</h1>
+<ul class="simple">
+<li>Note bug in command line operation of Windows version of 3.1 and 3.2,
+to be fixed in 3.2.1 later this month.</li>
+<li>Patched madlib.py temporarily to fix the problem.</li>
+<li>Added Mac specific instructions for donloading the files needed for
+Python and for dealing with files in Idle.</li>
+</ul>
+</div>
+<div class="section" id="march-30-2011">
+<h1>March 30, 2011</h1>
+<ul class="simple">
+<li>Corrected display of return2.py in 1.11.6.</li>
+</ul>
+</div>
+<div class="section" id="march-27-2011">
+<h1>March 27, 2011</h1>
+<ul class="simple">
+<li>Corrected formatBraces.py and the code copied into the tutorial.</li>
+</ul>
+</div>
+<div class="section" id="march-10-2011">
+<h1>March 10, 2011</h1>
+<ul class="simple">
+<li>Added Python 3.2 references and Idle shortcuts in examples</li>
+</ul>
+</div>
+<div class="section" id="march-1-2011">
+<h1>March 1, 2011</h1>
+<ul class="simple">
+<li>bad formatting in 2.1.</li>
+<li>typo in footnote order in 3.1</li>
+<li>Separate Exercise Section for last Exercise 4.4.4.2</li>
+</ul>
+</div>
+<div class="section" id="january-24-2011">
+<h1>January 24, 2011</h1>
+<ul class="simple">
+<li>few typos in io.html.</li>
+</ul>
+</div>
+<div class="section" id="january-17-2011">
+<h1>January 17, 2011</h1>
+<ul class="simple">
+<li>got big extra files out of zip files</li>
+<li>few typos in idle.html.</li>
+</ul>
+</div>
+<div class="section" id="january-13-2011">
+<h1>January 13, 2011</h1>
+<ul class="simple">
+<li>converted .cgi files to Unix format, so they work with my Ubuntu,
+*except* for surveyFeedback.cgi - Python 3.1 has a bug in handling
+post operations with a local server.</li>
+<li>Made my cgi testing URL accessible.</li>
+</ul>
+</div>
+<div class="section" id="january-10-2011">
+<h1>January 10, 2011</h1>
+<ul class="simple">
+<li>Got pdf index working.</li>
+<li>Spiffed up pdf tables</li>
+</ul>
+</div>
+<div class="section" id="january-9-2011">
+<h1>January 9, 2011</h1>
+<ul class="simple">
+<li>fixed some typos from incomplete format conversion.</li>
+<li>Got code coloring working on remaining Python 3 examples.</li>
+</ul>
+</div>
+<div class="section" id="january-8-2011">
+<h1>January 8, 2011</h1>
+<ul class="simple">
+<li>Conversion from Lyx base to reStructuredText and Sphinx base,
+residing now in 3.1 directory (3.0 folder still there).</li>
+<li>Index, Search, and expanded Table of Contents added</li>
+<li>New look for both html and pdf.</li>
+<li>More Exercises and Exercise numbering and naming changed</li>
+<li>Section numbers shifted up in Chapter 4.</li>
+<li>Assorted typos fixed</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="end-of-changes-to-lyx-based-3-0-version-in-3-0-folder">
+<h1><em>End of changes to Lyx based 3.0 version in 3.0 folder</em></h1>
+</div>
+<div class="section" id="february-22-2010">
+<h1>February 22, 2010</h1>
+<ul class="simple">
+<li>Inconsistency in discussion of bounce2.py after incomplete update,
+now fixed.</li>
+</ul>
+</div>
+<div class="section" id="october-1-2009">
+<h1>October 1, 2009</h1>
+<ul class="simple">
+<li>Replaced version 2.6 example file jungle.txt.</li>
+<li>Fixed symbols lyx not put in html: ← ≤ ≥</li>
+<li>typo in example</li>
+</ul>
+</div>
+<div class="section" id="september-1-2009">
+<h1>September 1, 2009</h1>
+<ul class="simple">
+<li>Slight rewording and typo fixing in loop section of chapter 1.</li>
+<li>Added exercise in chapter 3 to test the assertion of inexactness of
+float arithmetic.</li>
+</ul>
+</div>
+<div class="section" id="august-31-2009">
+<h1>August 31, 2009</h1>
+<ul class="simple">
+<li>Tuple introduction moved consistently to the Loops and Tuples section
+of Ch 3. There had been references to the removed sections on the
+string % operator.</li>
+<li>Revision of string format section. Other changes for consistency of
+format treatment. Removed explicit indices {0} from example files, to
+match code changes in the tutorial.</li>
+</ul>
+</div>
+<div class="section" id="august-23-2009">
+<h1>August 23, 2009</h1>
+<ul class="simple">
+<li>Python 3.1 changed the way floats are displayed as strings so the
+section on formatting floating point numbers now shows a more
+elaborate illustration of the inexactness of decimal arithmetic.</li>
+<li>Small typos fixed.</li>
+</ul>
+</div>
+<div class="section" id="august-22-2009">
+<h1>August 22, 2009</h1>
+<ul class="simple">
+<li>Assumes Python 3.1+</li>
+<li>Fixed discrepancies between the tutorial description of madlib.py and
+the example file.</li>
+<li>Added string format with position numbers omitted (new in 3.1)</li>
+<li>Adds Zelle's Python 3 graphics package with my __str__ methods.
+Though I do not refer to his Image class, there was a bug he fixed.
+Zelle adopted a cleaner modification of my getLastMouse that he calls
+checkMouse. The tutorial has been changed to match.</li>
+<li>Assorted small typos fixed.</li>
+</ul>
+</div>
+<div class="section" id="february-28-2009">
+<h1>February 28, 2009</h1>
+<ul class="simple">
+<li>Fixed broken picture display</li>
+<li>Changed references to the range function to indicate it is a sequence
+generator. To see the whole sequence displayed in the Shell, you need
+list(range(n)), not just range(n).</li>
+<li>Chapter 4: At present the university server is running Python 2.6.
+Made the remote cgi script links point to the working versions, not
+3.0 versions (output is the same).</li>
+<li>Updated reserved word list to 3.0</li>
+</ul>
+</div>
+<div class="section" id="december-29-2008">
+<h1>December 29, 2008</h1>
+<p>Changed the beginning of formatting with dictionaries, 1.12.2 so it is
+independent of 1.10.4. 1.10.4 with numbered format parameters becomes
+optional.</p>
+</div>
+<div class="section" id="december-28-2008">
+<h1>December 28, 2008</h1>
+<p>Clarifying edits in the sections on formatting with dictionaries, 1.12.2
+and 1.12.3.</p>
+</div>
+<div class="section" id="december-27-2008">
+<h1>December 27, 2008</h1>
+<ul class="simple">
+<li>Changes all over to convert to Python 3.0, though most of the changes
+are not conceptual.</li>
+<li>The most significant topical involve making use fo the string format
+method introduced in Python 2.6. The use of the % string format
+operator has been completely removed. The format with {0}, {1}. {2},
+... is initially introduced (later than the string % operator was
+introduced before). Later the syntax with dictionary references is
+introduced, and later in the tutorial this is widely used with the
+dictionary returned by locals(). This involved content changes in a
+number of places.</li>
+<li>The incompatible minor language changes were introduced, principally:<ul>
+<li>print function rather than statement</li>
+<li>input instead of raw_input, and the old input function gone.</li>
+<li>// for integer division</li>
+</ul>
+</li>
+<li>There were some other minor changes like a set literal being
+displayed with braces.</li>
+<li>Web site URL's were changed to refer to the 3.0 versions of
+materials.</li>
+<li>A tool for making Python 3.0 the default under Windows if it is
+installed but not the default.</li>
+</ul>
+</div>
+<div class="section" id="december-2-2008">
+<h1>December 2, 2008</h1>
+<p>WWW examples for Chapter 4: edited commonFormFields.html for further
+clarification</p>
+</div>
+<div class="section" id="october-29-2008">
+<h1>October 29, 2008:</h1>
+<p>Chapter 3:
+Added a real-world file processing example at the very end, bbassign.py,
+that I use to modify Blackboard assignment downloads.
+Chapter 4
+Added extra reminders in several of the homework exercises.
+Added extra real-world example survey processing programs</p>
+</div>
+<div class="section" id="september-29-2008">
+<h1>September 29, 2008:</h1>
+<p>Chapter 2:
+Added missing example file printFile.py
+Chapter 3
+Added extra exercise on polygonal paths
+Added extra example file bounceWhile.py</p>
+</div>
+<div class="section" id="september-15-2008">
+<h1>September 15, 2008:</h1>
+<p>Chapter 2:
+Added playing computer in 2.2.1, previously referenced but not included.
+Modified madlib2.py in 2.3.2 to simplify the changes for the madlib3.py
+file exercise.</p>
+</div>
+<div class="section" id="september-13-2008">
+<h1>September 13, 2008:</h1>
+<p>Fixed one typo that messed up all section numbers in chapter 1 after
+1.5.2!</p>
+</div>
+<div class="section" id="september-9-2008">
+<h1>September 9, 2008:</h1>
+<p>General: fixed typos, misspellings, few words of elaboration...
+Chapter 1:</p>
+<ul class="simple">
+<li>Section 1.12.4 Added a small section illustrating the result of
+incorrect indentation</li>
+<li>Section 1.12.8 More playing computer: clarified exercise</li>
+</ul>
+</div>
+<div class="section" id="august-24-2008">
+<h1>August 24, 2008:</h1>
+<p>General: fixed typos, misspellings
+Chapter 1:</p>
+<ul class="simple">
+<li>Section 1.2, 1.3: Expanded the introduction to the mechanics of
+dealling with the Shell, moving some explanation back to 1.2 where
+the Shell is first referenced.</li>
+<li>Removed links to old flash videos that don't work right with current
+Flash</li>
+<li>Refered to new example Windows shortcut file to start Idle for Python
+version 2.6 (now Beta) - no other 2.6 accomodations</li>
+<li>Added comments and direct links to downloadable copies of the
+Tutorial and this change log.</li>
+<li>Section 1.13.6 Successive modification loops: added intermediate
+example to the enumeration loop topic</li>
+</ul>
+</div>
+<div class="section" id="aug-18-2008">
+<h1>Aug 18, 2008</h1>
+<p>Chapter 2:
+Moved major pieces of the string sections around + small change in
+graphics</p>
+<ul class="simple">
+<li>Section 1: OO notiation to the beginning, followed by all the basic
+string methods, including split and join. This way you can start on
+OO notation and then skip right to graphics if you like, or go on to
+the rest of the basic string operations and skip the harder string
+processing in the revised mad lib program.</li>
+<li>Section 2-3: Split the mad lib section into two main sections, with
+the material on appending to lists and the intro to sets into the
+separate section 2.</li>
+<li>Now the challenging string processing needed for the revised mad lib
+is in the last section on strings.</li>
+<li>Section 4: Graphics Simplified the final animation example</li>
+</ul>
+<p>Chapter 3:
+Revised the introduction to a for-loop for a list of tuples in
+chooseButton2.py</p>
+</div>
+<div class="section" id="aug-14-2008">
+<h1>Aug 14, 2008</h1>
+<p>Chapter 1:</p>
+<ul class="simple">
+<li>Much more playing computer and not all concentrated at the end, so it
+is illustrated with some of the initial examples. Reduced the
+complexity of the nested function call example.</li>
+<li>Reworking of the format string section.</li>
+<li>Moved the explanation of the fonts in syntax pattern earlier,
+changing the section numbers!</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

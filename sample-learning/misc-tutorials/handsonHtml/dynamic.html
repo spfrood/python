@@ -1,0 +1,757 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4.4. CGI - Dynamic Web Pages &mdash; Hands-on Python Tutorial for Python 3.1</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="Hands-on Python Tutorial for Python 3.1" href="index.html" />
+    <link rel="up" title="4. Dynamic Web Pages" href="ch4.html" />
+    <link rel="next" title="4.5. Summary" href="websummary.html" />
+    <link rel="prev" title="4.3. Composing Web Pages in Python" href="webtemplates.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="websummary.html" title="4.5. Summary"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="webtemplates.html" title="4.3. Composing Web Pages in Python"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch4.html" accesskey="U">4. Dynamic Web Pages</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cgi-dynamic-web-pages">
+<span id="index-0"></span><h1>4.4. CGI - Dynamic Web Pages<a class="headerlink" href="#cgi-dynamic-web-pages" title="Permalink to this headline">¶</a></h1>
+<p><em>CGI</em> stands for <em>Common Gateway Interface</em>. This interface is used by
+web servers to process information requests supplied by a browser.
+Python has modules to allow programs to do this work. The
+convention used by many servers is to have the server programs that
+satisfy this interface end in &#8216;.cgi&#8217;. That is the convention used
+below. All files below ending in &#8216;.cgi&#8217; are CGI programs on a web
+server, and in this chapter, they will all be Python programs
+(though there are many other languages in use for this purpose).
+These programs are often called scripts, so we will be dealing with
+<em>Python CGI scripts</em>.</p>
+<div class="section" id="an-example-in-operation">
+<span id="cgi-example"></span><h2>4.4.1. An Example in Operation<a class="headerlink" href="#an-example-in-operation" title="Permalink to this headline">¶</a></h2>
+<p>The first part of this section requires you to have access to the
+Internet. Later you will also see that you can illustrate the exact
+same actions on your own local machine.</p>
+<p id="index-1">For a very simple but complete example, use your browser to go to
+the page on the public Loyola server,
+<a class="reference external" href="http://anh.cs.luc.edu/python/hands-on/3.1/examples/www/adder.html">http://anh.cs.luc.edu/python/hands-on/3.1/examples/www/adder.html</a>.
+You see a web <em>form</em>. Follow the instructions, enter numbers, and click
+on the <span class="guilabel">Find Sum</span> button. You get back a page that obviously used
+<em>your</em> data. This is the idea that you can generalize. First
+consider the basic execution steps behind the scene:</p>
+<ol class="arabic simple">
+<li>The data you type is handled directly by the browser. It
+recognizes forms.</li>
+<li>An action instruction is stored in the form saying what to do
+when you press a button indicating you are ready to process the
+data (the <span class="guilabel">Find Sum</span> button in this case).</li>
+<li>In the cases we consider in this tutorial, the action is given
+as a web resource, giving the location of a CGI script on some
+server (in our cases, the same directory on the server as the
+current web page).</li>
+<li>When you press the button, the browser sends the data that you
+entered to that web location (in this case <code class="docutils literal"><span class="pre">adder.cgi</span></code> in the same
+folder as the original web page).</li>
+<li>The server recognizes the web resource as an executable script,
+sees that it is a Python program, and executes it, using the data
+sent along from the browser form as input.</li>
+<li>The script runs, manipulates its input data into some results,
+and puts those results into the text of a web page that is the
+output of the program.</li>
+<li>The server captures this output from the program and sends it
+back to your browser as a new page to display.</li>
+<li>You see the results in your browser.</li>
+</ol>
+<p>This also works <em>locally</em>, entirely on your own computer, using a
+simple server built into Python. (<em>Internet no longer needed!</em>)</p>
+<dl class="docutils">
+<dt>Windows</dt>
+<dd>In an operating system file window, go to the folder with the www
+examples. Double click on <code class="docutils literal"><span class="pre">localCGIServer.py</span></code> to start the local,
+internal, web server. You should see a console window pop up,
+saying &#8220;Localhost CGI server started&#8221; .</dd>
+<dt>Mac</dt>
+<dd>This is more involved.
+See <a class="reference external" href="http://anh.cs.luc.edu/python/hands-on/3.1/pythonOnMac.html">http://anh.cs.luc.edu/python/hands-on/3.1/pythonOnMac.html</a>.</dd>
+</dl>
+<p>Once the server is
+started, leave the console window there as long as you want the
+local server running.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Do <em>not</em> start the local server running from inside Idle.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the server aborts and gives an error message about
+spaces in the path, look at the path through the parent directories
+over this www directory. If any of the directory names have spaces
+in them, the local file server will not work.</p>
+</div>
+<p>In case of this error, either go up the
+directory chain and alter the directory names to eliminate spaces
+or move the examples directory to a directory that does not have
+this issue. In particular, you need to move your examples directory
+if it is under the &#8216;My Programs&#8217; directory.</p>
+<p>Back in the www directory, <em>after you have the local server going</em>,</p>
+<ol class="arabic simple">
+<li>Open the web link <a class="reference external" href="http://localhost:8080/adder.html">http://localhost:8080/adder.html</a> (preferably
+in a new window, separate from this tutorial).</li>
+<li>You should see an adder form in your browser again. Note that
+the web address no longer includes &#8216;cs.luc.edu&#8217;. Instead it starts
+with &#8216;localhost:8080&#8217;, to reference the local Python server you
+started. Fill out the form and test it as before.</li>
+<li>Look at the console window. You should see a log of the activity
+with the server. <em>Close</em> the server window.</li>
+<li>Reload the web link <a class="reference external" href="http://localhost:8080/adder.html">http://localhost:8080/adder.html</a>. You should
+get an error, since you refer to localhost, but you just stopped
+the local server.</li>
+</ol>
+<p>For the rest of this chapter, we will be wanting to use the local
+server, so <em>restart</em> <code class="docutils literal"><span class="pre">localCGIServer.py</span></code> <em>from its operating system</em>
+<em>folder</em>, and <em>keep it going</em>.</p>
+</div>
+<div class="section" id="a-simple-buildup">
+<h2>4.4.2. A Simple Buildup<a class="headerlink" href="#a-simple-buildup" title="Permalink to this headline">¶</a></h2>
+<p>Before we get too complicated, consider the source code of a couple
+of even simpler examples.</p>
+<p class="rubric">hellotxt.cgi</p>
+<p id="index-2">The simplest case is a CGI script with no input that just
+generates plain text, rather than HTML.
+<em>Assuming you have your local server going</em>, you can go to the link
+for hellotxt.cgi, <a class="reference external" href="http://localhost:8080/hellotxt.cgi">http://localhost:8080/hellotxt.cgi</a>. The code is
+in the www example directory, <code class="docutils literal"><span class="pre">hellotxt.cgi</span></code>, and below for you
+to <em>read</em>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="c">#!/usr/bin/env python3</span>
+
+<span class="c"># Required header that tells the browser how to render the text.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">&quot;Content-Type: text/plain</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">)</span>  <span class="c"># here text -- not html</span>
+
+<span class="c"># Print a simple message to the display window.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">&quot;Hello, World!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The top line is what tells the operating system that this is a Python 3
+program. It says where to find the right Python interpreter to process
+the rest of the script. This exact location is significant
+on a Unix derived server (like the one Loyola&#8217;s Computer Science Department
+uses or any Mac with OS X). In Windows the only thing important is the distinction
+between Python 2 and 3.
+If you leave the line there
+as a part of your standard text, you have one less thing to think
+about when uploading to a Unix server or running on a Mac.</p>
+<p>The first print function is telling the server receiving this
+output that the format of the rest of the output will be plain
+text. This information gets passed back to the browser later. This
+line should be included exactly as stated IF you only want the
+output to be plain text (the simplest case, but <em>not our usual</em>
+case).</p>
+<p>The rest of the output (in this case just from one print function)
+becomes the body of the plain text document you see on your browser
+screen, verbatim since it is plain text. The server captures this
+output and redirects it to your browser.</p>
+<p class="rubric">hellohtml.cgi</p>
+<p>We can make some variation and display an already determined <em>html</em>
+page rather than plain text. Try the link
+<a class="reference external" href="http://localhost:8080/hellohtml.cgi">http://localhost:8080/hellohtml.cgi</a>. The code is in the www example
+directory, <code class="docutils literal"><span class="pre">hellohtml.cgi</span></code>, and below for you to <em>read</em>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="c">#!/usr/bin/env python3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s">&quot;Content-Type: text/html</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">)</span>  <span class="c"># html markup follows</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">&lt;html&gt;</span>
+<span class="s">  &lt;Title&gt;Hello in HTML&lt;/Title&gt;</span>
+<span class="s">&lt;body&gt;</span>
+<span class="s">  &lt;p&gt;Hello There!&lt;/p&gt;</span>
+<span class="s">  &lt;p&gt;&lt;b&gt;Hi There!&lt;/b&gt;&lt;/p&gt;  </span>
+<span class="s">&lt;/body&gt;</span>
+<span class="s">&lt;/html&gt; &quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There are two noteworthy changes. The <em>first</em> print function now
+declares the rest of the output will be <em>html</em>. This is the
+standard line you will be using for your CGI programs. The
+remaining print function has the markup for an html page. Note that
+the enclosing triple quotes work for a multi line string. Other
+than as a simple illustration, this CGI script has no utility: Just
+putting the contents of the last print function in a file for a
+static web page <code class="docutils literal"><span class="pre">hello.html</span></code> is much simpler.</p>
+<p class="rubric">now.cgi</p>
+<p>One more simple step: we can have a CGI script that generates
+dynamic output by reading the clock from inside of Python: Try the
+link <a class="reference external" href="http://localhost:8080/now.cgi">http://localhost:8080/now.cgi</a>. Then click the refresh button
+and look again. This cannot come from a static page. The code is in
+the www example directory, <code class="docutils literal"><span class="pre">now.cgi</span></code>, and below for you to
+<em>read</em>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="c">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">&quot;Content-Type: text/html</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">)</span>  <span class="c"># html markup follows</span>
+
+<span class="n">timeStr</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%c&quot;</span><span class="p">)</span> <span class="c"># obtains current time</span>
+
+<span class="n">htmlFormat</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">&lt;html&gt;</span>
+<span class="s">  &lt;Title&gt;The Time Now&lt;/Title&gt;</span>
+<span class="s">&lt;body&gt;</span>
+<span class="s">  &lt;p&gt;The current Central date and time is:  {timeStr}&lt;/p&gt;</span>
+<span class="s">&lt;/body&gt;</span>
+<span class="s">&lt;/html&gt; &quot;&quot;&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">htmlFormat</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span> <span class="c"># see embedded %s ^ above</span>
+</pre></div>
+</div>
+<p>This illustrates a couple more ideas: First a library module,
+<code class="docutils literal"><span class="pre">time</span></code>, is imported and used to generate the string for the
+current date and time.</p>
+<p>The web page is generated like in <code class="docutils literal"><span class="pre">helloWeb2.py</span></code>, embedding the
+dynamic data (in this case the time) into a literal web page format
+string. (Note the embedded <code class="docutils literal"><span class="pre">{timeStr}</span></code>.) Unlike <code class="docutils literal"><span class="pre">helloWeb2.py</span></code>,
+this is a CGI script so the web page contents are delivered to the
+server just with a <code class="docutils literal"><span class="pre">print</span></code> function.</p>
+<p class="rubric" id="adder-cgi">adder.cgi</p>
+<p>It is a small further step to get to processing dynamic input. Try filling
+out and submitting the adder form one more time,
+<a class="reference external" href="http://localhost:8080/adder.html">http://localhost:8080/adder.html</a>. This time notice the URL at the
+top of the browser page <em>when the result is displayed</em>. You should
+see something like the following (only the numbers should be the
+ones <em>you</em> entered):</p>
+<blockquote>
+<div><a class="reference external" href="http://localhost:8080/adder.cgi?x=24&amp;y=56">http://localhost:8080/adder.cgi?x=24&amp;y=56</a></div></blockquote>
+<p>This shows one
+mechanism to deliver data from a web form to the CGI script that
+processes it. The names x and y are used in the form (as we will
+see later) and the data you entered is associated with those names.
+In fact a form is not needed at all to create such an association:
+If you directly go to the URLs</p>
+<blockquote>
+<div><a class="reference external" href="http://localhost:8080/adder.cgi?x=24&amp;y=56">http://localhost:8080/adder.cgi?x=24&amp;y=56</a></div></blockquote>
+<p>or</p>
+<blockquote>
+<div><a class="reference external" href="http://localhost:8080/adder.cgi?x=-12345678924&amp;y=33333333333">http://localhost:8080/adder.cgi?x=-12345678924&amp;y=33333333333</a></div></blockquote>
+<p>you get arithmetic displayed without the form. This is just a new input
+mechanism into the CGI script.</p>
+<p>You have already seen a program to produce this adder page from
+inside a regular Python program taking input from the keyboard. The
+new CGI version, adder.cgi, only needs to make a few modifications
+to accept input this way from the browser. New features are
+commented in the source and discussed below. The new parts are the
+<code class="docutils literal"><span class="pre">import</span></code> statement through the <code class="docutils literal"><span class="pre">main</span></code> function, and the code
+after the end of the <code class="docutils literal"><span class="pre">fileToStr</span></code> function. <em>Read</em> at least these
+new parts in the source code shown below:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="c">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span> <span class="nn">cgi</span>   <span class="c"># NEW</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span> <span class="c"># NEW except for the call to processInput</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">cgi</span><span class="o">.</span><span class="n">FieldStorage</span><span class="p">()</span>      <span class="c"># standard cgi script lines to here!</span>
+    
+    <span class="c"># use format of next two lines with YOUR names and default data</span>
+    <span class="n">numStr1</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">getfirst</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;0&quot;</span><span class="p">)</span> <span class="c"># get the form value associated with form</span>
+                                   <span class="c"># name &#39;x&#39;.  Use default &quot;0&quot; if there is none. </span>
+    <span class="n">numStr2</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">getfirst</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="s">&quot;0&quot;</span><span class="p">)</span> <span class="c"># similarly for name &#39;y&#39;</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">processInput</span><span class="p">(</span><span class="n">numStr1</span><span class="p">,</span> <span class="n">numStr2</span><span class="p">)</span>   <span class="c"># process input into a page</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">processInput</span><span class="p">(</span><span class="n">numStr1</span><span class="p">,</span> <span class="n">numStr2</span><span class="p">):</span>  
+    <span class="sd">&#39;&#39;&#39;Process input parameters and return the final page as a string.&#39;&#39;&#39;</span>
+    <span class="n">num1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numStr1</span><span class="p">)</span> <span class="c"># transform input to output data</span>
+    <span class="n">num2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numStr2</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">num1</span><span class="o">+</span><span class="n">num2</span>
+    <span class="k">return</span> <span class="n">fileToStr</span><span class="p">(</span><span class="s">&#39;additionTemplate.html&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">())</span>
+
+<span class="c"># standard code for future cgi scripts from here on</span>
+<span class="k">def</span> <span class="nf">fileToStr</span><span class="p">(</span><span class="n">fileName</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot;Return a string containing the contents of the named file.&quot;&quot;&quot;</span>
+    <span class="n">fin</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">);</span> 
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">fin</span><span class="o">.</span><span class="n">read</span><span class="p">();</span>  
+    <span class="n">fin</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> 
+    <span class="k">return</span> <span class="n">contents</span>
+
+<span class="k">try</span><span class="p">:</span>   <span class="c"># NEW</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s">&quot;Content-type: text/html</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">)</span>   <span class="c"># say generating html</span>
+    <span class="n">main</span><span class="p">()</span> 
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">cgi</span><span class="o">.</span><span class="n">print_exception</span><span class="p">()</span>                 <span class="c"># catch and print errors</span>
+</pre></div>
+</div>
+<p id="index-3">First the overall structure of the code:</p>
+<ul class="simple">
+<li>To handle the CGI input we import the <code class="docutils literal"><span class="pre">cgi</span></code> module.</li>
+<li>The main body of the code is in a <code class="docutils literal"><span class="pre">main</span></code> method, following
+good programming practice.</li>
+<li>After the definition of <code class="docutils literal"><span class="pre">main</span></code> come supporting functions, each
+one copied from the earlier local web page version,
+additionWeb.py.</li>
+<li>At the end is the new, but standard, cgi wrapper code for
+<code class="docutils literal"><span class="pre">main()</span></code>. This is code that you can always just copy. I chose to
+put the initial <code class="docutils literal"><span class="pre">print</span></code> function here, that tells the server html
+is being produced. That mean the <code class="docutils literal"><span class="pre">main</span></code> method only needs to
+construct and print the <em>actual</em> html code. Also keep the final
+<code class="docutils literal"><span class="pre">try</span></code>-<code class="docutils literal"><span class="pre">except</span></code> block that catches any execution errors in the
+program and generates possibly helpful trace information that you
+can see from your browser. (Writing such error catching code in
+general is not covered in this introductory tutorial,
+but you can copy it!)</li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">main</span></code> function has three sections, as in the local web page
+version: read input (this time from the form), process it, and
+generate the html output.</p>
+<ul>
+<li><p class="first">Reading input: The first line of main is a standard one (to
+copy) that sets up an object called <code class="docutils literal"><span class="pre">form</span></code> that holds the CGI
+form data accompanying the web request sent by the browser. You
+access the form data with statements like the next two that have
+the pattern:</p>
+<blockquote>
+<div><p><strong>variable</strong> <code class="docutils literal"><span class="pre">=</span> <span class="pre">form.getfirst(</span></code> <em>nameAttrib</em> <code class="docutils literal"><span class="pre">,</span></code> <em>default</em> <code class="docutils literal"><span class="pre">)</span></code></p>
+</div></blockquote>
+<p>If there is a form field with name <em>nameAttrib</em>, its value
+from the browser data is assigned to <em>variable</em>. If no value is
+given in the browser&#8217;s data for <em>nameAttrib</em>,
+<em>variable</em> is set equal to <em>default</em> instead.</p>
+<p>In this way
+data associated with names given by the browser can transferred to
+your Python CGI program. In this program the values associated with
+the browser-supplied names, &#8216;x&#8217; and &#8216;y&#8217;, are extracted. I use
+Python variable names that remind you that all values from the
+browser forms are strings.</p>
+</li>
+<li><p class="first">The <code class="docutils literal"><span class="pre">processInput</span></code> function that is passed the input
+parameters from whatever source, is exactly the same as in
+<code class="docutils literal"><span class="pre">additionWeb.py</span></code>, so we already know it works!</p>
+</li>
+<li><p class="first">Output the page. In a CGI script this is easier than with the
+local web pages: just print it - no need to save and separately
+display a file! The server captures the &#8220;printed&#8221; output.</p>
+</li>
+</ul>
+<p>This program can now serve as a template for your own CGI scripts:
+The only things you need to change are the lines in <code class="docutils literal"><span class="pre">main()</span></code> that
+get the input from a web form, and the contents of
+<code class="docutils literal"><span class="pre">processInput</span></code>.  Furthermore the <code class="docutils literal"><span class="pre">processInput</span></code> part can be written and
+tested earlier with a local web page. While this is the only Python
+code, you still need to create an output web page template, and
+refer to it in the parameter of <code class="docutils literal"><span class="pre">fileToStr</span></code>.
+A further stripped down skeleton, with comments about needed changes is in
+<code class="docutils literal"><span class="pre">skeletonFor.cgi</span></code>.</p>
+<p>Now we have discussed both the top regular Python sequence, the bottom
+cgi sequence, and the common part in the middle, as shown in the following
+diagram.  In both cases input data gets processed into the content of a
+web page that goes to a browser.  For any major application the main work
+is in the processing in the middle.  Since that part is shared in both
+approaches, it can be tested with a simple Python program,
+before the starting and ending steps
+for the input and output flow are changed for the cgi client/server model.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/dynamicWebFlow.png"><img alt="image" src="_images/dynamicWebFlow.png" style="width: 461.25pt;" /></a>
+</div>
+<p>The only part that still needs details explained is for web forms.
+Before going on to that, it is time to talk about handling errors
+in the CGI scripts we have been discussing.</p>
+</div>
+<div class="section" id="errors-in-cgi-scripts">
+<span id="errors-in-cgi"></span><span id="index-4"></span><h2>4.4.3. Errors in CGI Scripts<a class="headerlink" href="#errors-in-cgi-scripts" title="Permalink to this headline">¶</a></h2>
+<p>Before you start running your own CGI scripts on the local server,
+it is important to understand how different kinds of errors that
+you might make will be handled.</p>
+<p>If you write a regular Python program, even one that produces a web page,
+you can write the code and run it in Idle, and idle will display all the
+kinds of errors.</p>
+<p>With a CGI script, you can still use Idle to write your code,
+but you cannot run the cgi code in Idle, and errors show up in three
+different places, depending on their type:</p>
+<dl class="docutils">
+<dt>Syntax errors</dt>
+<dd>You are encouraged to check for syntax errors
+<em>inside</em> Idle, by either going to the Run menu and selecting Check
+Module, or by using the shortcut <code class="kbd docutils literal"><span class="pre">Alt-X</span></code>. If you fail to do this and
+try running a script with a syntax error, the error trace appears
+in the <em>console</em> window that appears when you start the local
+server. If you want an illustration, you might try changing
+adder.cgi, making an error like <code class="docutils literal"><span class="pre">impor</span> <span class="pre">cgi</span></code>, and try using
+adder.html with the flawed script. (Then fix it and try again.)</dd>
+<dt>Execution Errors</dt>
+<dd><p class="first">The error trace for execution errors is
+displayed in your <em>web browser</em>, thanks to the final standard code
+with the <code class="docutils literal"><span class="pre">try</span></code>-<code class="docutils literal"><span class="pre">catch</span></code> block at the end of the CGI script.
+<em>If you omit that final standard code, you completely lose descriptive</em>
+<em>feedback: Be sure to include that standard code!</em> You can also
+illustrate here. Get an error by introducing the statement:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">bad</span> <span class="o">=</span> <span class="s">&#39;a&#39;</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">in the main function.
+(Then take it out.)</p>
+</dd>
+<dt>Server Errors</dt>
+<dd>Your work can cause an issue inside the local server,
+not directly in the Python execution.  Some errors are
+communicated to the browser, but not necessarily all.
+Other errors appear in the log generated in the local server&#8217;s window.
+It does not appear likely that you will miss something
+in Windows, but on a Mac or in Linux, where the CGI script needs
+to be set as executable, an error with a non-executable CGI script
+only shows up in this log in the local server window.</dd>
+<dt>Logical Errors</dt>
+<dd>Since your output appears in the web browser,
+when you produced something legal but other than what you intended,
+you see in the browser . If it is a formatting error, fix your
+output page template. If you get wrong answers, check your
+<code class="docutils literal"><span class="pre">processInput</span></code> function.</dd>
+</dl>
+<p>Here is an outline for client/server program testing,
+emphasizing errors to be conscious of and avoid:</p>
+<ul class="simple">
+<li>If you want an easy environment to test a fancy <code class="docutils literal"><span class="pre">processInput</span></code> function,
+embed it
+in a regular Python program, so you can test it normally in Idle.
+This will also allow you to make sure the web template, that you refer to
+in your <code class="docutils literal"><span class="pre">processInput</span></code> function, is in a legitimate form,
+with substitutions only for local variables.</li>
+<li>You can <em>code</em> a CGI script in idle, but <em>not run</em> it.
+Be sure to save it with the suffix <code class="docutils literal"><span class="pre">.cgi</span></code>,
+<em>not</em> <code class="docutils literal"><span class="pre">.py</span></code>.  Do <em>not run</em> it it Idle.  The only testing you can do in Idle
+is for syntax, for instance using the <code class="kbd docutils literal"><span class="pre">Alt-X</span></code> keyboard shortcut.</li>
+<li>At the end of your CGI script, make sure you include the standard
+code that catches execution errors.</li>
+<li>Make sure your local server is going, and that all the files you
+reference are in the same folder as the local server.</li>
+<li>Make sure you test your page by starting it in your web browser with a
+URL starting <code class="docutils literal"><span class="pre">http://localhost:8080/</span></code>.  If you load a web page
+directly from your file system by mistake, it <em>will not cause an obvious error</em> -
+the dynamic actions will just not take place.  If you are not paying attention,
+this can happen and be very confusing!</li>
+</ul>
+<p>We have not covered web forms yet, but rather than bite off too
+much at once, this is a good time to write your own first CGI
+script in the following exercise.</p>
+<div class="section" id="quotient-cgi-exercise">
+<span id="quotient-cgi"></span><h3>4.4.3.1. Quotient.cgi Exercise<a class="headerlink" href="#quotient-cgi-exercise" title="Permalink to this headline">¶</a></h3>
+<p>* Modify <a class="reference internal" href="webtemplates.html#quotientweb"><span>Quotient Web Exercise</span></a> and save it as a CGI script
+<code class="docutils literal"><span class="pre">quotient.cgi</span></code> in the <em>same</em> directory where you have
+<code class="docutils literal"><span class="pre">localCGIServer.py</span></code> and your output page template for <code class="docutils literal"><span class="pre">quotientWeb.py</span></code>.
+Make <code class="docutils literal"><span class="pre">quotient.cgi</span></code> take its input from a browser, rather than the
+keyboard. This means merging all the standard CGI code from
+<code class="docutils literal"><span class="pre">adder.cgi</span></code> and the <code class="docutils literal"><span class="pre">processInput</span></code> function code from your
+<code class="docutils literal"><span class="pre">quotientWeb.py</span></code>. You
+can keep the same browser data names, x and y, as in adder.cgi, so
+the main method should not need changes from adder.cgi. Remember to
+test for syntax errors inside Idle, and to have the local web
+server running when you run the CGI script in your browser. Since
+we have not yet covered web forms, test your CGI script by entering
+test data into the URL in the browser, like by going to links
+<a class="reference external" href="http://localhost:8080/quotient.cgi?x=24&amp;y=56">http://localhost:8080/quotient.cgi?x=24&amp;y=56</a> and
+<a class="reference external" href="http://localhost:8080/quotient.cgi?x=36&amp;y=15">http://localhost:8080/quotient.cgi?x=36&amp;y=15</a>. After trying these
+links, you can edit the numbers in the URL in the browser to see
+different results.</p>
+</div>
+</div>
+<div class="section" id="editing-html-forms">
+<span id="index-5"></span><span id="id1"></span><h2>4.4.4. Editing HTML Forms<a class="headerlink" href="#editing-html-forms" title="Permalink to this headline">¶</a></h2>
+<p>This section is a continuation of
+<a class="reference internal" href="webbasics.html#introduction-to-static"><span>Introduction to Static Pages in Kompozer</span></a>. It is about HTML editing, not
+Python. HTML forms will allow user-friendly data entry for Python
+CGI scripts. This is the last elaboration to allow basic web
+interaction: Enter data in a form, submit it, and get a processed
+result back from the server.</p>
+<p>The initial example, adder.html, used only two text fields. To see
+more common form fields, open
+<a class="reference external" href="http://localhost:8080/commonFormFields.html">http://localhost:8080/commonFormFields.html</a>. (Make sure your local
+server is still running!)</p>
+<p>To allow easy concentration on the data sent by the browser, this
+form connects to a simple CGI script <code class="docutils literal"><span class="pre">dumpcgi.cgi</span></code>, that just
+dumps and labels all the form data to a web page.
+Press the submit button in
+the form, and see the result. Back up from the output to the
+previous page, the form, and change some of the data in all kinds
+of fields. Submit again and see the results. Play with this until
+you get the idea clearly that the form is passing on your data.</p>
+<p>To play with it at a deeper level, open this same file, the www
+example <code class="docutils literal"><span class="pre">commonFormFields.html</span></code>, in <em>Kompozer</em>. The static text in
+this page is set up as a tutorial on forms in Kompozer. Read the
+content of the page describing how to edit the overall form and
+each type of individual field. Textbooks such as the Analytical
+Engine give another discussion of some of the attributes associated
+with each field type. Read the static text about how to edit
+individual fields, and change some field parameters, save the file
+and reload it in your browser, and submit again. If you change the
+name or value attributes, they are immediately indicated in the
+dumped output. If you change things like the text field size, it
+makes a change in the way the form looks and behaves. You can
+return to the original version: An extra copy is saved in
+<code class="docutils literal"><span class="pre">commonFormFieldsOrig.html</span></code>.</p>
+<p>Now open <code class="docutils literal"><span class="pre">adder.html</span></code> in Kompozer. Switch to the Source view. This is
+a short enough page that you should not get lost in the source
+code. The raw text illustrates another feature of html: attributes.
+The tag to start the form contains not only the tag code <em>form</em>,
+but also several expressions that look like Python assignment
+statements with string values. The names on the left-hand side of
+the equal signs identify a type of <em>attribute</em>, and the string
+value after the equal sign gives the corresponding <em>value</em> for the
+attribute. The tag for many kinds of input fields is <code class="docutils literal"><span class="pre">input</span></code>.
+Notice that each field includes <code class="docutils literal"><span class="pre">name</span></code> and <code class="docutils literal"><span class="pre">value</span></code> attributes.
+See that the &#8216;x&#8217; and &#8216;y&#8217; that are passed in the URL by the browser
+come from the names given in the HTML code for the corresponding
+fields!</p>
+<p>Kompozer and other web editors translate your menu selections into
+the raw html code with proper attribute types. This high level
+editor behavior is convenient to avoid having to learn and debug
+the exact right html syntax! On the other hand, using pop-up field
+editing windows has the disadvantage that you can only see the
+attributes of one field at a time. Particularly if you want to
+modify a number of name or value attributes, it is annoying that
+you need a number of mouse clicks to go from one field to the next.
+If you <em>only</em> want to modify the <em>values</em> of existing attributes like
+<code class="docutils literal"><span class="pre">name</span></code> and <code class="docutils literal"><span class="pre">value</span></code>, it may be easier to do in the source
+window, where you can see everything at once. Making syntax errors
+in not very likely if you <em>only</em> change data in quoted value
+strings.</p>
+<p>The action URL is a property of the entire form. To edit it in
+Kompozer, right click inside the form, but <em>not</em> on any field
+element, and select the bottom pop-up choice, Form Properties. Then
+you see a window listing the Action URL and you can change the
+value to the name of the CGI script that you want to receive the
+form data. When you create your own web form, I suggest you make
+the initial action URL be dumpcgi.cgi. This will allow you to debug
+your form separate from your CGI script. When you have tested that
+your web form has all the right names and initial values, you can
+change the action URL to your CGI script name (like quotient.cgi),
+and go on to test the combination of the form and the CGI script!</p>
+<p>Now we have discussed the last piece, web forms,
+in the diagram for the comparison of generating web pages dynamically
+by a regular Python program or a server CGI script:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/dynamicWebFlow.png"><img alt="image" src="_images/dynamicWebFlow.png" style="width: 490pt;" /></a>
+</div>
+<p>Note the last three Python videos do not directly corresponding to a single
+place in the Tutorial text.  Instead they go through the entire process
+for web based programs from the beginning.
+Video 4.4.4b creates a <code class="docutils literal"><span class="pre">birthday.html</span></code> web form looking forward to
+<code class="docutils literal"><span class="pre">birthday.cgi</span></code> of video 4.4.4d.
+In the middle video 4.4.4c creates <code class="docutils literal"><span class="pre">birthdayWeb.py</span></code>, testing the process
+function and output template to be used in <code class="docutils literal"><span class="pre">birthday.cgi</span></code>.</p>
+<div class="section" id="quotientweb-form-exercise">
+<h3>4.4.4.1. QuotientWeb Form Exercise<a class="headerlink" href="#quotientweb-form-exercise" title="Permalink to this headline">¶</a></h3>
+<p>* Complete the web presentation for quotient.cgi of
+<a class="reference internal" href="#quotient-cgi"><span>Quotient.cgi Exercise</span></a> by creating a web form <code class="docutils literal"><span class="pre">quotient.html</span></code> that
+is intelligible to a user and which supplies the necessary data to
+<code class="docutils literal"><span class="pre">quotient.cgi</span></code>.</p>
+<p>Be sure to test the new form on your local server! Remember that
+you must have the local server running first. You must have all the
+associated files in the same directory as the server program you
+are running, and you cannot just click on quotient.html in a file
+browser. You must start it from the the URL
+<a class="reference external" href="http://localhost:8080/quotient.html">http://localhost:8080/quotient.html</a>, that specifically refers to
+the server localhost.</p>
+</div>
+<div class="section" id="dynamic-web-programming-exercise">
+<h3>4.4.4.2. Dynamic Web Programming Exercise<a class="headerlink" href="#dynamic-web-programming-exercise" title="Permalink to this headline">¶</a></h3>
+<p>* Make a simple complete dynamic web presentation with a CGI
+script that uses at least <em>three</em> user inputs from a form. The
+simplest would be to just add three numbers instead of two. Call
+your form <code class="docutils literal"><span class="pre">dynamic.html</span></code>. Call your CGI script <code class="docutils literal"><span class="pre">dynamic.cgi</span></code>. Call an
+output template <code class="docutils literal"><span class="pre">dynamicTemplate.html</span></code>. Remember the details listed
+in the previous exercise to make the results work on localhost.
+After the server is started and you have all the files, go to
+<a class="reference external" href="http://localhost:8080/dynamic.html">http://localhost:8080/dynamic.html</a>.</p>
+<p><a class="reference internal" href="websummary.html#websummary"><span>Summary</span></a> starts with the overall process for
+creating dynamic web pages.</p>
+</div>
+</div>
+<div class="section" id="more-advanced-examples">
+<span id="id2"></span><h2>4.4.5. More Advanced Examples<a class="headerlink" href="#more-advanced-examples" title="Permalink to this headline">¶</a></h2>
+<p>One of the advantages of having a program running on a public
+server is that data may be stored centrally and augmented and
+shared by all. In high performance sites data is typically stored
+in a sophisticated database, beyond the scope of this tutorial. For
+a less robust but simpler way to store data persistently, we can
+use simple text files on the server.</p>
+<p>The www example page <code class="docutils literal"><span class="pre">namelist.html</span></code> uses <code class="docutils literal"><span class="pre">namelist.cgi</span></code> to maintain a
+file <code class="docutils literal"><span class="pre">namelist.txt</span></code> of data submitted by users of the page. You can
+test the program with your local Python server. It is less
+impressive when you are the only one who can make changes! You may
+also try the copy on the public Loyola server,
+<a class="reference external" href="http://anh.cs.luc.edu/python/hands-on/3.1/examples/www/namelist.html">http://anh.cs.luc.edu/python/hands-on/3.1/examples/www/namelist.html</a>.
+The local source code is documented for those who would like to
+have a look.</p>
+<p>You also may want to look at the source code of the utility script
+you have been using, <code class="docutils literal"><span class="pre">dumpcgi.cgi</span></code>. It uses a method of getting
+values from the CGI data that has not been discussed:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">val</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This method returns a list of values associated with a name from
+the web form. The list many have, 0, 1, or many elements. It is
+needed if you have a number of check boxes with the same name.
+(Maybe you want a list of all the toppings someone selects for a
+pizza.)</p>
+<p>Both <code class="docutils literal"><span class="pre">dumpcgi.cgi</span></code> and <code class="docutils literal"><span class="pre">namelist.html</span></code> add an extra layer of robustness
+in reflecting back arbitrary text from a user. The user&#8217;s text may
+include symbols used specially in html like &#8216;&lt;&#8217;. The function
+<code class="docutils literal"><span class="pre">safePlainText</span></code> replaces reserved symbols with appropriate
+alternatives.</p>
+<p>The examples in earlier sections were designed to illustrate the
+flow of data from input form to output page, but neither the html
+or the data transformations have been very complicated. A more
+elaborate situation is ordering pizza online, and recording the
+orders for the restaurant owner. You can try
+<a class="reference external" href="http://localhost:8080/pizza1.cgi">http://localhost:8080/pizza1.cgi</a> several times and look at the
+supporting example www files <code class="docutils literal"><span class="pre">pizza1.cgi</span></code>, <code class="docutils literal"><span class="pre">pizzaOrderTemplate1.html</span></code>,
+and the simple <code class="docutils literal"><span class="pre">pizzaReportTemplate.html</span></code>. To see the report, the
+owner needs to know the special name <code class="docutils literal"><span class="pre">owner777</span></code>. After ordering
+several pizzas, enter that name and press the Submit button again.</p>
+<p>This CGI script gets used in two ways by a regular user: initially,
+when there is no order, and later to confirm an order that has been
+submitted. The two situations use different logic, and the script
+must distinguish what is the current use. A <em>hidden variable</em> is used
+to distinguish the two cases: when pizza1.cgi is called directly
+(not from a form), there is no <code class="docutils literal"><span class="pre">pastState</span></code> field. On the other hand
+the <code class="docutils literal"><span class="pre">pizzaOrderTemplate1.html</span></code> includes a hidden field named
+<code class="docutils literal"><span class="pre">pastState</span></code>, which is set to the value <code class="docutils literal"><span class="pre">'order'</span></code>. (You can confirm this
+by examining the end of the page in Kompozer&#8217;s source mode.) The CGI
+script checks the value of the field <code class="docutils literal"><span class="pre">pastState</span></code>, and varies its
+behavior based on whether the value is <code class="docutils literal"><span class="pre">'order'</span></code> or not.</p>
+<p>The form in pizzaOrderTemplate1.html has radio buttons and check
+boxes hard coded into it for the options, and copies of the data
+are in pizza1.cgi. Keeping multiple active copies of data is not a
+good idea: They can get out of sync. If you look at the source code
+for pizzaOrderTemplate1.html, you see that all the entries for the
+radio button and check box lines are in a similar form. In the
+better version with altered files <code class="docutils literal"><span class="pre">pizza.cgi</span></code> and
+<code class="docutils literal"><span class="pre">pizzaOrderTemplate.html</span></code> (that appears the same to the user), the
+basic data for the pizza options is only in one place in <code class="docutils literal"><span class="pre">pizza.cgi</span></code>,
+and the proper number of lines of radio buttons and check boxes
+with the right data are generated dynamically.  To do the dynamic generation,
+a templates for an individual html line with a size radio button
+is in the source code, and it is used repeatedly to generate multiple lines, each with
+a different size and price embedded into the format string
+from the program data.  These lines are joined
+together and placed as one entity into the html form template.
+A similar procedure is done with the toppings and checkboxes.</p>
+<p>A further possible elaboration would be to also allow the
+restaurant manager to edit the size, cost and available topping data online,
+and store the data in a file rather than having the data hard coded in
+pizza.cgi, so if the manager runs out of a topping, she can remove
+it from the order form. This change would be a fairly elaborate
+project compared to the earlier exercises!</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4.4. CGI - Dynamic Web Pages</a><ul>
+<li><a class="reference internal" href="#an-example-in-operation">4.4.1. An Example in Operation</a></li>
+<li><a class="reference internal" href="#a-simple-buildup">4.4.2. A Simple Buildup</a></li>
+<li><a class="reference internal" href="#errors-in-cgi-scripts">4.4.3. Errors in CGI Scripts</a><ul>
+<li><a class="reference internal" href="#quotient-cgi-exercise">4.4.3.1. Quotient.cgi Exercise</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#editing-html-forms">4.4.4. Editing HTML Forms</a><ul>
+<li><a class="reference internal" href="#quotientweb-form-exercise">4.4.4.1. QuotientWeb Form Exercise</a></li>
+<li><a class="reference internal" href="#dynamic-web-programming-exercise">4.4.4.2. Dynamic Web Programming Exercise</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#more-advanced-examples">4.4.5. More Advanced Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="webtemplates.html"
+                        title="previous chapter">4.3. Composing Web Pages in Python</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="websummary.html"
+                        title="next chapter">4.5. Summary</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/dynamic.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="websummary.html" title="4.5. Summary"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="webtemplates.html" title="4.3. Composing Web Pages in Python"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch4.html" >4. Dynamic Web Pages</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2012, Dr. Andrew N. Harrington.
+      Last updated on May 22, 2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1+.
+    </div>
+  </body>
+</html>

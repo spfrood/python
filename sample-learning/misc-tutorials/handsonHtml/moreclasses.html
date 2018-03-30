@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.2. More Classes and Methods &mdash; Hands-on Python Tutorial for Python 3.1</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="Hands-on Python Tutorial for Python 3.1" href="index.html" />
+    <link rel="up" title="2. Objects and Methods" href="ch2.html" />
+    <link rel="next" title="2.3. Mad Libs Revisited" href="madlib2.html" />
+    <link rel="prev" title="2.1. Strings, Part III" href="strings3.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="madlib2.html" title="2.3. Mad Libs Revisited"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="strings3.html" title="2.1. Strings, Part III"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch2.html" accesskey="U">2. Objects and Methods</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="more-classes-and-methods">
+<h1>2.2. More Classes and Methods<a class="headerlink" href="#more-classes-and-methods" title="Permalink to this headline">¶</a></h1>
+<p>The classes and methods introduced here are all used in the
+revised mad lib program developed in the next section.</p>
+<div class="section" id="appending-to-a-list">
+<span id="index-0"></span><span id="id1"></span><h2>2.2.1. Appending to a List<a class="headerlink" href="#appending-to-a-list" title="Permalink to this headline">¶</a></h2>
+<p>Before making a version of the madlib program that is much easier
+to use with new stories, we need a couple of facts about other
+types of objects that are built into Python.</p>
+<p>So far we have used lists, but we have not changed the contents of
+lists. The most obvious way to change a list is to add a new
+element onto the end. Lists have the method <code class="docutils literal"><span class="pre">append</span></code>. It
+<em>modifies</em> the original list. Another word for modifiable is
+mutable. Lists are <em>mutable</em>. Most of the types of object
+considered so far (int, str, float) are <em>immutable</em> or <em>not</em>
+mutable. <em>Read</em> and see how the <code class="docutils literal"><span class="pre">list</span></code> named <code class="docutils literal"><span class="pre">words</span></code> changes:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;animal&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span>
+<span class="go">[&#39;animal&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;food&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span>
+<span class="go">[&#39;animal&#39;, &#39;food&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;city&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span>
+<span class="go">[&#39;animal&#39;, &#39;food&#39;, &#39;city&#39;]</span>
+</pre></div>
+</div>
+<p>This is particularly useful in a loop, where we can accumulate a
+new list. <em>Read</em> the start of this simple example:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="k">def</span> <span class="nf">multiplyAll</span><span class="p">(</span><span class="n">numList</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Return a new list containing all of the elements of numList,</span>
+<span class="sd">    each multiplied by multiplier.  For example:</span>
+
+<span class="sd">    &gt;&gt;&gt; print(multiplyAll([3, 1, 7], 5))</span>
+<span class="sd">    [15, 5, 35]</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c"># more to come</span>
+</pre></div>
+</div>
+<p>Clearly this will be repetitious. We will process each element of
+the list numList. A for-each loop with numList is appropriate. Also
+we need to create more and more elements of the new list. The
+accumulation pattern will work here, with a couple of wrinkles.</p>
+<p><em>Test yourself</em>: If we are going to accumulate a list. How do we
+initialize the list?</p>
+<p>In earlier versions of the accumulation loop, we needed an
+assignment statement to change the object doing the accumulating,
+but now the method <code class="docutils literal"><span class="pre">append</span></code> modifies its list automatically, so
+we do not need an assignment statement. Read and try the example
+program <code class="docutils literal"><span class="pre">multiply1.py</span></code>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="k">def</span> <span class="nf">multiplyAll</span><span class="p">(</span><span class="n">numList</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>    <span class="c">#1</span>
+    <span class="sd">&#39;&#39;&#39;Return a new list containing all</span>
+<span class="sd">    of the elements of numList, each</span>
+<span class="sd">    multiplied by multiplier.  For example:</span>
+
+<span class="sd">    &gt;&gt;&gt; print(multiplyAll([3, 1, 7], 5))</span>
+<span class="sd">    [15, 5, 35]</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">newList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>                     <span class="c">#2</span>
+    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">numList</span><span class="p">:</span>                  <span class="c">#3</span>
+        <span class="n">newList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="o">*</span><span class="n">multiplier</span><span class="p">)</span>   <span class="c">#4</span>
+    <span class="k">return</span> <span class="n">newList</span>                       <span class="c">#5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">multiplyAll</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">5</span><span class="p">))</span>         <span class="c">#6</span>
+</pre></div>
+</div>
+<p>Make sure the result makes sense to you or follow the details of
+playing computer below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="15%" />
+<col width="17%" />
+<col width="18%" />
+<col width="5%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Line</th>
+<th class="head">numList</th>
+<th class="head">multiplier</th>
+<th class="head">newList</th>
+<th class="head">num</th>
+<th class="head">comment</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1-5</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>definition</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>call function</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>[3, 1, 7]</td>
+<td>5</td>
+<td>-</td>
+<td>-</td>
+<td>set formal parameters</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>[3, 1, 7]</td>
+<td>5</td>
+<td>[]</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>[3, 1, 7]</td>
+<td>5</td>
+<td>[]</td>
+<td>3</td>
+<td>first in list</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>[3, 1, 7]</td>
+<td>5</td>
+<td>[15]</td>
+<td>3</td>
+<td>append 3*5 = 15</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>[3, 1, 7]</td>
+<td>5</td>
+<td>[15]</td>
+<td>1</td>
+<td>next in list</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>[3, 1, 7]</td>
+<td>5</td>
+<td>[15, 5]</td>
+<td>1</td>
+<td>append 1*5 = 5</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>[3, 1, 7]</td>
+<td>5</td>
+<td>[15, 5]</td>
+<td>7</td>
+<td>last in list</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>[3, 1, 7]</td>
+<td>5</td>
+<td>[15, 5, 35]</td>
+<td>7</td>
+<td>append 7*5 = 35</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>[3, 1, 7]</td>
+<td>5</td>
+<td>[15, 5, 35]</td>
+<td>7</td>
+<td>done with list and loop</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>[3, 1, 7]</td>
+<td>5</td>
+<td>[15, 5, 35]</td>
+<td>7</td>
+<td>return [15, 5, 35]</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>print [15, 3, 35]</td>
+</tr>
+</tbody>
+</table>
+<p>Using a for-loop and <code class="docutils literal"><span class="pre">append</span></code> is a powerful and flexible way to
+derive a new list, but not the only way.</p>
+</div>
+<div class="section" id="sets">
+<span id="index-1"></span><span id="id2"></span><h2>2.2.2. Sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h2>
+<p>A list may contain duplicates, as in <code class="docutils literal"><span class="pre">[2,</span> <span class="pre">1,</span> <span class="pre">3,</span> <span class="pre">2,</span> <span class="pre">5,</span> <span class="pre">5,</span> <span class="pre">2]</span></code>.
+This is sometimes useful, and sometimes not. You may have learned
+in math class that a <em>set</em> is a collection that does not allow
+repetitions (a set automatically removes repetitions suggested).
+Python has a type <code class="docutils literal"><span class="pre">set</span></code>. Like many type names, it can be used to
+convert other types. In this case it makes sense to convert any
+collection, and the process removes duplicates. <em>Read</em> and see what
+happens:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">strList</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;z&#39;</span><span class="p">,</span> <span class="s">&#39;zz&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">,</span> <span class="s">&#39;bb&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aSet</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">strList</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aSet</span>
+<span class="go">{&#39;bb&#39;, &#39;zz&#39;, &#39;a&#39;, &#39;c&#39;, &#39;z&#39;}</span>
+</pre></div>
+</div>
+<p>(Technically, a set is unordered, so your version of Idle may list the set
+in a different order.)
+Set literals are enclosed in braces. Like other collections, a set
+can be used as a sequence in a <code class="docutils literal"><span class="pre">for</span></code> loop. <em>Read</em>, and check it
+makes sense:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">aSet</span><span class="p">:</span>
+<span class="go">    print(s)</span>
+
+
+<span class="go">bb</span>
+<span class="go">zz</span>
+<span class="go">a</span>
+<span class="go">c</span>
+<span class="go">z</span>
+</pre></div>
+</div>
+<p>Predict the result of the following, and then paste it into the
+<em>Shell</em> and test. (You may not
+guess Python&#8217;s order, but see if you can get the right length and
+the right elements in <em>some</em> order.)</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="nb">set</span><span class="p">([</span><span class="s">&#39;animal&#39;</span><span class="p">,</span> <span class="s">&#39;food&#39;</span><span class="p">,</span> <span class="s">&#39;animal&#39;</span><span class="p">,</span> <span class="s">&#39;food&#39;</span><span class="p">,</span> <span class="s">&#39;food&#39;</span><span class="p">,</span> <span class="s">&#39;city&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="constructors">
+<span id="index-2"></span><span id="id3"></span><h2>2.2.3. Constructors<a class="headerlink" href="#constructors" title="Permalink to this headline">¶</a></h2>
+<p>We have now seen several examples of the name of a type being used
+as a function. <em>Read</em> these earlier examples:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s">&#39;123&#39;</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">aSet</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">numberList</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In all such cases a new object of the specified type is constructed
+and returned, and such functions are called <em>constructors</em>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.2. More Classes and Methods</a><ul>
+<li><a class="reference internal" href="#appending-to-a-list">2.2.1. Appending to a List</a></li>
+<li><a class="reference internal" href="#sets">2.2.2. Sets</a></li>
+<li><a class="reference internal" href="#constructors">2.2.3. Constructors</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="strings3.html"
+                        title="previous chapter">2.1. Strings, Part III</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="madlib2.html"
+                        title="next chapter">2.3. Mad Libs Revisited</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/moreclasses.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="madlib2.html" title="2.3. Mad Libs Revisited"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="strings3.html" title="2.1. Strings, Part III"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch2.html" >2. Objects and Methods</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2012, Dr. Andrew N. Harrington.
+      Last updated on May 22, 2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1+.
+    </div>
+  </body>
+</html>

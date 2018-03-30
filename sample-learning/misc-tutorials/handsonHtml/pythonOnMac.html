@@ -1,0 +1,887 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
+<title>Some Special Mac Instructions</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id$
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="some-special-mac-instructions">
+<h1 class="title">Some Special Mac Instructions</h1>
+
+<p>I will assume a version of Max OSX of at least El Capitan (10.11 or later).  Upgrades are free.</p>
+<p><em>This document supercedes any conflicting instructions in the tutorial itself.</em>
+As versions of Python and operating systems have changed, some old usage instructions get out
+date.</p>
+<div class="section" id="versions">
+<h1>Versions</h1>
+<p>I will use Python 3.6+ to mean the current version of Python, with version number at least
+3.6.1.  Make sure you have the latest recommended version installed from <a class="reference external" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a>.
+Download the pkg filke and double click to execute.  As you install, note the warning about the graphics support
+package Tcl/Tk as described on
+<a class="reference external" href="https://www.python.org/download/mac/tcltk/">https://www.python.org/download/mac/tcltk/</a></p>
+<p>In particular, it probably says that El Capitan, OSX 10.11 users should go to the Active State website
+and install the package.  The version suggested by Python.org, 8.5.18.0 has a link near the bottom of the page.
+Do not use version 8.6.</p>
+</div>
+<div class="section" id="your-login-id">
+<h1>Your Login ID</h1>
+<p>The normal place for you to have my examples folder is under your home folder,
+which has the same name as your Login ID. If you are just creating a login ID,
+it will save some hassle in Chapter 4, if your login ID does
+<em>not have a space in it</em>.
+&quot;Andy&quot; or &quot;AndyHarrington&quot; would be fine for me, but</p>
+<blockquote>
+&quot;Andy Harrington&quot;</blockquote>
+<p>would bomb the server in Chapter 4.</p>
+<div class="section" id="if-you-have-a-blank-in-your-login-id">
+<span id="blank-in-id"></span><h2>If You Have a Blank in your Login ID</h2>
+<p>The local server program central to chapter 4 bombs with
+folder paths with a blank in the name.</p>
+<p>If you have a blank in your Login ID, it is not so easy to change.
+Instead make a folder outside of your home folder:</p>
+<ol class="arabic simple">
+<li>Go to the Macintosh HD folder and create a folder (like &quot;comp150&quot;)
+with no blank in it!  You will need administrative privileges,
+and will be prompted to enter your password.</li>
+<li>I suggest that you move my examples folder, or just the subfolder
+www so it is under your new folder.  For Chapter 4
+test my examples and add your work there.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="folder-for-my-examples">
+<span id="examples-folder"></span><h1>Folder For My Examples</h1>
+<p>Wherever you plan to unzip my Python examples folder from
+<a class="reference external" href="http://anh.cs.luc.edu/python/hands-on/3.1/examples.zip">http://anh.cs.luc.edu/python/hands-on/3.1/examples.zip</a>
+you need to make sure that
+my www folder, and any other folder where you put later .cgi files
+does not have a blank in its name,
+<em>or any folder in which it is a subfolder</em>.
+If you have a &quot;comp 150&quot; folder, you might rename it &quot;comp150&quot;.</p>
+</div>
+<div class="section" id="running-vs-editing">
+<h1>Running VS. Editing</h1>
+<div class="section" id="editing-by-default">
+<span id="edit-by-default"></span><h2>Editing by Default</h2>
+<p>You will be working mostly with files ending in .py -- Python source files.
+Most of the time you will be editing them and running them in IDLE, so the best
+default behavior when opening a file with extension .py is to have it open in
+Idle 3.6+.  If you can double click on a .py file in my examples,
+and Idle opens as soon as you have installed Python 3.6+, great.
+If not, here is how to change the default behavior:</p>
+<ol class="arabic simple">
+<li>In the Finder go to a  file in my examples folder with the .py extension.
+and right click or control click on it. Select <strong>Get Info</strong>.</li>
+<li>In the Info window that pops up, In the dropdown menu for <strong>Open with:</strong>,
+you want to see
+<strong>IDLE.app</strong> on the top line (meaning it is already the default).
+You may possibly also see the version listed if you have several.  Presumably
+you are going through this because you do <em>not</em> see IDLE.app there.</li>
+<li>You may see <strong>IDLE.app</strong> lower down in the list of options.  Then select it there.</li>
+<li>If you did not see IDLE.app in the dropdown list at all:<ul>
+<li>Select <strong>Other...</strong>.</li>
+<li>A window of app's pops up.
+Toward the bottom is a checkbox for &quot;Always Open With&quot;.  Check it.</li>
+<li>If you do not see a Python folder in the list, just below the bottom of
+the page change Recommended Applications to All Applications</li>
+<li>Now you should see a Python 3.6 folder.  Open it and select Idle.app.</li>
+</ul>
+</li>
+<li>The Info window should become active again.  Be sure that now under
+<strong>Open with:</strong> you see IDLE.app.</li>
+<li>Under the IDLE.app you should see a button, <strong>Change All...</strong>.
+So that you never have to go through all these steps again, be sure to click
+that button.  A confirmation window will pop up.  Select Continue.</li>
+<li>Now you can close the Info window, and you should be able to open all .py
+files directly in Idle for editing by double clicking in the Finder!</li>
+</ol>
+<!-- old
+Setup of Preferences for Launching Python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You will sometimes want to run Python programs without Idle.  Assuming you do not
+make this the default behavior, here is how to do it as necessary.
+You use the Python Launcher (for the latest version of Python),
+but the Python Launcher may need to be configured correctly:
+
+#.  Type enough of "Python Launcher" into Spotlight so it comes up as a choice.
+    If you have several versions of Python install,
+    version numbers will be listed after different versions.
+    Use the latest version.
+#.  A Preferences window pops up for Python scripts.  Set the Interpreter to
+
+       /usr/bin/python3
+
+    That may mean just changing the last character from w to 3.
+#.  Close the Preferences window.  You are set for launch.
+
+Launching Python Programs Without Idle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Make sure you have done the previous section's setup first.  Now:
+
+#.  In the Finder go to the .py file you want (likely in my examples folder)
+    and right click or control click on it. Select **Open With**.
+#.  In the window that pops up, select "Python Launcher.app".
+    If there are several, select the latest version.
+    A terminal window should pop up, with your program started.
+#.  If your program opens a graphics window,
+    it may be all or partly covered by another window, so you may need
+    to hunt around and click on its title bar to bring it forward. -->
+</div>
+</div>
+<div class="section" id="idle">
+<h1>IDLE</h1>
+<div class="section" id="starting-the-idle-shell">
+<h2>Starting The Idle Shell</h2>
+<p>Options</p>
+<ul class="simple">
+<li>Use Spotlight with idle.app.  If there is more than one version of idle.app,
+make sure you choose one for Python 3.6+.
+This is a good approach the first time to check that
+Idle is properly installed.
+The disadvantage of this approach is that Idle
+starts in your <em>Documents folder</em> (more below).</li>
+<li>You may open a Python file ending in .py into an Idle Edit window by
+selecting it directly in a Finder window if the defaults are set as
+discussed above.  Instead you
+can Ctrl-click on the file, select Open With, and then choose Idle
+for Python 3.6+.</li>
+</ul>
+<!-- old
+-  You can also open Idle from inside a terminal, discussed more below
+   under Chapter 4. -->
+</div>
+<div class="section" id="opening-files-from-inside-idle">
+<h2>Opening Files from Inside Idle</h2>
+<p>You may select Open in the File menu <em>inside</em> Idle.</p>
+<p><strong>Caution</strong>: the behavior
+depends on what window is active at the moment, a file editing window or the Shell window:</p>
+<ul class="simple">
+<li>If the active window is some <strong>file editing</strong> window when you use the Idle
+File menu to open a file,
+your search will start in the same folder as the file you are editing
+(generally the desired
+behavior).</li>
+<li>If you select File Open from
+the <strong>Shell</strong> window, the starting folder depends on how you started Idle:<ul>
+<li>If you started Idle from Spotlight or opened a file in the Finder,
+then your search will start in your <strong>Documents</strong> folder,
+probably not what you want.</li>
+<li>If you started Idle from a terminal, you open to the directory where
+you gave the command to start Idle.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="saving-files">
+<h2>Saving Files</h2>
+<p>If you have modified a file and want to save it under a new name, make sure
+the file is in the active window (the shell window is <em>not</em> active), go to
+the File menu and Save. It is easiest if
+you save all files in the same folder: my examples folder (except in Chapter 4).</p>
+</div>
+<div class="section" id="running-program-files">
+<h2>Running Program Files</h2>
+<p>Make the Edit window for the file you want active by clicking in its window,
+then go to the Run
+menu and select Run Module. Note the F5 shortcut key.</p>
+</div>
+</div>
+<div class="section" id="running-graphics-chapter-2">
+<h1>Running Graphics (Chapter 2)</h1>
+<p>The graphics window likely comes up behind an unneeded Console Window. You can
+close the console window, and click on the graphics window title bar to
+bring it to the front.</p>
+</div>
+<div class="section" id="chapter-4-cgi-instructions">
+<h1>Chapter 4 CGI Instructions</h1>
+<p>Remember this is the time when it is critical not to have .cgi files under a folder
+with a blank in the name.  See the earlier discussion.</p>
+<div class="section" id="cgi-files-on-my-server-do-not-work">
+<h2>CGI Files on My Server Do Not Work</h2>
+<p>The administrators of my server changed the security parameters, so now the
+links to run cgi scripts on my server do not work.  Just use the ones
+the the local server on your machine, as discussed below.</p>
+</div>
+<div class="section" id="opening-cgi-files-in-idle">
+<h2>Opening .cgi Files in Idle</h2>
+<p>By convention the server programs that you will be writing end in &quot;.cgi&quot;.
+That is not an extension that is automatically associated with Idle for editing.
+You will want to change the association.  Do it the same way as the instructions
+above for getting .py files to open in Idle by default, except choose a .cgi file in my www
+folder, and go through the same procedure.</p>
+</div>
+<div class="section" id="setup-making-cgi-scripts-executable">
+<h2>Setup: Making CGI Scripts Executable</h2>
+<p>Make sure you have completed the previous section successfully before
+going on to this section.</p>
+<p>A complication on a Mac, like any Unix derived system, is that programs
+that you run must be explicitly marked <em>executable</em>. (On Windows it follows from
+the file extension, like .exe.)  The examples/www folder may not
+have the cgi files marked executable (nor have several other technical things right).</p>
+<p>The example program examples/www/CGIfix.py is needed to give direct
+Unix/Mac/Linux executability to CGI files for Chapter 4.</p>
+<p>Remember the www directory cannot have a directory name in the path down to
+that directory with a space in it. If you got that wrong,
+go back to the previous section.</p>
+<p>In the finder open your www directory. You can open CGIfix.py in Idle and run it.
+Note the comment that the file <tt class="docutils literal">cgiServerScript</tt> was created.  You need that
+in the next section:</p>
+</div>
+<div class="section" id="running-cgi-scripts">
+<h2>Running CGI Scripts</h2>
+<p>Important! Particularly if you later copy in a CGI script from a Windows
+machine, or if you <em>create any new cgi script</em> in the www directory, make sure
+it becomes executable (and possibly fix some other technical things) by
+launching CGIfix.py again.</p>
+<p>If you forget this, and the file is not executable,
+nothing happens in the browser when you try to run it,
+and the error message in the server window is very unhelpful -
+it says  &quot;... File not found ...&quot;.  Make sure you make new CGI files
+executable!</p>
+<p>If you create and
+edit a cgi file inside Idle, remember you <em>cannot run it</em> from inside
+Idle.  After editing, be <strong>sure</strong> to check the syntax,
+using alt/option-X.
+You should close the file in Idle before running CGIfix.py.</p>
+<p>When you want to test a cgi script, you first need to have launched
+the local CGI Server, however
+<em>opening and running localCGIServer.py in Idle does not work!</em></p>
+<p>Instead make sure all your files needed by the cgi server
+(.html, .cgi, localCGIServer.py) are in the
+same folder as the file created there by fixCGI.py:  <tt class="docutils literal">cgiServerScript</tt>.
+(Distinguish the separate file for Windows, startServer.cmd:  Ignore that.)</p>
+<p>In the Finder double click on cgiServerScript.
+This should start a window announcing the start of the CGI server.
+(Then you can leave it running for as long
+as you want to test .cgi files in the same folder.)  Do <em>not</em> have several
+copies of the CGI server running at once!</p>
+<p>At this point you can do all the web server based activities in Chapter
+4, with the <em>only extra step being the running of CGIfix.py when you</em>
+<em>create a new CGI script</em> in the www directory, or copy one from Windows.
+There are a number of steps: be sure you carefully go through the list in the tutorial.
+Remember, html files calling a cgi file, and cgi files used directly are <em>only</em> run in your web browser
+with a URL starting with localhost:8080/.  Otherwise nothing dynamic happens.</p>
+<!-- warning
+
+I have been shown an apparent problem copying a partner's script from Windows,
+that I though my CGIfix.py should handle, but it has not.
+When transferring a cgi file from Windows, you may want to
+open a new file window and then copy all the contnets in from a separately opened,
+originally Windows
+file.  Then save the new file and use CGIfix.py. -->
+<!-- old
+There are two setup issues to check, and then general instructions for
+dealing with individual cgi programs.
+
+Setup: Finding Python3 And Idle3 With a Terminal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The names python3 and idle3 generally refer to the latest versions
+that run under Python 3.  You would like these to work in various contexts.
+
+This section is for testing and fixing where things do not work as expected.
+
+Open a terminal window (spotlight: Terminal)
+
+Enter
+
+      python3
+
+If a Python shell starts, fine. Just press Crtl-D once to quit, and you have
+found python3.
+
+Also try
+
+    idle3
+
+**If idle3 or python3 did not start**, you will need to follow these instructions:
+
+First check the location of the system Python files.  If you have
+Python 3.3, try this terminal command:
+
+   ls /Library/Frameworks/Python.framework/Versions/3.3/bin
+
+If you have Python 3.2, 3.4, ..., replace the 3.3 in the command above.
+
+If your command does not cause an error, and shows python3 and idle3 listed,
+enter the following terminal commands:
+
+   ls /usr/local/bin
+
+If python3 was *not* listed, copy and enter:
+
+   sudo ln -s /Library/Frameworks/Python.framework/Versions/3.3/bin/python3 /usr/local/bin
+
+You may be asked for your password.
+*You may get no feedback as you type your password.*
+
+This should have made python3 accessible.  Now test:  Again try the command
+
+   python3
+
+It should work now. End the command by entering Ctrl-D.
+
+If python3 still did not work, try a further step: copy and enter:
+
+   sudo ln -s  /usr/local/bin/python3 /usr/bin
+
+Now try the python3 command.  If it still did not work, get help.
+
+If idle3 did not work, enter a similar line:
+
+   sudo ln -s /Library/Frameworks/Python.framework/Versions/3.3/bin/idle3 /usr/local/bin
+
+Now test, starting idle3 from the command line.
+
+If that did not work, do the backup:
+
+   sudo ln -s  /usr/local/bin/idle3 /usr/bin
+
+If the idle3 command does not work now, get help.
+
+
+Idle From a Terminal - Opening CGI Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This section assumes you successfully completed the previous section,
+getting python3 and idle3 running from a terminal.
+
+There is one annoying feature of Idle (and some other programs) on a Mac:
+The Open File dialog inside
+Idle only allows you to open files ending in .py or .txt, but not .cgi.
+Before chapter 4 this is not generally an issue.
+
+A way to get an existing CGI file into
+Idle:
+
+*  cd into the folder of the file
+*  enter the command **idle3** *followed by the file name*.
+
+For example you could edit and modify adder.cgi if you change to the
+www
+folder (inside the examples folder) and enter
+
+   idle3 adder.cgi
+
+Once you have opened a .cgi file this way, Idle should allow you to
+reopen it later from the Recent Files menu option.
+
+Setup: Making CGI scripts executable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Make sure you have completed the previous section successfully before
+going on to this section.
+
+A complication on a Mac, like any Unix derived system, is that programs
+that you run must be explicitly marked *executable*. (On Windows it follows from
+the file extension, like .exe.)  The examples/www folder may not
+have the cgi files marked executable.
+
+The example program examples/www/CGIfix.py is needed to give direct
+Unix/Mac/Linux executability to CGI files for Chapter 4 and for any
+Python program in general.
+
+Remember the www directory cannot have a directory name in the path down to
+that directory with a space in it. If you got that wrong, move your files or
+change the name of the offending folder if possible.
+
+Change into your www directory. For example if the
+example folder is directly in your desktop folder as in the example
+above, then enter:
+
+    cd ~/desktop/examples/www
+
+Now make important files executable with the command:
+
+    python3 CGIfix.py CGIfix.py localCGIServer.py
+
+(Note CGIfix.py is entered twice, once as the Python file to interpret and once
+again as a parameter to that program!)
+
+Finish with the command:
+
+   ./CGIfix.py
+
+Do not forget the initial "./".
+This should make all the example cgi scripts executable.
+
+Running CGI Scripts
+~~~~~~~~~~~~~~~~~~~~~~
+
+Important! Particularly if you later copy in a CGI script from a Windows
+machine, or if you *create any new cgi script* in the www directory, make sure
+it becomes executable (and possibly fix some other technical things) by running
+
+   ./CGIfix.py
+
+from the www directory again. You might want to just
+leave a terminal window open in your www directory.
+
+If you forget this, and the file is not executable,
+nothing happens in the browser when you try to run it,
+and the error message in the server window is very unhelpful -
+it says  "... File not found ...".  Make sure you make new CGI files
+executable!
+
+If you create and
+edit a cgi file inside Idle, remember you *cannot run it* from inside
+Idle.  After editing, be **sure** to check the syntax,
+using alt/option-X.
+You should close the file in Idle before running ./CGIfix.py.
+
+When you want to test a cgi script, you need localCGIServer.py running
+from the www directory.
+Again, assuming for illustration that you put the examples folder on
+your desktop, you could type in the command:
+
+    cd ~/desktop/examples/www
+
+Here is a neat general alternate way to get to a folder in a terminal.
+The www folder is used as an example:
+
+* Type ``cd`` and a space and *stop - no return yet*.
+* Find the www folder in the Finder and drag the www folder to the terminal:
+  The full path should appear in the terminal.
+* Press return to execute the command, and change the directory.
+
+Once in the www directory enter
+
+    ./localCGIServer.py
+
+You can just leave the server running. If you want to stop it, you can
+press Ctrl-C, or close its terminal window.  Do not forget the initial "./".
+
+At this point you can do all the web server based activities in Chapter
+4, with the *only extra step being the running of ./CGIfix.py when you*
+*create a new CGI script* in the www directory, or copy one from Windows.
+There are a number of steps: be sure you carefully go through the list in the tutorial.
+Remember, in your web browser
+with a URL starting with localhost:8080/
+
+..  warning
+
+    I have recently been shown an apparent problem copying scripts from Windows,
+    that I though my CGIfix.py should handle, but it has not.
+    When transferring a cgi file from Windows, you may want to
+    open a new file window and then copy the data in from an originally Windows
+    file.  Then save the new file and use ./CGIfix.py. -->
+</div>
+</div>
+<div class="section" id="terminal-use-optional">
+<h1>Terminal Use (Optional)</h1>
+<p>To use the Handson Python Tutorial, the information above should be sufficient
+to get your Mac usage going.  Terminals are quite useful in other contexts:
+There are many things that can be
+done from such a window that cannot be done from the Finder or with an App.</p>
+<p>If you would like a bit more background, read on.</p>
+<div class="section" id="navigation">
+<h2>Navigation</h2>
+<p>OS X and Unix (from which OS X is derived)
+have a concept of the <em>current directory</em>
+Directory is the older term for folder from when there were not pictures of
+folders in a graphical interface.</p>
+<p>You start in your home directory.  My login id is anh, so my home directory is
+<tt class="docutils literal">/Users/anh</tt>.  Substitute your login id for your machine.
+The slashes separate nested directories.  The top hard drive
+directory is <tt class="docutils literal">/</tt>, which contains the directory <tt class="docutils literal">Users</tt> which contains
+users' home directories, like my <tt class="docutils literal">anh</tt>.  A shorthand for your home directory
+is <tt class="docutils literal">~</tt>.</p>
+<p>The terminal shows a system prompt when it is ready for user input.  The prompt
+can be set to show many things.  The end of the prompt is often <tt class="docutils literal">$</tt>.
+Before that is often some indication of your current directory, like <tt class="docutils literal">~</tt> for
+the home directory.</p>
+<p>If you want to see the full name of the current directory enter the command</p>
+<blockquote>
+pwd</blockquote>
+<p>Single commands are executed after you press the Enter key.</p>
+<p>You can <strong>l</strong>i<strong>s</strong>t the contents of a directory with the <tt class="docutils literal">ls</tt> command.
+Unix tends to abbreviate words in commands.</p>
+<p>If you use the ls command in your home directory, you should see
+<tt class="docutils literal">Desktop</tt>, <tt class="docutils literal">Documents</tt>, <tt class="docutils literal">Downloads</tt>, ... listed.</p>
+<p>To <strong>c</strong>hange <strong>d</strong>irectory, use the <tt class="docutils literal">cd</tt> command followed by
+the directory you would like to change to.  You can use the full
+name of the directory starting with <tt class="docutils literal">/</tt>, but more commonly you just indicate
+where to go relative to where you are now.  <tt class="docutils literal">Desktop</tt> is a subdirectory of
+your home directory, so from the home directory you can just enter</p>
+<blockquote>
+cd Desktop</blockquote>
+<p>Here is a sequence on my computer after starting a terminal (skipping most
+of the output from <tt class="docutils literal">ls</tt>:</p>
+<pre class="literal-block">
+Last login: Sat May 19 18:03:19 on ttys001
+anh&#64;lucky13:~$ pwd
+/Users/anh
+anh&#64;lucky13:~$ ls
+
+...
+Desktop                          ...
+Documents                        ...
+Downloads                        ...
+...
+
+anh&#64;lucky13:~$ cd Desktop
+anh&#64;lucky13:~/Desktop$ pwd
+/Users/anh/Desktop
+anh&#64;lucky13:~/Desktop$ cd ..
+anh&#64;lucky13:~$ pwd
+/Users/anh
+anh&#64;lucky13:~$
+</pre>
+<p>Notice that the last use of the <tt class="docutils literal">cd</tt> command used directory <tt class="docutils literal">..</tt>.
+That stands for the parent directory, the directory containing the
+current directory.</p>
+<p>If you unzipped the examples from your Desktop, you can go there with</p>
+<blockquote>
+cd ~/Desktop/examples</blockquote>
+<p>Alter this if you put your examples somewhere else!</p>
+<p>It is useful to be in the examples folder.  If you start Idle from there,
+it is easy to open any of the example programs.</p>
+<p>When scripts are directly called by the operating system, they look
+for the proper interpreter to read them.  Our scripts are set up to look for
+python3.</p>
+<p>To start a regular python program from the current directory, like hello_you.py,
+you would enter a command with python3 and the file name, like</p>
+<blockquote>
+python3 hello_you.py</blockquote>
+<p>Instead of shifting to a separate Shell as in Idle, the output appears right in the
+terminal window.</p>
+</div>
+</div>
+</div>
+</body>
+</html>

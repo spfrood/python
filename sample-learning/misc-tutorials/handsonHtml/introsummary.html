@@ -1,0 +1,698 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.15. Summary &mdash; Hands-on Python Tutorial for Python 3.1</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="Hands-on Python Tutorial for Python 3.1" href="index.html" />
+    <link rel="up" title="1. Beginning With Python" href="ch1.html" />
+    <link rel="next" title="2. Objects and Methods" href="ch2.html" />
+    <link rel="prev" title="1.14. Decimals, Floats, and Floating Point Arithmetic" href="float.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ch2.html" title="2. Objects and Methods"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="float.html" title="1.14. Decimals, Floats, and Floating Point Arithmetic"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch1.html" accesskey="U">1. Beginning With Python</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="summary">
+<span id="introsummary"></span><h1>1.15. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p>Section references in square brackets indicate where an idea was first
+discussed.</p>
+<p>Where Python syntax is illustrated, the typeface continues to indicate the
+category of each part:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Typeface</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Typewriter</span> <span class="pre">font</span></code></td>
+<td>Text to be written <em>verbatim</em></td>
+</tr>
+<tr class="row-odd"><td><em>Emphasized</em></td>
+<td>A place where you can use an arbitrary
+expression.</td>
+</tr>
+<tr class="row-even"><td><strong>Bold</strong></td>
+<td>A place where you can use an arbitrary
+identifier.</td>
+</tr>
+<tr class="row-odd"><td>Normal text</td>
+<td>A description of what goes in that position,
+without giving explicit syntax</td>
+</tr>
+</tbody>
+</table>
+<p>If there are several variations on a particular part of the syntax,
+alternatives will be show on successive lines.</p>
+<p>To emphasize the successive parts of the syntax, space will
+generally be left around symbol and punctuation characters, but the
+space is not required in actual use.</p>
+<ol class="upperalpha">
+<li><p class="first">Python Shell</p>
+<ol class="arabic simple">
+<li>A Shell window may be opened in Idle
+<span class="menuselection">Run ‣ Python Shell</span> [<a class="reference internal" href="idle.html#windows-in-idle"><span>Windows in Idle</span></a>]</li>
+<li>Entering commands:<ol class="loweralpha">
+<li>Commands may be entered at the
+<code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> prompt.
+[<a class="reference internal" href="integer.html#addition-and-subtraction"><span>Addition and Subtraction</span></a>]</li>
+<li>If the Shell detects that a command is not finished at the end
+of the line, a continuation line is shown with no
+<code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code>.
+[<a class="reference internal" href="integer.html#multiplication-parentheses"><span>Multiplication, Parentheses, and Precedence</span></a>]</li>
+<li>Statements with a heading ending in a colon followed by an
+indented block, must be terminated with an empty line.
+[<a class="reference internal" href="loops.html#basic-for-loops"><span>Basic for Loops</span></a>]</li>
+<li>The Shell evaluates a completed command immediately, displaying
+any result other than <code class="docutils literal"><span class="pre">None</span></code>, starting on the next line.
+[<a class="reference internal" href="integer.html#addition-and-subtraction"><span>Addition and Subtraction</span></a>]</li>
+<li>The Shell remembers variable and function names.
+[<a class="reference internal" href="variables.html#variables-and-assignment"><span>Variables and Assignment</span></a>]</li>
+</ol>
+</li>
+<li>An earlier Shell line may to copied and edited by clicking
+anywhere in the previously displayed line and then pressing
+<code class="kbd docutils literal"><span class="pre">Enter</span></code>.</li>
+</ol>
+</li>
+<li><p class="first">Idle editing</p>
+<ol class="arabic simple">
+<li>Start a new window from the File menu by selecting New, Open...,
+or Recent Files. [<a class="reference internal" href="execution.html#loading-a-program"><span>Loading a Program in the Idle Editor, and Running It</span></a>]</li>
+<li>Make your Python file names explicitly end with &#8216;.py&#8217;
+[<a class="reference internal" href="variables.html#literals-and-identifiers"><span>Literals and Identifiers</span></a>]</li>
+</ol>
+</li>
+<li><p class="first">To run a program from an Idle Editor Window:</p>
+<ol class="arabic simple">
+<li>Select <span class="menuselection">Run -&gt; Run Module</span> or press function key <code class="kbd docutils literal"><span class="pre">F5</span></code>.
+The program
+runs in the Shell window, after resetting the shell so all old
+names are forgotten. [<a class="reference internal" href="execution.html#loading-a-program"><span>Loading a Program in the Idle Editor, and Running It</span></a>]<ol class="loweralpha">
+<li>If the program is expecting keyboard input, the text cursor
+should appear at the end of the Shell history. If you somehow move
+the cursor elsewhere, you must explicitly move it back.
+[<a class="reference internal" href="execution.html#the-idle-editor"><span>The Idle Editor and Execution</span></a>]</li>
+<li>BUG WORKAROUND: If you were running a program that was expecting
+keyboard input when you terminated it to start the latest run, you
+will need to start by pressing the Enter key once or maybe twice to
+clear the old pending wait for input. [<a class="reference internal" href="execution.html#a-bug-possible"><span>A Pre Python 3.3 Idle Bug</span></a>]</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">Ctrl-C</span></code> to stop a running program in a long or infinite
+loop.</li>
+<li>After a program terminates, the Shell remembers function
+definitions and variable names define outside of any function.
+[<a class="reference internal" href="functions.html#a-first-function"><span>A First Function Definition</span></a>]</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p class="first">Errors come in three categories:</p>
+<ol class="arabic simple">
+<li>Syntax errors: text that the interpreter recognizes as illegal
+when first reading it. This prevents execution of your code. Python
+lets you know where it <em>realized</em> there was an error. Sometimes
+this is the exact location, but the actual error could be anywhere
+earlier, often on the previous line.
+[<a class="reference internal" href="variables.html#variables-and-assignment"><span>Variables and Assignment</span></a>]</li>
+<li>Execution errors: The first illegal action is detected while
+running your command or program. The source of the error could be
+in the line where execution fails, or it could be an earlier
+logical error that only later forces an execution error.
+[<a class="reference internal" href="variables.html#variables-and-assignment"><span>Variables and Assignment</span></a>]<ul>
+<li>Execution errors generate a traceback.
+[<a class="reference internal" href="functions.html#function-parameters"><span>Function Parameters</span></a>]</li>
+</ul>
+</li>
+<li>Logical errors: When Python detects nothing illegal, but you do
+not get the results you desire. These errors are the hardest to
+trace down. Playing computer and additional print functions help.
+[<a class="reference internal" href="loops.html#playing-computer"><span>More Playing Computer</span></a>]</li>
+</ol>
+</li>
+<li><p class="first">Type <code class="docutils literal"><span class="pre">int</span></code>, (short for integer):</p>
+<ol class="arabic simple">
+<li>Literal integer values may not contain a decimal point.
+[<a class="reference internal" href="float.html#floats-division-mixed"><span>Floats, Division, Mixed Types</span></a>]</li>
+<li>Integers may be arbitrarily large and are stored exactly.
+[<a class="reference internal" href="float.html#floats-division-mixed"><span>Floats, Division, Mixed Types</span></a>]</li>
+<li>Integers have normal operations, with usual precedence (highest
+listed first):<ol class="loweralpha">
+<li><code class="docutils literal"><span class="pre">**</span></code>: exponentiation (5**3 means 5*5*5)
+[<a class="reference internal" href="float.html#exponentiation"><span>Exponentiation, Square Roots</span></a>]</li>
+<li><code class="docutils literal"><span class="pre">*</span></code>, <code class="docutils literal"><span class="pre">/</span></code>, <code class="docutils literal"><span class="pre">//</span></code>, <code class="docutils literal"><span class="pre">%</span></code>: multiplication, division with float
+result, integer division (ignoring any remainder), just the
+remainder from division [<a class="reference internal" href="integer.html#division-and-remainders"><span>Division and Remainders</span></a>]</li>
+<li><code class="docutils literal"><span class="pre">+</span></code>, <code class="docutils literal"><span class="pre">-</span></code>: addition, subtraction
+[<a class="reference internal" href="integer.html#addition-and-subtraction"><span>Addition and Subtraction</span></a>]</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p class="first">Type <code class="docutils literal"><span class="pre">float</span></code>, (short for floating point): approximations of
+real numbers</p>
+<ol class="arabic simple">
+<li>Literal values must contain a decimal point to distinguish them
+from the int type [<a class="reference internal" href="float.html#floats-division-mixed"><span>Floats, Division, Mixed Types</span></a>]</li>
+<li>Approximates a wide range of values
+[<a class="reference internal" href="float.html#floats-division-mixed"><span>Floats, Division, Mixed Types</span></a>]</li>
+<li>Does not dependably store numbers exactly - even numbers with
+simple decimal representation [<a class="reference internal" href="float.html#floats-division-mixed"><span>Floats, Division, Mixed Types</span></a>]</li>
+<li>Has the same operation symbols as for integers, but always
+with a <code class="docutils literal"><span class="pre">float</span></code> result
+[<a class="reference internal" href="float.html#floats-division-mixed"><span>Floats, Division, Mixed Types</span></a>]</li>
+<li>A mixed binary operation with an integer and a <code class="docutils literal"><span class="pre">float</span></code>
+produces a <code class="docutils literal"><span class="pre">float</span></code> result. [<a class="reference internal" href="float.html#floats-division-mixed"><span>Floats, Division, Mixed Types</span></a>]</li>
+</ol>
+</li>
+<li><p class="first">Type <code class="docutils literal"><span class="pre">str</span></code>, (short for string):
+Literal values contain a sequence of characters enclosed in
+matching quotes.</p>
+<ol class="arabic">
+<li><p class="first">Enclosed in <code class="docutils literal"><span class="pre">'</span></code> or <code class="docutils literal"><span class="pre">&quot;</span></code>: The string must be on
+one line. [<a class="reference internal" href="strings1.html#string-delimiters-i"><span>String Delimiters, Part I</span></a>]</p>
+</li>
+<li><p class="first">Enclosed in <code class="docutils literal"><span class="pre">'''</span></code> or
+<code class="docutils literal"><span class="pre">&quot;&quot;&quot;</span></code>: The string may
+include multiple lines in the source file.
+[<a class="reference internal" href="strings2.html#triple-quoted-string"><span>Triple Quoted String Literals</span></a>]</p>
+</li>
+<li><p class="first">Escape codes inside literals include <code class="docutils literal"><span class="pre">\'</span></code> for a
+single quote and <code class="docutils literal"><span class="pre">\n</span></code> for a newline.
+[<a class="reference internal" href="strings2.html#escape-codes"><span>Escape Codes</span></a>]</p>
+</li>
+<li><p class="first">Binary operations (operation symbols have the same precedence
+order as when the symbols are used in arithmetic)
+[<a class="reference internal" href="strings1.html#string-concatenation"><span>String Concatenation</span></a>]</p>
+<ol class="loweralpha">
+<li><p class="first"><em>stringExpression1</em> <code class="docutils literal"><span class="pre">+</span></code> <em>stringExpression2</em></p>
+<p>concatenation (running together) of the two strings</p>
+</li>
+<li><div class="first line-block">
+<div class="line"><em>stringExpression</em> <code class="docutils literal"><span class="pre">*</span></code> <em>integerExpression</em></div>
+<div class="line"><em>integerExpression</em> <code class="docutils literal"><span class="pre">*</span></code> <em>stringExpression</em></div>
+</div>
+<p>Repeat the string the number of times given by the integer
+expression.</p>
+</li>
+</ol>
+</li>
+<li><p class="first">string format method:</p>
+<ol class="loweralpha">
+<li><div class="first line-block">
+<div class="line"><em>stringFormatExpression</em> <code class="docutils literal"><span class="pre">.format(</span></code>
+<em>parameter0</em> <code class="docutils literal"><span class="pre">,</span></code> <em>parameter1</em> <code class="docutils literal"><span class="pre">,</span></code> <em>parameter2</em> <code class="docutils literal"><span class="pre">,</span></code> ... <code class="docutils literal"><span class="pre">)</span></code></div>
+</div>
+<p>[<a class="reference internal" href="io.html#format-strings"><span>String Format Operation</span></a>]
+where <em>stringFormatExpression</em> is any string with an arbitrary number
+of places for format substitutions in it. Formatted substitutions are
+enclosed in braces. A digit inside the braces will indicate which
+parameter value is substituted, counting from 0. If digits are left
+out, the format parameters are substituted in order. The expression
+inside the braces can end with a colon <code class="docutils literal"><span class="pre">:</span></code> followed by a format
+specifying string such as
+<code class="docutils literal"><span class="pre">.#f</span></code> where # can be a non negative integer: substitute a
+numerical value rounded to the specified number of places beyond
+the decimal point. [<a class="reference internal" href="float.html#floats-division-mixed"><span>Floats, Division, Mixed Types</span></a>]</p>
+<p>Example:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="s">&#39;word: {}, number: {}, formatted number: {:.3f}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&#39;Joe&#39;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mf">2.1357</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>evaluates to:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="s">&#39;word: Joe, number: 23, formatted number: 2.136.&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><div class="first line-block">
+<div class="line"><em>stringFormatExpression</em> <code class="docutils literal"><span class="pre">.format(</span></code> ** <em>dictionary</em> <code class="docutils literal"><span class="pre">)</span></code></div>
+</div>
+<p>The format expressions are the same as above except that a key name
+from a <em>dictionary</em> appears inside the braces. The
+dictionary referenced appears in the parameter list preceded by
+<code class="docutils literal"><span class="pre">**</span></code>. Any value to be substituted is then taken from the
+dictionary by accessing the key. Example:
+If <code class="docutils literal"><span class="pre">defs</span></code> is a dictionary with <code class="docutils literal"><span class="pre">defs['name']</span></code> equaling
+<code class="docutils literal"><span class="pre">'Joe'</span></code>, <code class="docutils literal"><span class="pre">defs['num']</span></code> equaling <code class="docutils literal"><span class="pre">23</span></code>,
+<code class="docutils literal"><span class="pre">defs['dec']</span></code> equaling <code class="docutils literal"><span class="pre">2.13579</span></code>, then</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="s">&#39;word: {name}, number: {num}, formatted number: {dec:.3f}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">defs</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>evaluates to the same string as in the previous example.
+[<a class="reference internal" href="dictionaries.html#dictionaries-and-string"><span>Dictionaries and String Formatting</span></a>]</p>
+<p>In particular, the dictionary reference can the the dictionary
+of all local variable names, by making the parameter to <code class="docutils literal"><span class="pre">format</span></code>
+be <code class="docutils literal"><span class="pre">**locals()</span></code>.
+[<a class="reference internal" href="dictionaries.html#locals-dict"><span>Dictionaries and Python Variables</span></a>]</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Strings are a kind of sequence.</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Type <code class="docutils literal"><span class="pre">list</span></code></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">[</span></code> <em>expression1</em> <code class="docutils literal"><span class="pre">,</span></code> <em>expression2</em> <code class="docutils literal"><span class="pre">,</span></code> and so on <code class="docutils literal"><span class="pre">]</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">[</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">]</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">[]</span></code></div>
+</div>
+<ol class="arabic simple">
+<li>A literal list consists of a comma separated collection of
+values all enclosed in square brackets. There may be many, one, or
+no elements in the list. [<a class="reference internal" href="loops.html#the-list-type"><span>The list Type</span></a>]</li>
+<li>A list is a kind of sequence, so it may be used as the sequence
+in a <code class="docutils literal"><span class="pre">for</span></code> statement heading. [<a class="reference internal" href="loops.html#basic-for-loops"><span>Basic for Loops</span></a>]</li>
+</ol>
+</li>
+<li><p class="first">Type <code class="docutils literal"><span class="pre">dict</span></code> (short for dictionary)</p>
+<p><code class="docutils literal"><span class="pre">dict()</span></code></p>
+<p>returns an empty dictionary</p>
+<ol class="arabic">
+<li><p class="first">A dictionary provides an association of each key to its value.
+The key can be any immutable type, with includes numbers and
+strings. [<a class="reference internal" href="dictionaries.html#dictionaries-i"><span>Definition and Use of Dictionaries</span></a>]</p>
+</li>
+<li><div class="first line-block">
+<div class="line"><em>dictName</em> <code class="docutils literal"><span class="pre">[</span></code> <em>keyExpression</em> <code class="docutils literal"><span class="pre">]</span> <span class="pre">=</span></code> <em>valueExpression</em></div>
+</div>
+<p>associates in the dictionary <em>dictName</em> the key derived from
+evaluating <em>keyExpression</em> with the value derived from evaluating
+<em>valueExpression</em>. [<a class="reference internal" href="dictionaries.html#dictionaries-i"><span>Definition and Use of Dictionaries</span></a>]</p>
+</li>
+<li><p class="first">Used in an expression,</p>
+<div class="line-block">
+<div class="line"><em>dictName</em> <code class="docutils literal"><span class="pre">[</span></code> <em>keyExpression</em> <code class="docutils literal"><span class="pre">]</span></code></div>
+</div>
+<p>evaluates to the value in the dictionary <em>dictName</em> coming from the
+key obtained by evaluating <em>keyExpression</em>.
+[<a class="reference internal" href="dictionaries.html#dictionaries-i"><span>Definition and Use of Dictionaries</span></a>]</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Type of <code class="docutils literal"><span class="pre">None</span></code>: This literal value has its own special type.
+<code class="docutils literal"><span class="pre">None</span></code> indicates the absence of a regular object.</p>
+</li>
+<li><p class="first">Identifiers</p>
+<ol class="arabic simple">
+<li>Identifiers are names for Python objects
+[<a class="reference internal" href="variables.html#literals-and-identifiers"><span>Literals and Identifiers</span></a>]</li>
+<li>They may only contain letters, digits, and the underscore, and
+cannot start with a digit. They are case sensitive.
+[<a class="reference internal" href="variables.html#literals-and-identifiers"><span>Literals and Identifiers</span></a>]</li>
+<li>You cannot use a reserved word as an identifier, nor are you
+recommended to redefine an identifier predefined by Python. In the
+Idle editor you are safe if your identifier names remain colored
+black. [<a class="reference internal" href="variables.html#literals-and-identifiers"><span>Literals and Identifiers</span></a>]</li>
+<li>By convention, multi-word identifiers either
+[<a class="reference internal" href="variables.html#literals-and-identifiers"><span>Literals and Identifiers</span></a>]<ol class="loweralpha">
+<li>use underscores in place of blanks (since blanks are illegal is
+identifiers), as in <code class="docutils literal"><span class="pre">initial_account_balance</span></code></li>
+<li>use camel-case: all lowercase except for the starting letter of
+the second and later words, as in <code class="docutils literal"><span class="pre">initialAccountBalance</span></code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p class="first">Variables are identifiers used to name Python data
+[<a class="reference internal" href="variables.html#variables-and-assignment"><span>Variables and Assignment</span></a>]</p>
+<ol class="arabic simple">
+<li>When a variable is used in an expression, its latest value is
+substituted. [<a class="reference internal" href="variables.html#variables-and-assignment"><span>Variables and Assignment</span></a>]</li>
+</ol>
+</li>
+<li><p class="first">Statements</p>
+<ol class="arabic">
+<li><p class="first">Assignment statement: [<a class="reference internal" href="variables.html#variables-and-assignment"><span>Variables and Assignment</span></a>]</p>
+<p><strong>variable</strong> <code class="docutils literal"><span class="pre">=</span></code> expression</p>
+<ol class="loweralpha simple">
+<li>The expression on the right is evaluated, using the latest
+values of all variables, and calculating all operations or
+functions specified.</li>
+<li>The expression value is associated with the variable named on
+the left, removing any earlier association with the name.</li>
+</ol>
+</li>
+<li><p class="first">For-statement</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">for</span></code> <strong>item</strong> <code class="docutils literal"><span class="pre">in</span></code> <em>sequence</em> <code class="docutils literal"><span class="pre">:</span></code></div>
+<div class="line-block">
+<div class="line">consistently indented statement block, which may use the variable <em>item</em></div>
+</div>
+</div>
+<p>For each element in the sequence, repeat the statement block
+substituting the next element in the sequence for the name variable
+name <em>item</em>. See Programming Patterns for patterns of use.
+[<a class="reference internal" href="loops.html#basic-for-loops"><span>Basic for Loops</span></a>]</p>
+</li>
+<li><p class="first">Return statement</p>
+<p><code class="docutils literal"><span class="pre">return</span></code> <em>expression</em></p>
+<p>This is used only in a function definition, causing the function to
+immediately terminate and return the value of expression to the
+calling code, effectively acting as if the function call was
+replaced by this returned value.
+[<a class="reference internal" href="functions.html#returned-function-values"><span>Returned Function Values</span></a>]</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Function calls</p>
+<p><em>functionName</em> <code class="docutils literal"><span class="pre">(</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">,</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">,</span></code> and so on <code class="docutils literal"><span class="pre">)</span></code></p>
+<ol class="arabic simple">
+<li>The number of expressions must correspond to a number of
+parameters allowed by the function&#8217;s definition.
+[<a class="reference internal" href="functions.html#function-parameters"><span>Function Parameters</span></a>]</li>
+<li>Even if there are no parameters, the parentheses must be
+included to distinguish the name of the function from a request to
+call the function. [<a class="reference internal" href="functions.html#a-first-function"><span>A First Function Definition</span></a>]</li>
+<li>Each <em>expression</em> is called an <em>actual parameter</em>.
+Each actual parameter is evaluated and the values are passed to the
+code for the function, which executes its defined steps and may
+return a value. If the function call was a part of a larger
+expression, the returned value is used to evaluate the larger
+expression in the place where the function call was.
+[<a class="reference internal" href="functions.html#function-parameters"><span>Function Parameters</span></a>]</li>
+<li>If nothing is returned explicitly, the function returns
+<code class="docutils literal"><span class="pre">None</span></code>.</li>
+<li>Function calls may also be used as statements, in which case any
+value that is returned is ignored (except if entered directly into
+the shell, which prints any returned value other than <code class="docutils literal"><span class="pre">None</span></code>).</li>
+<li>Keyword arguments are a special case. They have been used
+optionally at the end of the parameter list for print.</li>
+</ol>
+</li>
+<li><p class="first">Functions that are built-in</p>
+<ol class="arabic">
+<li><p class="first">Print function: [<a class="reference internal" href="print1.html#print-statements-i"><span>Print Function, Part I</span></a>]
+[<a class="reference internal" href="loops.html#print-end"><span>The print function keyword end</span></a>]</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">print(</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">)</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">print(</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">,</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">,</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">)</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">print(</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">,</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">,</span></code> <em>expression</em>, <code class="docutils literal"><span class="pre">sep=</span></code>strVal, <code class="docutils literal"><span class="pre">end=</span></code>strVal <code class="docutils literal"><span class="pre">)</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">print()</span></code></div>
+</div>
+<ol class="loweralpha simple">
+<li>Print the value of each expression in the list to the standard
+place for output (usually the screen) separating each value by
+individual blanks unless the keyword argument <code class="docutils literal"><span class="pre">sep</span></code> is specified
+to change it. There can be any number of expressions (not just 1 or
+3 as illustrated)</li>
+<li>The string printed ends with a newline unless the keyword
+argument <code class="docutils literal"><span class="pre">end</span></code> is specified to change it.</li>
+<li>With no expression, the statement only advances to a new line.</li>
+</ol>
+</li>
+<li><p class="first">A type name can be used as function to do obvious conversions to
+the type, as in <code class="docutils literal"><span class="pre">int('234')</span></code>, <code class="docutils literal"><span class="pre">float(123)</span></code>, <code class="docutils literal"><span class="pre">str(123)</span></code>.
+[<a class="reference internal" href="io.html#numbers-and-digit-strings"><span>Numbers and Strings of Digits</span></a>]</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">type(</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">)</span></code></p>
+<p>Return the type of the value of the <em>expression</em>.
+[<a class="reference internal" href="strings1.html#string-delimiters-i"><span>String Delimiters, Part I</span></a>]</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">input(</span></code> <em>promptString</em> <code class="docutils literal"><span class="pre">)</span></code></p>
+<p>Print the promptString to the screen; wait for the user to enter a
+line from the keyboard, ending with <code class="kbd docutils literal"><span class="pre">Enter</span></code>. Return the character
+sequence as a string [<a class="reference internal" href="io.html#the-input-function"><span>The input Function</span></a>]</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">len(</span></code> <em>sequence</em> <code class="docutils literal"><span class="pre">)</span></code></p>
+<p>Return the number of elements in the <em>sequence</em>
+[<a class="reference internal" href="intro.html#whirlwind-introduction-to"><span>Whirlwind Introduction To Types and Functions</span></a>]</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">range(</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">)</span></code></p>
+<p>Require expression to have a non negative integer value, call it
+<em>n</em>. Generate a sequence with length <em>n</em>, consisting of the numbers 0
+through <em>n</em>-1. For example <code class="docutils literal"><span class="pre">range(4)</span></code> generates the sequence
+<code class="docutils literal"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3</span></code> [<a class="reference internal" href="loops.html#the-range-function-i"><span>The range Function, Part 1</span></a>]</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">max(</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">,</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">,</span></code> and so on <code class="docutils literal"><span class="pre">)</span></code></p>
+<p>Return the maximum of all the expressions listed.
+[<a class="reference internal" href="intro.html#whirlwind-introduction-to"><span>Whirlwind Introduction To Types and Functions</span></a>]</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">format(</span></code> <em>expression</em> <code class="docutils literal"><span class="pre">,</span></code> <em>formatString</em> <code class="docutils literal"><span class="pre">)</span></code></p>
+<p>If <em>expression</em> is numeric, the format string can be in the form
+<code class="docutils literal"><span class="pre">'.#f'</span></code>, where the <code class="docutils literal"><span class="pre">#</span></code> gets replaced by a nonnegative integer, and
+the result is a string with the value of the expression rounded to
+the specified number of digits beyond the decimal point.
+[<a class="reference internal" href="float.html#floats-division-mixed"><span>Floats, Division, Mixed Types</span></a>]</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Functions defined by a user:</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">def</span></code> <strong>functionName</strong> <code class="docutils literal"><span class="pre">(</span></code> <em>parameter1</em> <code class="docutils literal"><span class="pre">,</span></code> <em>parameter2</em> <code class="docutils literal"><span class="pre">,</span></code> and so on <code class="docutils literal"><span class="pre">)</span> <span class="pre">:</span></code></div>
+<div class="line-block">
+<div class="line">consistently indented statement block, which may include a return statement</div>
+</div>
+</div>
+<ol class="arabic simple">
+<li>There may be any number of parameters. The parentheses must be
+included even if there are no parameters.
+[<a class="reference internal" href="functions.html#function-parameters"><span>Function Parameters</span></a>]</li>
+<li>When a function is first defined, it is only remembered: its
+lines are not executed. [<a class="reference internal" href="functions.html#a-first-function"><span>A First Function Definition</span></a>]</li>
+<li>When the function is later called in other code, the actual
+parameters in the function call are used to initialize the local
+variables <em>parameter1</em>, <em>parameter2</em>, and so on in the same order
+as the actual parameters. [<a class="reference internal" href="functions.html#function-parameters"><span>Function Parameters</span></a>]</li>
+<li>The local variables of a function are independent of the local
+names of any function defined outside of this function. The local
+variables must be initialized before use, and the names lose any
+association with their values when the function execution
+terminates. [<a class="reference internal" href="functions.html#local-scope"><span>Local Scope</span></a>]</li>
+<li>If a return statement is reached, any further statements in the
+function are ignored. [<a class="reference internal" href="functions.html#returned-function-values"><span>Returned Function Values</span></a>]</li>
+<li>Functions should be used to :<ol class="loweralpha">
+<li>Emphasize that the code corresponds to one idea and give an
+easily recognizable name. [<a class="reference internal" href="functions.html#a-first-function"><span>A First Function Definition</span></a>]</li>
+<li>Avoid repetition. If a basic idea is repeated with just the data
+changing, it will be easier to follow and use if it is coded once
+as a function with parameters, that gets called with the
+appropriate actual parameters when needed.
+[<a class="reference internal" href="functions.html#function-parameters"><span>Function Parameters</span></a>]</li>
+<li>It is good to separate the internal processing of data from the
+input and output of data. This typically means placing the
+processing of data and the return of the result in a function.
+[<a class="reference internal" href="functions.html#function-parameters"><span>Function Parameters</span></a>]</li>
+<li>Separate responsibilities: The consumer of a function only needs
+to know the name, parameter usage, and meaning of any returned
+value. Only the writer of a function needs to know the
+implementation of a function. [<a class="reference internal" href="functions.html#two-roles"><span>Two Roles: Writer and Consumer of Functions</span></a>]</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p class="first">Modules (program files)</p>
+<ol class="arabic simple">
+<li>A module may start with a documentation string.
+[<a class="reference internal" href="execution.html#program-documentation-string"><span>Program Documentation String</span></a>]</li>
+<li>Define your functions in your module. If the module is intended
+as a main program called only one way, a convention is make your
+execution just be calling a function called main.
+[<a class="reference internal" href="functions.html#multiple-function-definitions"><span>Multiple Function Definitions</span></a>]</li>
+<li>Avoid defining variable outside of your functions. Names for
+constant (unchanging) values are a reasonable exception.
+[<a class="reference internal" href="functions.html#global-constants"><span>Global Constants</span></a>]</li>
+</ol>
+</li>
+<li><p class="first">Documentation String: A string, often a multi-line (triple
+quoted) string that may appear in two places:</p>
+<ol class="arabic simple">
+<li>At the very beginning of a file: This should give overall
+introductory information about the file
+[<a class="reference internal" href="execution.html#program-documentation-string"><span>Program Documentation String</span></a>]</li>
+<li>As the very first entry in the body of a function: This should
+describe: [<a class="reference internal" href="dictionaries.html#dictionaries-i"><span>Definition and Use of Dictionaries</span></a>]<ol class="loweralpha">
+<li>The return value of the function (if there is one)</li>
+<li>Anything about the parameters that is not totally obvious from
+the names</li>
+<li>Anything about the results from the function that is not obvious
+from the name</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p class="first">Programming Patterns</p>
+<ol class="arabic">
+<li><p class="first">Input-calculate-Output: This is the simplest overall program
+model. First obtain all the data you need (for instance by
+prompting the user for keyboard input). Calculate what you need
+from this data. Output the data (for instance to the screen with
+print functions). [<a class="reference internal" href="io.html#the-input-function"><span>The input Function</span></a>]</p>
+</li>
+<li><p class="first">Repetitive patterns: These patterns are all associated with
+loops. Loops are essential if the number of repetitions depends on
+dynamic data in the program. Even if you could avoid a loop by
+repeating code, a loop is usually a better choice to make the
+repetitive logic of your program clear to all.</p>
+<ol class="loweralpha">
+<li><p class="first">Exact repetition some number of times: If the number of time to
+repeat is <em>n</em>:</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">for</span></code> <strong>i</strong> <code class="docutils literal"><span class="pre">in</span> <span class="pre">range(</span></code> <em>n</em> <code class="docutils literal"><span class="pre">):</span></code></div>
+<div class="line-block">
+<div class="line">actions to be repeated</div>
+</div>
+</div>
+<p>Here the variable <strong>i</strong> is included only because there must be a
+variable name in a <code class="docutils literal"><span class="pre">for</span></code> loop. [<a class="reference internal" href="loops.html#simple-repeat-loop"><span>Simple Repeat Loop</span></a>]</p>
+</li>
+<li><p class="first">For-each loop: Do the same sort of thing for each item in a
+specified sequence. [<a class="reference internal" href="loops.html#basic-for-loops"><span>Basic for Loops</span></a>]</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">for</span></code> <strong>item</strong> <code class="docutils literal"><span class="pre">in</span></code> <em>sequence</em> <code class="docutils literal"><span class="pre">:</span></code></div>
+<div class="line-block">
+<div class="line">actions to be done with each <em>item</em></div>
+</div>
+</div>
+</li>
+<li><p class="first">Successive modification loop: Repeat a basic idea, but where the
+data involved each time changes via a pattern that is coded in the
+loop to convert the previous data into the data needed the next
+time through the loop [<a class="reference internal" href="loops.html#successive-modification-loops"><span>Successive Modification Loops</span></a>]:</p>
+<div class="line-block">
+<div class="line">initialize all variables that will be successively modified in the loop</div>
+<div class="line">loop heading for the repetition <code class="docutils literal"><span class="pre">:</span></code></div>
+<div class="line-block">
+<div class="line">actions to be in each loop with the current variable values</div>
+<div class="line">modify the variable values to prepare for the next time through the loop</div>
+</div>
+</div>
+</li>
+<li><p class="first">Accumulation loop: A sequence of items need to be combined. This
+works where the accumulation of all the items can be approached
+incrementally, combining one after another with the accumulation so
+far [<a class="reference internal" href="loops.html#accumulation-loops"><span>Accumulation Loops</span></a>]:</p>
+<div class="line-block">
+<div class="line">initialize the <strong>accumulation</strong> to include none of the <em>sequence</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">for</span></code> <strong>item</strong> <code class="docutils literal"><span class="pre">in</span></code> <em>sequence</em> <code class="docutils literal"><span class="pre">:</span></code></div>
+<div class="line-block">
+<div class="line">new value of <strong>accumulation</strong> <code class="docutils literal"><span class="pre">=</span></code> partial result</div>
+</div>
+</div>
+<p>where the partial result comes from combining <em>item</em> with the current
+value of <em>accumulation</em></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p class="first">Playing computer: following code line by line of execution.
+This either tests that you understand your code (and it
+works right) or it helps you find where it goes wrong.
+[<a class="reference internal" href="loops.html#updating-variables"><span>Updating Variables</span></a>, <a class="reference internal" href="loops.html#successive-modification-loops"><span>Successive Modification Loops</span></a>,
+<a class="reference internal" href="loops.html#playing-computer"><span>More Playing Computer</span></a>]</p>
+<ol class="arabic simple">
+<li>Make sure line numbers are labeled</li>
+<li>Make a table with heading for line numbers, all variables that
+will be changing, and comments</li>
+<li>Follow the order of execution, one statement at a time, being
+careful to update variable values and only use the latest variable
+values, and carefully following the flow of control through loops
+and into and out of function calls.</li>
+</ol>
+</li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="float.html"
+                        title="previous chapter">1.14. Decimals, Floats, and Floating Point Arithmetic</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ch2.html"
+                        title="next chapter">2. Objects and Methods</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/introsummary.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ch2.html" title="2. Objects and Methods"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="float.html" title="1.14. Decimals, Floats, and Floating Point Arithmetic"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch1.html" >1. Beginning With Python</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2012, Dr. Andrew N. Harrington.
+      Last updated on May 22, 2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1+.
+    </div>
+  </body>
+</html>

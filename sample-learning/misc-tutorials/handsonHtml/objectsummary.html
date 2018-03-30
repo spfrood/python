@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.6. Summary &mdash; Hands-on Python Tutorial for Python 3.1</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="Hands-on Python Tutorial for Python 3.1" href="index.html" />
+    <link rel="up" title="2. Objects and Methods" href="ch2.html" />
+    <link rel="next" title="3. More On Flow of Control" href="ch3.html" />
+    <link rel="prev" title="2.5. Files" href="files.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ch3.html" title="3. More On Flow of Control"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="files.html" title="2.5. Files"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch2.html" accesskey="U">2. Objects and Methods</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="summary">
+<span id="objectsummary"></span><h1>2.6. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p>The same typographical conventions will be used as in <a class="reference internal" href="introsummary.html#introsummary"><span>Summary</span></a>.</p>
+<ol class="arabic">
+<li><p class="first">Object notation</p>
+<ol class="arabic">
+<li><p class="first">When the name of a type of object is used as a function call, it
+is called a <em>constructor</em>, and a new object of that type is
+constructed and implicitly returned (no return statement).
+The meanings of any parameters to the
+constructor depend on the type. [<a class="reference internal" href="moreclasses.html#constructors"><span>Constructors</span></a>]</p>
+</li>
+<li><p class="first"><em>object</em><code class="docutils literal"><span class="pre">.methodName(</span></code> parameters <code class="docutils literal"><span class="pre">)</span></code></p>
+<p>Objects have special operations associated with them, called
+methods. They are functions automatically applied to the <em>object</em>
+before the dot. Further parameters may be expected, depending on
+the particular method. [<a class="reference internal" href="strings3.html#object-orientation"><span>Object Orientation</span></a>]</p>
+</li>
+</ol>
+</li>
+<li><p class="first">String (<code class="docutils literal"><span class="pre">str</span></code>) indexing and methods</p>
+<p>See <a class="reference internal" href="introsummary.html#introsummary"><span>Summary</span></a> for string literals
+and symbolic string operations.</p>
+<ol class="arabic">
+<li><p class="first">String Indexing. [<a class="reference internal" href="strings3.html#string-indices"><span>String Indices</span></a>]</p>
+<p><em>stringReference</em> <code class="docutils literal"><span class="pre">[</span></code> <em>intExpression</em> <code class="docutils literal"><span class="pre">]</span></code></p>
+<p>Individual characters in a string may be chosen. If the string has
+length L, then the indices start from 0 for the initial character
+and go to L-1 for the rightmost character. Negative indices may
+also be used to count from the right end, -1 for the rightmost
+character through -L for the leftmost character. Strings are
+immutable, so individual characters may be read, but not set.</p>
+</li>
+<li><p class="first">String Slices [<a class="reference internal" href="strings3.html#string-slices"><span>String Slices</span></a>]</p>
+<div class="line-block">
+<div class="line"><em>stringReference</em> <code class="docutils literal"><span class="pre">[</span></code> <em>start</em> <code class="docutils literal"><span class="pre">:</span></code> <em>pastEnd</em> <code class="docutils literal"><span class="pre">]</span></code></div>
+<div class="line"><em>stringReference</em> <code class="docutils literal"><span class="pre">[</span> <span class="pre">:</span></code> <em>pastEnd</em> <code class="docutils literal"><span class="pre">]</span></code></div>
+<div class="line"><em>stringReference</em> <code class="docutils literal"><span class="pre">[</span></code> <em>start</em> <code class="docutils literal"><span class="pre">:</span> <span class="pre">]</span></code></div>
+<div class="line"><em>stringReference</em> <code class="docutils literal"><span class="pre">[</span> <span class="pre">:</span> <span class="pre">]</span></code></div>
+</div>
+<p>A substring or <em>slice</em> of 0 or more consecutive characters of a
+string may be referred to by specifying a starting index and the
+index one <em>past</em> the last character of the substring. If the
+starting or ending index is left out Python uses 0 and the length
+of the string respectively. Python assumes indices that would be
+beyond an end of the string actually mean the end of the string.</p>
+</li>
+<li><p class="first">String Methods: Assume <em>s</em> refers to a string</p>
+<ol class="arabic">
+<li><p class="first"><em>s</em><code class="docutils literal"><span class="pre">.upper()</span></code></p>
+<p>Returns an uppercase version of the string <em>s</em>.
+[<a class="reference internal" href="strings3.html#object-orientation"><span>Object Orientation</span></a>]</p>
+</li>
+<li><p class="first"><em>s</em><code class="docutils literal"><span class="pre">.lower()</span></code></p>
+<p>Returns a lowercase version of the string
+<em>s</em>. [<a class="reference internal" href="strings3.html#object-orientation"><span>Object Orientation</span></a>]</p>
+</li>
+<li><p class="first"><em>s</em><code class="docutils literal"><span class="pre">.count(</span></code> <em>sub</em> <code class="docutils literal"><span class="pre">)</span></code></p>
+<p>Returns the number of repetitions of the substring <em>sub</em> inside
+<em>s</em>. [<a class="reference internal" href="strings3.html#object-orientation"><span>Object Orientation</span></a>]</p>
+</li>
+<li><div class="first line-block">
+<div class="line"><em>s</em><code class="docutils literal"><span class="pre">.find(</span></code> <em>sub</em> <code class="docutils literal"><span class="pre">)</span></code></div>
+<div class="line"><em>s</em><code class="docutils literal"><span class="pre">.find(</span></code> <em>sub</em> <code class="docutils literal"><span class="pre">,</span></code> <em>start</em> <code class="docutils literal"><span class="pre">)</span></code></div>
+<div class="line"><em>s</em><code class="docutils literal"><span class="pre">.find(</span></code> <em>sub</em> <code class="docutils literal"><span class="pre">,</span></code> <em>start</em> <code class="docutils literal"><span class="pre">,</span></code> <em>end</em> <code class="docutils literal"><span class="pre">)</span></code></div>
+</div>
+<p>Returns the index in <em>s</em> of the first character of the first
+occurrence of the substring <em>sub</em> within the part of the string <em>s</em>
+indicated, respectively the whole string <em>s</em>,
+<em>s</em><code class="docutils literal"><span class="pre">[</span></code> <em>start</em> <code class="docutils literal"><span class="pre">:</span> <span class="pre">]</span></code>, or
+<em>s</em><code class="docutils literal"><span class="pre">[</span></code> <em>start</em> <code class="docutils literal"><span class="pre">:</span></code> <em>end</em> <code class="docutils literal"><span class="pre">]</span></code>, where
+<em>start</em> and <em>end</em> have integer values. [<a class="reference internal" href="strings3.html#object-orientation"><span>Object Orientation</span></a>]</p>
+</li>
+<li><div class="first line-block">
+<div class="line"><em>s</em><code class="docutils literal"><span class="pre">.split()</span></code></div>
+<div class="line"><em>s</em><code class="docutils literal"><span class="pre">.split(</span></code> <em>sep</em> <code class="docutils literal"><span class="pre">)</span></code></div>
+</div>
+<p>The first version splits <em>s</em> at any sequence of whitespace (blanks,
+newlines, tabs) and returns the remaining parts of <em>s</em> as a list.
+If a string <em>sep</em> is specified, it is the separator that
+gets removed from between the parts of the list. [<a class="reference internal" href="strings3.html#split"><span>split</span></a>]</p>
+</li>
+<li><p class="first"><em>sep</em><code class="docutils literal"><span class="pre">.join(</span></code> <em>sequence</em> <code class="docutils literal"><span class="pre">)</span></code></p>
+<p>Return a new string obtained by joining together the
+<em>sequence</em> of strings into one string, interleaving the
+string <em>sep</em> between <em>sequence</em> elements.
+[<a class="reference internal" href="strings3.html#join"><span>join</span></a>]</p>
+</li>
+<li><p class="first">Further string methods are discussed in the Python Reference
+Manual, Section 2.3.6.1, String Methods.
+[<a class="reference internal" href="strings3.html#further-exploration"><span>Further Exploration</span></a>]</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p class="first">Sets</p>
+<p>A <code class="docutils literal"><span class="pre">set</span></code> is a collection of elements with no repetitions. It can
+be used as a sequence in a <code class="docutils literal"><span class="pre">for</span></code> loop. A <code class="docutils literal"><span class="pre">set</span></code> constructor can
+take any other sequence as a parameter, and convert the sequence to
+a <code class="docutils literal"><span class="pre">set</span></code> (with no repetitions). Nonempty <code class="docutils literal"><span class="pre">set</span></code> literals are enclosed
+in braces. [<a class="reference internal" href="moreclasses.html#sets"><span>Sets</span></a>]</p>
+</li>
+<li><p class="first">List method <code class="docutils literal"><span class="pre">append</span></code></p>
+<p><em>aList</em><code class="docutils literal"><span class="pre">.append(</span></code> <em>element</em> <code class="docutils literal"><span class="pre">)</span></code></p>
+<p>Add an arbitrary <em>element</em> to the end of the <code class="docutils literal"><span class="pre">list</span></code>
+<em>aList</em>, <em>mutating</em> the list, not returning any list.
+[<a class="reference internal" href="moreclasses.html#appending-to-a-list"><span>Appending to a List</span></a>]</p>
+</li>
+<li><p class="first">Files [<a class="reference internal" href="files.html#files"><span>Files</span></a>]</p>
+<ol class="arabic">
+<li><div class="first line-block">
+<div class="line"><code class="docutils literal"><span class="pre">open(</span></code> <em>nameInFileSystem</em> <code class="docutils literal"><span class="pre">)</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">open(</span></code> <em>nameInFileSystem</em> <code class="docutils literal"><span class="pre">,</span> <span class="pre">'r'</span> <span class="pre">)</span></code></div>
+</div>
+<p>returns a file
+object for reading, where <em>nameInFileSystem</em> must be a
+string referring to an existing file.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">open(</span></code> <em>nameInFileSystem</em> <code class="docutils literal"><span class="pre">,</span> <span class="pre">'w')</span></code></p>
+<p>returns a file object for writing, where the string
+<em>nameInFileSystem</em> will be the name of the file. If it did
+not exist before, it is created. If it <em>did</em> exist before,
+all previous contents are <strong>erased</strong>.</p>
+</li>
+<li><p class="first">If <em>infile</em> is a file opened for reading, and <em>outfile</em> is
+a file opened for writing, then</p>
+<blockquote>
+<div><blockquote>
+<div><p><em>infile</em><code class="docutils literal"><span class="pre">.read()</span></code></p>
+</div></blockquote>
+<p>returns the entire file contents of the file as a string.</p>
+<blockquote>
+<div><p><em>infile</em><code class="docutils literal"><span class="pre">.close()</span></code></p>
+</div></blockquote>
+<p>closes the file in the operating system
+(generally not needed, unless the file is going to be modified
+later, while your program is <em>still</em> running).</p>
+<blockquote>
+<div><p><em>outfile</em><code class="docutils literal"><span class="pre">.write(</span></code> <em>stringExpression</em> <code class="docutils literal"><span class="pre">)</span></code></p>
+</div></blockquote>
+<p>writes the string to the file, with no extra newline.</p>
+<blockquote>
+<div><p><em>outfile</em><code class="docutils literal"><span class="pre">.close()</span></code></p>
+</div></blockquote>
+<p>closes the file in the operating system
+(<em>important</em> to make sure the whole file gets written and to allow
+other access to the file).</p>
+</div></blockquote>
+</li>
+</ol>
+</li>
+<li><p class="first">Mutable objects [<a class="reference internal" href="graphics.html#issues-with-mutable"><span>Issues with Mutable Objects</span></a>]
+Care must be taken whenever a second name is assigned to a mutable
+object. It is an <em>alias</em> for the original name, and refers to the
+exact same object. A mutating method applied to either name changes
+the one object referred to by <em>both</em> names.
+Many types of mutable object have ways to make a copy that is a
+distinct object. Zelle&#8217;s graphical objects have the <code class="docutils literal"><span class="pre">clone</span></code>
+method. A copy of a list may be made with a full slice:
+<em>someList</em><code class="docutils literal"><span class="pre">[:]</span></code>. Then direct mutations to one list (like
+appending an element) do not affect the other list, but still, each
+list is indirectly changed if a common mutable element in the lists
+is changed.</p>
+</li>
+<li><p class="first">Graphics</p>
+<p>A systematic reference to Zelle&#8217;s graphics package, graphics.py, is
+at
+<a class="reference external" href="http://mcsp.wartburg.edu/zelle/python/graphics/graphics/index.html">http://mcsp.wartburg.edu/zelle/python/graphics/graphics/index.html</a>.</p>
+<ol class="arabic">
+<li><p class="first">Introductory examples of using graphics.py are in
+[<a class="reference internal" href="graphics.html#graphics-introduction"><span>A Graphics Introduction</span></a>], [<a class="reference internal" href="graphics.html#sample-graphics"><span>Sample Graphics Programs</span></a>], and
+[<a class="reference internal" href="graphics.html#entry-objects"><span>Entry Objects</span></a>]</p>
+</li>
+<li><p class="first">Windows operating system .pyw</p>
+<p>In windows, a graphical program that take no console input and
+generates no console output, may be given the extension .pyw to
+suppress the generation of a console window. [<a class="reference internal" href="graphics.html#pyw"><span>A Windows Operating System Specialization: .pyw</span></a>]</p>
+</li>
+<li><p class="first">Event-driven programs</p>
+<p>Graphical programs are typically event-driven, meaning the next
+operation done by the program can be in response to a large number
+of possible operations, from the keyboard or mouse for instance,
+without the program knowing which kind of event will come next. For
+simplicity, this approach is pretty well hidden under Zelle&#8217;s
+graphics package, allowing the illusion of simpler sequential
+programming. [<a class="reference internal" href="graphics.html#eventdriven"><span>Graphics.py vs. Event Driven Graphics</span></a>]</p>
+</li>
+<li><p class="first">Custom computer colors are expressed in terms of the amounts of
+red, green, and blue. [<a class="reference internal" href="graphics.html#custom-colors"><span>Custom Colors</span></a>]</p>
+</li>
+<li><p class="first">See also Animation under the summary of Programming
+Techniques.</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Additional programming techniques</p>
+<p>These techniques extend those listed in the summary of the
+previous chapter. [<a class="reference internal" href="introsummary.html#introsummary"><span>Summary</span></a>]</p>
+<ol class="arabic">
+<li><p class="first">Sophisticated operations with substrings require careful setting
+of variables used as an index. [<a class="reference internal" href="strings3.html#index-variables"><span>Index Variables</span></a>]</p>
+</li>
+<li><p class="first">There are a number of techniques to assist creative programming,
+including pseudo-code and gradual generalization from concrete
+examples. [<a class="reference internal" href="madlib2.html#creative-problem-solving"><span>Creative Problem Solving Steps</span></a>]</p>
+</li>
+<li><p class="first">Animation: a loop involving small moves followed by a short
+delay (assumes the time module is imported): [<a class="reference internal" href="graphics.html#animation"><span>Animation</span></a>]</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">loop heading <code class="docutils literal"><span class="pre">:</span></code></div>
+<div class="line-block">
+<div class="line">move all objects a small step in the proper direction</div>
+<div class="line"><code class="docutils literal"><span class="pre">time.sleep(</span></code> <em>delay</em> <code class="docutils literal"><span class="pre">)</span></code></div>
+</div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Example of a practical successive modification loop:
+[<a class="reference internal" href="madlib2.html#ease-madlibcreation"><span>A Function to Ease the Creation of Mad Libs</span></a>]</p>
+</li>
+<li><p class="first">Examples of encapsulating ideas in functions and reusing them:
+[<a class="reference internal" href="madlib2.html#ease-madlibcreation"><span>A Function to Ease the Creation of Mad Libs</span></a>], [<a class="reference internal" href="madlib2.html#the-revised-mad"><span>The Revised Mad Lib Program</span></a>],
+[<a class="reference internal" href="graphics.html#animation"><span>Animation</span></a>]</p>
+</li>
+<li><p class="first">Random results can be introduced into a program using the random
+module. [<a class="reference internal" href="graphics.html#random-colors"><span>Random Colors</span></a>]</p>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="files.html"
+                        title="previous chapter">2.5. Files</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ch3.html"
+                        title="next chapter">3. More On Flow of Control</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/objectsummary.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ch3.html" title="3. More On Flow of Control"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="files.html" title="2.5. Files"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hands-on Python Tutorial</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ch2.html" >2. Objects and Methods</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2012, Dr. Andrew N. Harrington.
+      Last updated on May 22, 2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1+.
+    </div>
+  </body>
+</html>
