@@ -1,0 +1,5 @@
+# reclassify .html files as .py
+
+*.html linguist-language=Python
+
+
